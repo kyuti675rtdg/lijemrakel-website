@@ -60,8 +60,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     author: {
       name: 'Dr Etsubdink Negash',
       role: 'General & Technical Manager',
-      avatar:
-        'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=300&q=80',
+      avatar: '/images/leadership/leader-etsubdink.jpg',
     },
     keyTakeaways: [
       'Direct sourcing partnerships with GMP-certified international veterinary manufacturers.',
@@ -94,228 +93,217 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     id: 'news-02',
     slug: 'poultry-nutrition-feed-premix-portfolio-expansion',
     title:
-      'Supporting Farm Productivity Through Balanced Poultry & Livestock Feed Premixes',
+      'Expanding Poultry & Dairy Feed Premix Supply Across Bishoftu, Adama, and Regional Ethiopian Farm Corridors',
     categorySlug: 'business-updates',
     categoryLabel: 'Business Updates',
     date: 'October 2026',
-    readTime: '3 min read',
+    readTime: '4 min read',
     excerpt:
-      'Delivering essential vitamin, trace mineral, and amino acid premix formulations tailored for commercial layer, broiler, breeder, and dairy operations.',
-    image:
-      'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=85',
+      'Delivering balanced vitamin, trace-mineral, and amino acid premix formulations to commercial feed mills, poultry clusters in Bishoftu and Mojo, and dairy cooperatives across Ethiopia.',
+    image: '/images/strategy/phase-1.jpg',
     featured: true,
     author: {
       name: 'Mr Lijalem Abayneh',
       role: 'Deputy General Manager',
-      avatar:
-        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+      avatar: '/images/leadership/leader-lijalem.jpg',
     },
     keyTakeaways: [
-      'Stage-specific vitamin and trace-mineral premixes for broilers, layers, and breeders.',
-      'Specialized ruminant nutritional premixes supporting dairy yield and herd fertility.',
-      'Clear inclusion-rate documentation for commercial feed mills and integrated farms.',
+      'Tailored 1% to 2.5% vitamin-mineral premixes for Ethiopian commercial feed mills in Bishoftu, Adama, Mojo, and Addis Ababa.',
+      'Specialized dairy cattle mineral formulations calibrated to address highland forage micronutrient gaps in Oromia, Amhara, and Central Ethiopia.',
+      'Full Certificate of Analysis (CoA) and Amharic/English mixing guidance provided with every consignment.',
     ],
     sections: [
       {
-        heading: 'Precision Nutrition for Modern Farms',
+        heading: 'Supporting Ethiopia’s High-Growth Poultry & Feed Mill Clusters',
         paragraphs: [
-          'Consistent feed quality is one of the most decisive factors in commercial poultry and livestock performance. Lijemrakel Trading PLC supplies specialized vitamin-mineral premixes and essential amino acid concentrates formulated to optimize feed conversion, skeletal development, and egg production.',
-          'Each premix consignment is accompanied by verified composition certificates and clear mixing instructions to support accurate inclusion at commercial feed mills and on-farm mixing units.',
+          'Commercial poultry and livestock producers across the Bishoftu (Debre Zeit), Mojo, Adama, and Addis Ababa agricultural belt rely on consistent micronutrient balance to maximize egg laying persistence, broiler weight gain, and feed conversion efficiency using local maize and oilseed cake rations.',
+          'From our headquarters in Bole Sub-City, Addis Ababa, Lijemrakel Trading PLC supplies high-stability vitamin, trace-mineral, and essential amino acid premixes engineered to complement Ethiopian feed raw materials and prevent nutritional deficiencies.',
         ],
       },
       {
-        heading: 'Supporting Both Poultry & Ruminant Producers',
+        heading: 'Advancing Highland Dairy & Beef Cattle Productivity Under Yelemat Tirufat',
         paragraphs: [
-          'Beyond poultry nutrition, our portfolio includes high-specification mineral and vitamin premixes for dairy and beef cattle—helping producers prevent micronutrient deficiencies, improve reproductive performance, and strengthen herd immunity.',
+          'In direct support of Ethiopia’s national Yelemat Tirufat dairy and poultry productivity program, our ruminant premix line provides bioavailable calcium, phosphorus, selenium, zinc, and vitamins A, D3, and E for peri-urban dairy farms in Sululta, Sebeta, Holeta, Bahir Dar, and Hawassa—strengthening herd fertility, milk yield, and calf immunity.',
         ],
       },
     ],
     quote: {
-      text: 'Reliable nutritional premixes empower Ethiopian feed mills and farms to achieve predictable growth rates, stronger flock immunity, and higher production efficiency.',
+      text: 'By matching international premix formulations to Ethiopian feed raw materials in Bishoftu, Adama, and regional farm corridors, we help local feed mills and farmers achieve stronger flocks and higher yields.',
       attribution: 'Mr Lijalem Abayneh — Deputy General Manager',
     },
-    tags: ['Feed Premixes', 'Poultry Nutrition', 'Livestock', 'Feed Mills'],
+    tags: ['Ethiopia Agriculture', 'Bishoftu Poultry', 'Feed Premixes', 'Yelemat Tirufat'],
   },
   {
     id: 'news-03',
     slug: 'strategic-roadmap-poultry-and-hatchery-development',
     title:
-      'Strategic Roadmap Update: Phase 3 Planning for Modern Poultry & Hatchery Operations',
+      'Ethiopian Poultry & Hatchery Roadmap: Advancing Domestic Day-Old Chick Capacity for Local Producers',
     categorySlug: 'announcements',
     categoryLabel: 'Announcements',
     date: 'September 2026',
     readTime: '4 min read',
     excerpt:
-      'Outlining our long-term strategic framework to transition from fertilized hatching egg supply into integrated domestic poultry production and hatchery development.',
-    image:
-      'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=85',
+      'How Lijemrakel Trading PLC is bridging immediate fertilized hatching egg supply to Ethiopian hatcheries with Phase 3 domestic poultry breeding and incubation infrastructure.',
+    image: '/images/strategy/phase-3.jpg',
     featured: true,
     author: {
       name: 'Dr Etsubdink Negash',
       role: 'General & Technical Manager',
-      avatar:
-        'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=300&q=80',
+      avatar: '/images/leadership/leader-etsubdink.jpg',
     },
     keyTakeaways: [
-      'Structured four-phase growth roadmap spanning 0–12 months through Years 3–5.',
-      'Active importation of certified fertilized hatching eggs supports immediate hatchery demand.',
-      'Phase 3 (Years 2–3) focuses on feasibility, biosecurity design, and domestic hatchery development.',
+      'Consistent supply of high-fertility layer and broiler hatching eggs for commercial hatcheries across Ethiopia.',
+      'Aligned with Ethiopia’s Gebeta Le Hager and Yelemat Tirufat national poultry self-reliance initiatives.',
+      'Phase 3 roadmap establishes domestic climate-controlled incubation and veterinary-supervised day-old chick distribution.',
     ],
     sections: [
       {
-        heading: 'From Import Excellence to Domestic Value Creation',
+        heading: 'Strengthening Ethiopia’s Domestic Poultry Value Chain',
         paragraphs: [
-          'In alignment with national agricultural priorities including Gebeta Le Hager, Lijemrakel Trading PLC has designed a four-phase strategic roadmap that bridges immediate veterinary and poultry input supply with long-term domestic production.',
-          'During Phases 1 and 2, our core focus remains establishing strong regulatory foundations, expanding supplier representation, and supplying veterinary medicines, vaccines, premixes, hormones, and fertilized hatching eggs across Ethiopia.',
+          'Ethiopia’s rapidly growing demand for table eggs and poultry meat requires a dependable supply of high-viability hatching eggs and disease-free day-old chicks. Lijemrakel Trading PLC currently partners with certified international parent-stock flocks to deliver sanitized, flock-certified fertilized hatching eggs directly to Ethiopian hatchery operators.',
+          'Every shipment undergoes strict veterinary health certification and Ethiopian Agricultural Authority (EAA) import verification prior to arrival in Addis Ababa.',
         ],
       },
       {
-        heading: 'Preparing for Phase 3 Poultry & Hatchery Operations',
+        heading: 'Phase 3 Domestic Hatchery & Biosecurity Infrastructure in Ethiopia',
         paragraphs: [
-          'In Phase 3 (Years 2–3), the company plans to advance into modern poultry production and hatchery operations—incorporating automated incubation technology, strict biosecurity protocols, and veterinary-supervised day-old chick distribution.',
-          'We welcome discussions with international parent-stock breeders, hatchery equipment providers, and agricultural development partners interested in collaborating on this long-term vision.',
+          'Under Phase 3 of our corporate strategy, Lijemrakel Trading PLC is preparing feasibility and biosecurity frameworks for modern domestic hatchery and breeder operations in Ethiopia—featuring automated setter and hatcher cabinets, Marek’s and Newcastle hatchery vaccination protocols, and regional chick delivery across Oromia, Amhara, Sidama, and SNNP.',
         ],
       },
     ],
     quote: {
-      text: 'Our four-phase roadmap ensures we build a rock-solid veterinary and hatching-egg supply chain today while preparing responsibly for domestic poultry and hatchery operations tomorrow.',
-      attribution: 'Lijemrakel Trading PLC — Executive Leadership',
+      text: 'Our goal in Ethiopia is to build a seamless bridge from certified hatching-egg importation today to modern domestic hatchery and day-old chick production tomorrow.',
+      attribution: 'Dr Etsubdink Negash — General & Technical Manager',
     },
-    tags: ['Strategic Roadmap', 'Hatchery Development', 'Poultry Production', 'Gebeta Le Hager'],
+    tags: ['Ethiopian Hatcheries', 'Fertilized Eggs', 'Yelemat Tirufat', 'Gebeta Le Hager'],
   },
   {
     id: 'news-04',
     slug: 'cold-chain-stewardship-for-veterinary-biologicals',
     title:
-      'Commitment to Cold-Chain Integrity Across Veterinary Vaccine & Egg Logistics',
+      'From Bole Cargo Terminal to Regional Ethiopian Farms: Continuous Cold-Chain Logistics for Vaccines & Biologicals',
     categorySlug: 'business-updates',
     categoryLabel: 'Business Updates',
     date: 'September 2026',
     readTime: '3 min read',
     excerpt:
-      'Maintaining strict temperature monitoring and handling protocols from international port of entry to regional veterinary clinics and hatcheries.',
-    image:
-      'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=85',
+      'Maintaining unbroken +2°C to +8°C cold-chain integrity from Addis Ababa Bole International Airport customs clearance to veterinary clinics and poultry farms across Ethiopia.',
+    image: '/images/strategy/phase-2.jpg',
     author: {
       name: 'Ato Desalegn Tamene',
       role: 'Operational Manager',
-      avatar:
-        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+      avatar: '/images/leadership/leader-desalegn.jpg',
     },
     keyTakeaways: [
-      'Continuous +2°C to +8°C cold-chain management for veterinary vaccines and hormones.',
-      'Dedicated temperature and humidity control for imported fertilized hatching eggs.',
-      'Full batch traceability from international dispatch to local customer delivery.',
+      'Rapid cold-storage clearance at Addis Ababa Bole Cargo Terminal into calibrated +2°C to +8°C cold rooms.',
+      'Dedicated +15°C to +18°C climate-controlled handling and humidity protection for imported fertilized hatching eggs.',
+      'Batch-level temperature data loggers accompanying regional dispatches to Bishoftu, Adama, Hawassa, Bahir Dar, and Mekelle.',
     ],
     sections: [
       {
-        heading: 'Protecting Biological Potency & Hatchability',
+        heading: 'Unbroken Cold-Chain Stewardship in Addis Ababa',
         paragraphs: [
-          'Veterinary vaccines, reproductive hormones, and fertilized hatching eggs are highly sensitive to temperature fluctuations. Even brief deviations outside recommended storage ranges can compromise vaccine efficacy or embryo viability.',
-          'At Lijemrakel Trading PLC, our Operations & Logistics division enforces strict cold-chain receiving, storage, and dispatch procedures across every temperature-controlled consignment.',
+          'Protecting the biological potency of Newcastle, Gumboro (IBD), Marek’s, Fowl Pox, and ruminant vaccines requires zero compromise during airfreight arrival and inland Ethiopian transit. Lijemrakel Trading PLC coordinates directly with Addis Ababa Bole International Airport cargo cold-chain facilities to transfer consignments immediately into monitored +2°C to +8°C cold rooms.',
+          'Our veterinary operations team inspects digital temperature loggers upon arrival to verify that every vaccine vial and reproductive hormone batch remained within specification throughout transit.',
         ],
       },
       {
-        heading: 'Traceability & Safe Regional Distribution',
+        heading: 'Safe Last-Mile Delivery to Ethiopian Clinics & Hatcheries',
         paragraphs: [
-          'Each batch is logged with manufacturer lot numbers, expiration dates, and temperature records, ensuring veterinary clinics, livestock farms, and hatcheries receive products in optimal condition.',
+          'Using insulated transport systems and verified lot tracking, we distribute temperature-sensitive biologicals and fertilized hatching eggs to commercial poultry farms, dairy cooperatives, and regional veterinary pharmacies across Ethiopia with full batch traceability.',
         ],
       },
     ],
     quote: {
-      text: 'Cold-chain discipline is essential to animal health—preserving the full potency of every vaccine vial and the hatchability of every fertilized egg we deliver.',
+      text: 'From the moment a consignment lands at Bole Cargo Terminal in Addis Ababa until it reaches a farm in Bishoftu or Hawassa, our cold-chain discipline protects every dose and every egg.',
       attribution: 'Ato Desalegn Tamene — Operational Manager',
     },
-    tags: ['Cold-Chain', 'Vaccines', 'Logistics', 'Quality Assurance'],
+    tags: ['Bole Cargo Cold-Chain', 'Addis Ababa Logistics', 'Veterinary Vaccines', 'Ethiopia'],
   },
   {
     id: 'news-05',
     slug: 'b2b-supplier-and-distributor-partnership-desk',
     title:
-      'Official Announcement: Dedicated B2B Desk for Clinics, Farms & Global Suppliers',
+      'Bole Sub-City Headquarters Opens Dedicated B2B Desk for Ethiopian Veterinary Clinics, Unions & Commercial Farms',
     categorySlug: 'announcements',
     categoryLabel: 'Announcements',
     date: 'August 2026',
     readTime: '3 min read',
     excerpt:
-      'Streamlining technical product inquiries, specification requests, and international manufacturer agency discussions through our corporate portal.',
-    image:
-      'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=85',
+      'Connecting regional livestock cooperatives, private veterinary pharmacies, and commercial poultry enterprises directly with our technical and commercial desk in Addis Ababa.',
+    image: '/images/strategy/phase-4.jpg',
     author: {
       name: 'Ato Yelekal Kebede',
       role: 'International Business Manager',
-      avatar:
-        'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80',
+      avatar: '/images/leadership/leader-yelekal.jpg',
     },
     keyTakeaways: [
-      'Direct routing for veterinary clinics, commercial farms, and regional distributors.',
-      'Dedicated international supplier desk for GMP-certified manufacturers and breeders.',
-      'Fast access to technical specifications across all five product categories.',
+      'Walk-in and digital B2B consultation desk at Bole Sub-City, Woreda 13, Asamenewuel Building, Addis Ababa.',
+      'Direct wholesale supply coordination for Ethiopian veterinary clinics, agricultural unions, and commercial farms.',
+      'Regulatory registration and national agency representation for GMP-certified global manufacturers entering Ethiopia.',
     ],
     sections: [
       {
-        heading: 'Connecting International Manufacturers & Local Buyers',
+        heading: 'Serving Ethiopian Livestock Unions, Clinics & Commercial Producers',
         paragraphs: [
-          'To serve both domestic agricultural buyers and international manufacturing partners efficiently, Lijemrakel Trading PLC operates a dedicated B2B coordination desk.',
-          'Local veterinary clinics, poultry producers, livestock farms, and distributors can inquire directly about product specifications, pack sizes, and availability across our five core import categories.',
+          'Located in Bole Sub-City, Woreda 13 (Asamenewuel Building, 3rd Floor, Office No. 305) in Addis Ababa, Lijemrakel Trading PLC’s B2B Commercial & Technical Desk streamlines wholesale procurement for Ethiopian veterinary clinics, regional drug shops, poultry enterprises, and dairy unions.',
+          'Buyers across Addis Ababa, Oromia, Amhara, Sidama, South West Ethiopia, and Tigray can request product dossiers, veterinary prescription guidance, pack-size availability, and scheduled supply contracts across all five import categories.',
         ],
       },
       {
-        heading: 'Long-Term Representation for Global Suppliers',
+        heading: 'Trusted Ethiopian Market Representation for International Manufacturers',
         paragraphs: [
-          'International manufacturers of veterinary medicines, vaccines, premixes, hormones, and parent-stock hatching eggs can engage directly with our International Business and Technical teams regarding market registration and distribution representation in Ethiopia.',
+          'Our International Business division works closely with global veterinary pharmaceutical, vaccine, premix, and parent-stock breeding companies to manage Ethiopian Agricultural Authority (EAA) dossier registration, import permits, and nationwide technical promotion.',
         ],
       },
     ],
     quote: {
-      text: 'Strong partnerships with both international manufacturers and local agricultural enterprises are the foundation of sustainable trade.',
+      text: 'Our Bole Sub-City coordination desk brings Ethiopian veterinary clinics, commercial farms, and international manufacturers together through transparent, responsive B2B service.',
       attribution: 'Ato Yelekal Kebede — International Business Manager',
     },
-    tags: ['B2B Partnerships', 'International Trade', 'Distribution', 'Suppliers'],
+    tags: ['Bole Addis Ababa', 'Ethiopian Vet Clinics', 'B2B Distribution', 'EAA Compliance'],
   },
   {
     id: 'news-06',
     slug: 'supporting-ethiopias-agricultural-self-reliance',
     title:
-      'Aligning Veterinary Trade With Ethiopia’s Agricultural Growth Priorities',
+      'Ethiopian Leadership & Founding Vision: Building Trusted Veterinary & Agricultural Trade from Addis Ababa',
     categorySlug: 'company-news',
     categoryLabel: 'Company News',
     date: 'August 2026',
     readTime: '3 min read',
     excerpt:
-      'How Lijemrakel Trading PLC combines veterinary technical leadership and international trade expertise to serve Ethiopian agriculture.',
-    image:
-      'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=85',
+      'How Ethiopian founders Lijalem Abayneh, Dr Etsubdink Negash, and Abel Girma established Lijemrakel Trading PLC to advance livestock health and farm productivity nationwide.',
+    image: '/images/hero/lijemrakel-about-final.jpg',
     author: {
       name: 'Ato Abel Girma',
       role: 'Financial Manager & Founding Member',
-      avatar:
-        'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80',
+      avatar: '/images/leadership/leader-abel.jpg',
     },
     keyTakeaways: [
-      'Founded by Lijalem Abayneh, Dr Etsubdink Negash, and Abel Girma.',
-      'Guided by seven core values including Quality, Integrity, and Agricultural Impact.',
-      'Committed to supporting productive farms and Ethiopia’s broader agricultural economy.',
+      'Founded and led in Addis Ababa by Ethiopian executives Lijalem Abayneh, Dr Etsubdink Negash, and Abel Girma.',
+      'Combines Doctor of Veterinary Medicine (DVM) technical stewardship with disciplined Ethiopian import-export finance and logistics.',
+      'Committed to long-term domestic agricultural impact across Ethiopia’s livestock, dairy, and poultry sectors.',
     ],
     sections: [
       {
-        heading: 'A Shared Founding Vision for Ethiopian Agriculture',
+        heading: 'An Ethiopian Enterprise Built on Veterinary Science & Trade Integrity',
         paragraphs: [
-          'Founded by Lijalem Abayneh, Dr Etsubdink Negash, and Abel Girma, Lijemrakel Trading PLC was established with a clear purpose: to supply quality veterinary and poultry-sector products through reliable international sourcing and customer-focused distribution.',
-          'Our governance and management structure brings together veterinary medicine, international business, logistics, and financial discipline under one roof.',
+          'Headquartered in Addis Ababa, Lijemrakel Trading PLC was founded by Lijalem Abayneh, Dr Etsubdink Negash, and Abel Girma to address a critical need in Ethiopia’s agricultural economy: dependable, technically verified access to genuine veterinary medicines, vaccines, nutritional premixes, reproductive hormones, and fertilized hatching eggs.',
+          'By uniting veterinary clinical oversight with structured international procurement and Ethiopian regulatory compliance, our leadership team ensures that local farmers and veterinary professionals receive authentic, high-efficacy inputs.',
         ],
       },
       {
-        heading: 'Creating Lasting Value Across the Supply Chain',
+        heading: 'Investing in Ethiopia’s Long-Term Agricultural Transformation',
         paragraphs: [
-          'By prioritizing product quality, transparent business practices, and long-term capability building, Lijemrakel Trading PLC aims to be a trusted contributor to Ethiopia’s livestock and poultry transformation.',
+          'Beyond import distribution, Lijemrakel Trading PLC is committed to reinvesting in domestic Ethiopian agricultural capacity—supporting rural and peri-urban livestock livelihoods, strengthening food security, and preparing for future domestic poultry and export value addition.',
         ],
       },
     ],
     quote: {
-      text: 'Sound financial governance, responsible sourcing, and veterinary expertise allow us to deliver lasting value to our customers and partners.',
+      text: 'As an Ethiopian-founded company, every business decision we make is anchored in strengthening our country’s livestock health, poultry productivity, and agricultural self-reliance.',
       attribution: 'Ato Abel Girma — Financial Manager & Founding Member',
     },
-    tags: ['Corporate Governance', 'Founding Vision', 'Agricultural Economy'],
+    tags: ['Addis Ababa', 'Ethiopian Founders', 'Livestock Health', 'Lijemrakel Trading PLC'],
   },
 ];
