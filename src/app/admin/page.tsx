@@ -221,8 +221,33 @@ export default function AdminDashboardPage() {
 
   useEffect(() => {
     fetchStoreData(selectedDays, null);
+    if (typeof window !== 'undefined') {
+      const readUrlModule = () => {
+        const params = new URLSearchParams(window.location.search);
+        const modParam = (params.get('module') ||
+          params.get('tab') ||
+          window.location.hash.replace(/^#/, '')) as AdminModuleId;
+        if (SIDEBAR_MODULES.some((m) => m.id === modParam)) {
+          setActiveModule(modParam);
+        }
+      };
+      readUrlModule();
+      window.addEventListener('popstate', readUrlModule);
+      return () => window.removeEventListener('popstate', readUrlModule);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Keep Admin URL permalink (?module=<id>) in sync with activeModule
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const url = new URL(window.location.href);
+    if (url.searchParams.get('module') !== activeModule) {
+      url.searchParams.set('module', activeModule);
+      url.searchParams.delete('tab');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [activeModule]);
 
   // Real-time live polling & window focus refresh for current website analytics and CMS activity
   useEffect(() => {
@@ -429,12 +454,11 @@ export default function AdminDashboardPage() {
       showToast('Article title is required.', true);
       return;
     }
-    const slug =
-      editingNews.slug.trim() ||
-      editingNews.title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)/g, '');
+    const rawSlug = (editingNews.slug.trim() || editingNews.title)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+    const slug = rawSlug || `news-${Date.now().toString().slice(-6)}`;
     const res = await dispatchStoreMutation('upsertNews', {
       article: { ...editingNews, slug },
     });
@@ -508,12 +532,24 @@ export default function AdminDashboardPage() {
       showToast('Product name is required.', true);
       return;
     }
-    const slug =
-      editingProduct.slug.trim() ||
-      editingProduct.name
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)/g, '');
+    const reservedCategorySlugs = new Set([
+      'veterinary-medicines',
+      'vaccines',
+      'feed-premixes',
+      'hormones',
+      'fertilized-eggs',
+      ...categories.map((c) => c.slug),
+    ]);
+    let slug = (editingProduct.slug.trim() || editingProduct.name)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+    if (!slug) {
+      slug = `product-${Date.now().toString().slice(-6)}`;
+    }
+    if (reservedCategorySlugs.has(slug)) {
+      slug = `${slug}-item`;
+    }
     const matchedCat = categories.find(
       (c) => c.slug === editingProduct.categorySlug
     );
@@ -1906,14 +1942,26 @@ export default function AdminDashboardPage() {
                       </div>
 
                       <div className="px-5 py-3.5 border-t border-brand-border/60 flex items-center justify-between">
-                        <button
-                          type="button"
-                          onClick={() => setPreviewNews(article)}
-                          className="inline-flex items-center gap-1 text-xs font-heading font-bold text-[#0B0E29] hover:text-brand-orange"
-                        >
-                          <Eye className="w-3.5 h-3.5" />
-                          <span>Preview</span>
-                        </button>
+                        <div className="flex items-center gap-3">
+                          <button
+                            type="button"
+                            onClick={() => setPreviewNews(article)}
+                            className="inline-flex items-center gap-1 text-xs font-heading font-bold text-[#0B0E29] hover:text-brand-orange"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                            <span>Preview</span>
+                          </button>
+                          {article.slug && (
+                            <Link
+                              href={`/news/${article.slug}`}
+                              target="_blank"
+                              className="inline-flex items-center gap-1 text-xs font-heading font-bold text-blue-600 hover:underline"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              <span>Permalink</span>
+                            </Link>
+                          )}
+                        </div>
 
                         <div className="flex items-center gap-1.5">
                           {canDo('news', 'edit') && (
@@ -2360,6 +2408,16 @@ export default function AdminDashboardPage() {
                               </td>
                               <td className="py-3.5 px-5 text-right">
                                 <div className="inline-flex items-center gap-1.5">
+                                  {prod.slug && (
+                                    <Link
+                                      href={`/products/${prod.slug}`}
+                                      target="_blank"
+                                      title={`/products/${prod.slug}`}
+                                      className="p-1.5 rounded-lg border border-brand-border text-blue-600 hover:bg-blue-50"
+                                    >
+                                      <ExternalLink className="w-3.5 h-3.5" />
+                                    </Link>
+                                  )}
                                   {canDo('products', 'edit') && (
                                     <button
                                       type="button"

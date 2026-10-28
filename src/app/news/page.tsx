@@ -45,7 +45,18 @@ function NewsContent() {
                 <button
                   key={cat.slug}
                   type="button"
-                  onClick={() => setActiveCategory(cat.slug)}
+                  onClick={() => {
+                    setActiveCategory(cat.slug);
+                    if (typeof window !== 'undefined') {
+                      const url = new URL(window.location.href);
+                      if (cat.slug === 'all') {
+                        url.searchParams.delete('category');
+                      } else {
+                        url.searchParams.set('category', cat.slug);
+                      }
+                      window.history.replaceState({}, '', url.toString());
+                    }
+                  }}
                   className={`px-4 py-2 rounded-full text-xs font-heading font-bold transition-colors ${
                     active
                       ? 'bg-[#0B0E29] text-white'

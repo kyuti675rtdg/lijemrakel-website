@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { Search, RotateCcw, PackageSearch, ChevronsRight } from 'lucide-react';
 import { PRODUCT_CATEGORIES } from '@/data/productCategories';
@@ -14,6 +14,44 @@ export function CatalogueBrowser() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedSpecies, setSelectedSpecies] = useState<string>('All Species');
+
+  // Initialize and sync filters from URL search params (?category=...&species=...&q=...)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const readParams = () => {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('category');
+      const sp = params.get('species');
+      const q = params.get('q');
+      if (cat) setSelectedCategory(cat);
+      if (sp && SPECIES_FILTERS.includes(sp)) setSelectedSpecies(sp);
+      if (q !== null) setSearchQuery(q);
+    };
+    readParams();
+    window.addEventListener('popstate', readParams);
+    return () => window.removeEventListener('popstate', readParams);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const url = new URL(window.location.href);
+    if (selectedCategory && selectedCategory !== 'all') {
+      url.searchParams.set('category', selectedCategory);
+    } else {
+      url.searchParams.delete('category');
+    }
+    if (selectedSpecies && selectedSpecies !== 'All Species') {
+      url.searchParams.set('species', selectedSpecies);
+    } else {
+      url.searchParams.delete('species');
+    }
+    if (searchQuery.trim()) {
+      url.searchParams.set('q', searchQuery.trim());
+    } else {
+      url.searchParams.delete('q');
+    }
+    window.history.replaceState({}, '', url.toString());
+  }, [selectedCategory, selectedSpecies, searchQuery]);
 
   const filteredProducts = useMemo(() => {
     return catalogueProducts.filter((product) => {
