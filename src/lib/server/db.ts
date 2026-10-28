@@ -391,20 +391,35 @@ function buildInitialDatabase(): ProductionDatabaseSchema {
 }
 
 let memoryFallbackDb: ProductionDatabaseSchema | null = null;
+let cachedDbFilePath: string | null = null;
+let cachedDefaults: ProductionDatabaseSchema | null = null;
+let lastReadMtimeMs = 0;
+
+function getDefaults(): ProductionDatabaseSchema {
+  if (!cachedDefaults) {
+    cachedDefaults = buildInitialDatabase();
+  }
+  return cachedDefaults;
+}
 
 function resolveDbFilePath(): string {
+  if (cachedDbFilePath) {
+    return cachedDbFilePath;
+  }
   const primaryDir = path.join(process.cwd(), 'data');
   try {
     if (!fs.existsSync(primaryDir)) {
       fs.mkdirSync(primaryDir, { recursive: true });
     }
-    const testFile = path.join(primaryDir, '.write-test');
+    const testFile = path.join(primaryDir, `.write-test-${process.pid}`);
     fs.writeFileSync(testFile, 'ok', 'utf8');
     fs.unlinkSync(testFile);
-    return path.join(primaryDir, 'production-db.json');
+    cachedDbFilePath = path.join(primaryDir, 'production-db.json');
+    return cachedDbFilePath;
   } catch {
     const tmpDir = '/tmp';
-    return path.join(tmpDir, 'lijemrakel-production-db.json');
+    cachedDbFilePath = path.join(tmpDir, 'lijemrakel-production-db.json');
+    return cachedDbFilePath;
   }
 }
 
@@ -414,13 +429,23 @@ export function readDb(): ProductionDatabaseSchema {
     if (!fs.existsSync(dbPath)) {
       const initial = buildInitialDatabase();
       fs.writeFileSync(dbPath, JSON.stringify(initial, null, 2), 'utf8');
+      try {
+        lastReadMtimeMs = fs.statSync(dbPath).mtimeMs;
+      } catch {
+        lastReadMtimeMs = Date.now();
+      }
       memoryFallbackDb = initial;
       return initial;
     }
 
+    const stat = fs.statSync(dbPath);
+    if (memoryFallbackDb && stat.mtimeMs === lastReadMtimeMs) {
+      return memoryFallbackDb;
+    }
+
     const raw = fs.readFileSync(dbPath, 'utf8');
     const parsed = JSON.parse(raw) as Partial<ProductionDatabaseSchema>;
-    const defaults = buildInitialDatabase();
+    const defaults = getDefaults();
 
     const merged: ProductionDatabaseSchema = {
       users:
@@ -479,14 +504,15 @@ export function readDb(): ProductionDatabaseSchema {
       (u) => u.email.toLowerCase() === envEmail
     );
     if (!hasBootstrap) {
-      merged.users.unshift(...getBootstrapUsers());
+      merged.users.unshift(...defaults.users);
     }
 
+    lastReadMtimeMs = stat.mtimeMs;
     memoryFallbackDb = merged;
     return merged;
   } catch {
     if (!memoryFallbackDb) {
-      memoryFallbackDb = buildInitialDatabase();
+      memoryFallbackDb = getDefaults();
     }
     return memoryFallbackDb;
   }
@@ -497,6 +523,11 @@ export function writeDb(data: ProductionDatabaseSchema): void {
   try {
     const dbPath = resolveDbFilePath();
     fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf8');
+    try {
+      lastReadMtimeMs = fs.statSync(dbPath).mtimeMs;
+    } catch {
+      lastReadMtimeMs = Date.now();
+    }
   } catch {
     // Kept in memoryFallbackDb if filesystem write is restricted
   }
