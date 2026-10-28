@@ -1,0 +1,176 @@
+import { ExecutiveMember } from '@/types';
+
+export const FOUNDING_MEMBERS = [
+  {
+    name: 'Lijalem Abayneh',
+    formalName: 'Mr Lijalem Abayneh',
+    initials: 'LA',
+    executiveRole: 'Founding Member & Deputy General Manager',
+    focusArea: 'Strategy Execution, Operations Continuity & Key Relationships',
+    portraitUrl: '/images/leadership/leader-lijalem.jpg',
+  },
+  {
+    name: 'Dr Etsubdink Negash',
+    formalName: 'Dr Etsubdink Negash',
+    initials: 'EN',
+    executiveRole: 'Founding Member & General and Technical Manager',
+    focusArea:
+      'Veterinary Technical Direction, Regulatory Compliance & Quality Assurance',
+    portraitUrl: '/images/leadership/leader-etsubdink.jpg',
+  },
+  {
+    name: 'Abel Girma',
+    formalName: 'Ato Abel Girma',
+    initials: 'AG',
+    executiveRole: 'Founding Member & Financial Manager',
+    focusArea: 'Financial Governance, Import Costing & Investment Planning',
+    portraitUrl: '/images/leadership/leader-abel.jpg',
+  },
+];
+
+export const PROPOSED_BOARD_MEMBERS = [
+  {
+    name: 'Lijalem Abayneh',
+    initials: 'LA',
+    roleNote: 'Founding Member',
+    executiveRole: 'Deputy General Manager',
+  },
+  {
+    name: 'Dr Etsubdink Negash',
+    initials: 'EN',
+    roleNote: 'Founding Member',
+    executiveRole: 'General and Technical Manager',
+  },
+  {
+    name: 'Abel Girma',
+    initials: 'AG',
+    roleNote: 'Founding Member',
+    executiveRole: 'Financial Manager',
+  },
+  {
+    name: 'Yelekal Kebede',
+    initials: 'YK',
+    roleNote: 'Board Member',
+    executiveRole: 'International Business Manager',
+  },
+  {
+    name: 'Desalegn Tamene',
+    initials: 'DT',
+    roleNote: 'Board Member',
+    executiveRole: 'Operational Manager',
+  },
+];
+
+export const MANAGEMENT_TEAM: ExecutiveMember[] = [
+  {
+    id: 'lijalem-abayneh',
+    name: 'Lijalem Abayneh',
+    formalTitlePrefix: 'Mr',
+    displayName: 'Mr Lijalem Abayneh',
+    initials: 'LA',
+    roleTitle: 'Deputy General Manager',
+    department: 'Founding Member · Board of Directors',
+    isFoundingMember: true,
+    isProposedBoardMember: true,
+    isManagementTeam: true,
+    summary:
+      'Supports the General Manager in executing strategy and daily operations, coordinates departments, and manages key customer and supplier relationships.',
+    responsibilities: [
+      'Supports the General Manager in executing strategy and daily operations.',
+      'Coordinates departments and follows up on decisions and performance targets.',
+      'Helps manage key customer and supplier relationships.',
+      'Monitors business development, internal procedures, and continuity of operations.',
+    ],
+    portraitUrl: '/images/leadership/leader-lijalem.jpg',
+    portraitNote: '',
+  },
+  {
+    id: 'etsubdink-negash',
+    name: 'Etsubdink Negash',
+    formalTitlePrefix: 'Dr',
+    displayName: 'Dr Etsubdink Negash',
+    initials: 'EN',
+    roleTitle: 'General and Technical Manager',
+    department: 'Founding Member · Board of Directors',
+    isFoundingMember: true,
+    isProposedBoardMember: true,
+    isManagementTeam: true,
+    summary:
+      'Leads day-to-day company management, veterinary technical direction, product evaluation, regulatory registration coordination, and technical customer support.',
+    responsibilities: [
+      'Leads day-to-day company management and technical direction.',
+      'Coordinates product evaluation and supplier technical documentation.',
+      'Oversees product registration and regulatory coordination with the relevant authorities.',
+      'Guides quality, safe handling, product information, and technical customer support.',
+      'Prepares operating plans and reports to the board.',
+    ],
+    portraitUrl: '/images/leadership/leader-etsubdink.jpg',
+    portraitNote: '',
+  },
+  {
+    id: 'abel-girma',
+    name: 'Abel Girma',
+    formalTitlePrefix: 'Ato',
+    displayName: 'Ato Abel Girma',
+    initials: 'AG',
+    roleTitle: 'Financial Manager',
+    department: 'Founding Member · Board of Directors',
+    isFoundingMember: true,
+    isProposedBoardMember: true,
+    isManagementTeam: true,
+    summary:
+      'Oversees budgeting, cash-flow planning, accounting, import-cost calculations, pricing, investment analysis, and internal financial controls.',
+    responsibilities: [
+      'Oversees budgeting, cash-flow planning, accounting, payment controls, financial statements, tax coordination, and financial reporting.',
+      'Supports import-cost calculations, pricing, and investment analysis.',
+      'Monitors receivables, payables, working capital, and internal financial controls.',
+    ],
+    portraitUrl: '/images/leadership/leader-abel.jpg',
+    portraitNote: '',
+  },
+  {
+    id: 'yelekal-kebede',
+    name: 'Yelekal Kebede',
+    formalTitlePrefix: 'Ato',
+    displayName: 'Ato Yelekal Kebede',
+    initials: 'YK',
+    roleTitle: 'International Business Manager',
+    department: 'Board of Directors · International Trade',
+    isFoundingMember: false,
+    isProposedBoardMember: true,
+    isManagementTeam: true,
+    summary:
+      'Develops international supplier relationships, identifies manufacturers and export opportunities, and coordinates quotations, purchase orders, and shipping.',
+    responsibilities: [
+      'Develops and maintains international supplier relationships.',
+      'Identifies manufacturers and export opportunities.',
+      'Coordinates quotations, negotiations, purchase orders, shipping, and supplier documentation.',
+      'Works with the technical and operations teams to ensure import plans meet quality, compliance, timing, and cost requirements.',
+    ],
+    portraitUrl: '/images/leadership/leader-yelekal.jpg',
+    portraitNote: '',
+  },
+  {
+    id: 'desalegn-tamene',
+    name: 'Desalegn Tamene',
+    formalTitlePrefix: 'Ato',
+    displayName: 'Ato Desalegn Tamene',
+    initials: 'DT',
+    roleTitle: 'Operational Manager',
+    department: 'Board of Directors · Operations & Logistics',
+    isFoundingMember: false,
+    isProposedBoardMember: true,
+    isManagementTeam: true,
+    summary:
+      'Coordinates warehousing, inventory, order fulfilment, transport, cold-chain storage procedures, workplace safety, and national distribution.',
+    responsibilities: [
+      'Coordinates warehousing, inventory, order fulfilment, transport, and distribution.',
+      'Maintains stock records and delivery schedules.',
+      'Supports proper storage and cold-chain procedures where required.',
+      'Monitors operational costs, workplace safety, and service quality.',
+      'Escalates supply or logistics risks.',
+    ],
+    portraitUrl: '/images/leadership/leader-desalegn.jpg',
+    portraitNote: '',
+  },
+];

@@ -1,0 +1,517 @@
+{
+  "assistantMeta": {
+    "name": "Orbit Assistant",
+    "company": "Lijemrakel Trading PLC",
+    "version": "1.0.0",
+    "welcomeMessage": "Hello! I am **Orbit Assistant**, the virtual guide for **Lijemrakel Trading PLC**. Ask me about our veterinary products, vaccines, feed premixes, fertilized eggs, poultry & hatchery plans, leadership, or contact details.",
+    "defaultSuggestions": [
+      "What products do you supply?",
+      "Who is Lijemrakel Trading PLC?",
+      "Poultry & Hatchery plans",
+      "Leadership & Founders",
+      "Where is your office located?",
+      "How can I contact you?"
+    ]
+  },
+  "entries": [
+    {
+      "id": "greeting",
+      "category": "general",
+      "title": "Welcome to Lijemrakel Trading PLC",
+      "keywords": [
+        "hello",
+        "hi",
+        "hey",
+        "selam",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "help",
+        "start",
+        "who are you",
+        "orbit",
+        "assistant"
+      ],
+      "answer": "Hello! Welcome to **Lijemrakel Trading PLC**. I am **Orbit Assistant**, here to help you explore our verified company information, veterinary and poultry product lines, strategic roadmap, leadership team, and contact details. How can I assist you today?",
+      "links": [
+        { "label": "Explore Products", "href": "/products" },
+        { "label": "About Lijemrakel", "href": "/about" },
+        { "label": "Contact Us", "href": "/contact" }
+      ],
+      "suggestions": [
+        "What products do you supply?",
+        "Tell me about Lijemrakel Trading PLC",
+        "Where is your office located?"
+      ]
+    },
+    {
+      "id": "company-overview",
+      "category": "company",
+      "title": "About Lijemrakel Trading PLC",
+      "keywords": [
+        "who we are",
+        "about",
+        "company",
+        "lijemrakel",
+        "lij emrakel",
+        "overview",
+        "profile",
+        "what do you do",
+        "business",
+        "import",
+        "export",
+        "ethiopia",
+        "gebeta le hager"
+      ],
+      "answer": "**Lijemrakel Trading PLC** is an Ethiopian import and export company primarily focused on the veterinary, livestock, and poultry sectors.\n\nWe connect the Ethiopian market with dependable international manufacturers of **veterinary medicines, vaccines, feed premixes, hormones, and fertilized eggs**. Our long-term direction also includes **poultry production and hatchery development**, supporting livestock and poultry productivity in alignment with national agricultural priorities including *Gebeta Le Hager*.",
+      "links": [
+        { "label": "Company Overview", "href": "/about" },
+        { "label": "Mission & Vision", "href": "/about/mission-vision-values" },
+        { "label": "Our Strategy", "href": "/about/strategy" }
+      ],
+      "suggestions": [
+        "What is your mission and vision?",
+        "What products do you supply?",
+        "Who are the founders?"
+      ]
+    },
+    {
+      "id": "mission-vision-values",
+      "category": "company",
+      "title": "Mission, Vision & Core Values",
+      "keywords": [
+        "mission",
+        "vision",
+        "values",
+        "core values",
+        "purpose",
+        "goal",
+        "principles",
+        "integrity",
+        "quality"
+      ],
+      "answer": "**Our Mission:**\nTo supply quality veterinary and poultry-sector products through reliable international sourcing, responsible importation, and customer-focused distribution—supporting animal health, productive farms, and the development of Ethiopia’s agricultural economy.\n\n**Our Vision:**\nTo become one of Ethiopia’s leading and most trusted suppliers of veterinary and poultry-sector products, while developing competitive poultry production and hatchery operations that contribute to sustainable agricultural growth.\n\n**Core Values:**\n• Quality and safety\n• Integrity\n• Agricultural impact\n• Customer focus\n• Professionalism\n• Partnership\n• Continuous improvement",
+      "links": [
+        { "label": "View Mission, Vision & Values", "href": "/about/mission-vision-values" }
+      ],
+      "suggestions": [
+        "What is your 5-year strategy?",
+        "Who leads Lijemrakel Trading PLC?",
+        "What products do you supply?"
+      ]
+    },
+    {
+      "id": "strategy-roadmap",
+      "category": "company",
+      "title": "5-Year Strategic Roadmap (4 Phases)",
+      "keywords": [
+        "strategy",
+        "roadmap",
+        "plan",
+        "5 year",
+        "five year",
+        "phase",
+        "phases",
+        "future",
+        "expansion",
+        "growth"
+      ],
+      "answer": "Lijemrakel Trading PLC follows a structured **4-Phase, 5-Year Strategic Roadmap**:\n\n• **Phase 1 — Foundation and Market Entry (Year 1):** Finalize supplier partnerships, complete regulatory registrations, establish storage & cold-chain procedures, and launch core veterinary and poultry-input imports.\n• **Phase 2 — Market Expansion and Portfolio Growth (Years 2–3):** Expand regional customer coverage across Ethiopia, broaden registered medicines, vaccines, premixes, and fertilized egg supply.\n• **Phase 3 — Poultry and Hatchery Development (Years 3–4):** Complete feasibility and biosecurity planning to launch or partner in poultry production and hatchery operations.\n• **Phase 4 — Consolidation, Scale, and Export Readiness (Years 4–5):** Scale national distribution, strengthen hatchery output, and develop agricultural export opportunities.",
+      "links": [
+        { "label": "Explore Full Strategy", "href": "/about/strategy" },
+        { "label": "Poultry & Hatchery Division", "href": "/poultry-hatchery" }
+      ],
+      "suggestions": [
+        "Tell me about Poultry & Hatchery",
+        "Who is on the leadership team?",
+        "How can we partner with you?"
+      ]
+    },
+    {
+      "id": "leadership-governance",
+      "category": "company",
+      "title": "Founders, Board & Executive Management",
+      "keywords": [
+        "leadership",
+        "founders",
+        "founding members",
+        "management",
+        "board",
+        "directors",
+        "ceo",
+        "manager",
+        "lijalem",
+        "abayneh",
+        "etsubdink",
+        "negash",
+        "abel",
+        "girma",
+        "yelekal",
+        "kebede",
+        "desalegn",
+        "tamene",
+        "team"
+      ],
+      "answer": "**Founding Members:**\n• **Mr Lijalem Abayneh** — Founding Member & Deputy General Manager\n• **Dr Etsubdink Negash** — Founding Member & General and Technical Manager\n• **Ato Abel Girma** — Founding Member & Financial Manager\n\n**Executive Management Team & Proposed Board of Directors:**\n• **Dr Etsubdink Negash** — General and Technical Manager (Veterinary technical direction, regulatory registration & quality assurance)\n• **Mr Lijalem Abayneh** — Deputy General Manager (Strategy execution, department coordination & key partnerships)\n• **Ato Abel Girma** — Financial Manager (Budgeting, import costing & financial controls)\n• **Ato Yelekal Kebede** — International Business Manager & Board Member (Global supplier relationships, quotations & shipping)\n• **Ato Desalegn Tamene** — Operational Manager & Board Member (Warehousing, cold-chain storage & distribution logistics)",
+      "links": [
+        { "label": "View Leadership Directory", "href": "/about/leadership" }
+      ],
+      "suggestions": [
+        "How can I contact management?",
+        "What products do you supply?",
+        "Where is your office located?"
+      ]
+    },
+    {
+      "id": "products-overview",
+      "category": "products",
+      "title": "Veterinary & Poultry Product Lines",
+      "keywords": [
+        "products",
+        "catalogue",
+        "catalog",
+        "supply",
+        "what do you sell",
+        "items",
+        "categories",
+        "veterinary",
+        "livestock",
+        "inputs"
+      ],
+      "answer": "Lijemrakel Trading PLC focuses on **5 core veterinary and poultry product divisions**:\n\n1. **Veterinary Medicines:** Anthelmintics (Albendazole, Fenbendazole, Ivermectin), antibiotics (Oxytetracycline, Penicillin–Streptomycin, Amoxicillin), antiprotozoals (Toltrazuril, Amprolium, Diminazene), and vitamin/mineral supplements.\n2. **Veterinary Vaccines:** Poultry and livestock immunization products managed under strict cold-chain (`+2°C to +8°C`) handling.\n3. **Feed Premixes:** Broiler, layer, and ruminant vitamin-mineral premixes with verified inclusion rates.\n4. **Hormones & Related Products:** Authorized veterinary reproductive and herd-management products for professional use.\n5. **Fertilized Eggs:** Certified broiler and layer hatching eggs from healthy parent stock with veterinary health certification.",
+      "links": [
+        { "label": "Browse Full Product Catalogue", "href": "/products" },
+        { "label": "Request Product Inquiry", "href": "/contact?type=product-inquiry" }
+      ],
+      "suggestions": [
+        "Tell me about Veterinary Medicines",
+        "Do you supply Veterinary Vaccines?",
+        "Tell me about Fertilized Eggs",
+        "Feed Premixes details"
+      ]
+    },
+    {
+      "id": "veterinary-medicines",
+      "category": "products",
+      "title": "Veterinary Medicines",
+      "keywords": [
+        "medicine",
+        "medicines",
+        "drugs",
+        "pharmaceuticals",
+        "antibiotics",
+        "anthelmintics",
+        "dewormer",
+        "antiprotozoal",
+        "albendazole",
+        "fenbendazole",
+        "ivermectin",
+        "oxytetracycline",
+        "penicillin",
+        "streptomycin",
+        "amoxicillin",
+        "toltrazuril",
+        "amprolium",
+        "diminazene",
+        "vitamins",
+        "electrolytes"
+      ],
+      "answer": "**Veterinary Medicines Division:**\nWe supply essential veterinary pharmaceuticals and nutritional supplements in line with national veterinary registration and stewardship requirements:\n\n• **Anthelmintics & Antiparasitics:** Albendazole, Fenbendazole, and Ivermectin.\n• **Antibacterials / Antibiotics:** Oxytetracycline, Penicillin–Streptomycin, and Amoxicillin.\n• **Antiprotozoals & Anticoccidials:** Toltrazuril, Amprolium, and Diminazene aceturate.\n• **Vitamins & Supportive Care:** Vitamin A-D3-E, B-Complex, Electrolytes, and mineral supplements.",
+      "links": [
+        { "label": "View Veterinary Medicines", "href": "/products/veterinary-medicines" },
+        { "label": "Inquire About Availability", "href": "/contact?type=product-inquiry" }
+      ],
+      "suggestions": [
+        "Tell me about Veterinary Vaccines",
+        "Do you supply Feed Premixes?",
+        "How do I place a product inquiry?"
+      ]
+    },
+    {
+      "id": "veterinary-vaccines",
+      "category": "products",
+      "title": "Veterinary Vaccines & Cold-Chain Handling",
+      "keywords": [
+        "vaccine",
+        "vaccines",
+        "vaccination",
+        "immunization",
+        "cold chain",
+        "cold-chain",
+        "newcastle",
+        "gumboro",
+        "ibd",
+        "infectious bronchitis",
+        "marek",
+        "fowl pox",
+        "lsd",
+        "lumpy skin",
+        "ppr",
+        "storage temperature"
+      ],
+      "answer": "**Veterinary Vaccines Division:**\nWe supply poultry and livestock vaccines supported by strict cold-chain storage (`+2°C to +8°C`), batch traceability, and technical guidance:\n\n• **Poultry Vaccines:** Protection against major viral and bacterial poultry diseases (such as Newcastle disease, Infectious Bursal Disease / Gumboro, Infectious Bronchitis, and Fowl Pox).\n• **Livestock Vaccines:** Preventive immunization for cattle, sheep, and goats in accordance with national veterinary schedules.\n• **Cold-Chain Integrity:** Continuous temperature monitoring from international arrival through warehouse storage and customer dispatch.",
+      "links": [
+        { "label": "View Veterinary Vaccines", "href": "/products/vaccines" },
+        { "label": "Contact Technical Team", "href": "/contact?type=product-inquiry" }
+      ],
+      "suggestions": [
+        "Tell me about Fertilized Eggs",
+        "What Veterinary Medicines do you have?",
+        "How can I contact your team?"
+      ]
+    },
+    {
+      "id": "feed-premixes",
+      "category": "products",
+      "title": "Feed Premixes & Animal Nutrition",
+      "keywords": [
+        "premix",
+        "premixes",
+        "feed",
+        "nutrition",
+        "vitamin premix",
+        "mineral premix",
+        "broiler premix",
+        "layer premix",
+        "dairy premix",
+        "feed mill",
+        "inclusion rate"
+      ],
+      "answer": "**Feed Premixes Division:**\nWe supply balanced vitamin-mineral premixes and nutritional concentrates for commercial poultry farms, livestock operations, and feed mills:\n\n• **Poultry Nutrition:** Starter, grower, finisher broiler premixes and layer/breeder vitamin-mineral premixes.\n• **Ruminant & Livestock Nutrition:** Dairy and beef cattle mineral-vitamin premixes.\n• **Quality Assurance:** Clear manufacturer specifications, verified nutrient composition, and recommended inclusion rates (`e.g., 0.25% – 2.5%`).",
+      "links": [
+        { "label": "View Feed Premixes", "href": "/products/feed-premixes" },
+        { "label": "Request Specifications", "href": "/contact?type=product-inquiry" }
+      ],
+      "suggestions": [
+        "Tell me about Fertilized Eggs",
+        "Tell me about Hormones",
+        "Contact for bulk supply"
+      ]
+    },
+    {
+      "id": "hormones-reproductive",
+      "category": "products",
+      "title": "Hormones & Reproductive Management Products",
+      "keywords": [
+        "hormone",
+        "hormones",
+        "reproductive",
+        "breeding",
+        "estrus",
+        "synchronization",
+        "prostaglandin",
+        "gnrh",
+        "oxytocin",
+        "artificial insemination",
+        "fertility"
+      ],
+      "answer": "**Hormones & Related Products Division:**\nWe supply authorized veterinary reproductive hormones strictly for licensed veterinary professionals and supervised breeding programs where registered and permitted:\n\n• **Clinical Applications:** Estrus synchronization, luteolysis, ovulation induction, and postpartum reproductive management in dairy and beef herds.\n• **Stewardship:** Supplied exclusively in compliance with Ethiopian regulatory requirements, prescription rules, and approved label withdrawal periods.",
+      "links": [
+        { "label": "View Hormones Division", "href": "/products/hormones" },
+        { "label": "Veterinary Inquiry", "href": "/contact?type=product-inquiry" }
+      ],
+      "suggestions": [
+        "What Veterinary Medicines do you supply?",
+        "Tell me about Fertilized Eggs",
+        "Contact Technical Manager"
+      ]
+    },
+    {
+      "id": "fertilized-eggs",
+      "category": "products",
+      "title": "Fertilized Hatching Eggs",
+      "keywords": [
+        "egg",
+        "eggs",
+        "fertilized",
+        "fertilised",
+        "hatching eggs",
+        "broiler eggs",
+        "layer eggs",
+        "parent stock",
+        "cobb",
+        "ross",
+        "lohmann",
+        "bovans",
+        "hatchability"
+      ],
+      "answer": "**Fertilized Eggs Division:**\nWe source and import certified fertilized hatching eggs from reputable international parent-stock breeders for commercial hatcheries and poultry producers:\n\n• **Broiler & Layer Genetics:** High-performing commercial broiler and layer hatching eggs.\n• **Biosecurity & Certification:** Accompanied by official veterinary health certificates, flock vaccination histories, and import permits.\n• **Climate-Controlled Logistics:** Handled under controlled temperature (`16°C–18°C`) and humidity (`75%–80% RH`) to preserve embryo viability and hatchability.",
+      "links": [
+        { "label": "View Fertilized Eggs", "href": "/products/fertilized-eggs" },
+        { "label": "Poultry & Hatchery Division", "href": "/poultry-hatchery" }
+      ],
+      "suggestions": [
+        "Tell me about Poultry & Hatchery plans",
+        "Do you supply Poultry Vaccines?",
+        "How do I request a shipment quote?"
+      ]
+    },
+    {
+      "id": "poultry-hatchery",
+      "category": "poultry-hatchery",
+      "title": "Poultry Production & Hatchery Development",
+      "keywords": [
+        "poultry",
+        "hatchery",
+        "chick",
+        "chicks",
+        "day old chicks",
+        "doc",
+        "incubation",
+        "incubator",
+        "setter",
+        "hatcher",
+        "broiler farm",
+        "layer farm",
+        "farm",
+        "production"
+      ],
+      "answer": "**Poultry Production & Hatchery Development (Strategic Growth Area):**\nAlongside our active veterinary and poultry-input import business, Lijemrakel Trading PLC is developing long-term capabilities in **Poultry Production** and **Hatchery Operations** (planned for **Phase 3: Years 3–4** of our strategic roadmap):\n\n• **Poultry Production:** Planned development of biosecure broiler and layer operations with modern housing, balanced nutrition, and veterinary health management.\n• **Hatchery Development:** Planned investment in modern setter and hatcher incubation systems, biosecurity workflows, and quality day-old chick supply.\n• **National Alignment:** Supports domestic agricultural value-chain growth in alignment with *Gebeta Le Hager*.",
+      "links": [
+        { "label": "Poultry & Hatchery Overview", "href": "/poultry-hatchery" },
+        { "label": "Poultry Production", "href": "/poultry-hatchery/poultry-production" },
+        { "label": "Hatchery Development", "href": "/poultry-hatchery/hatchery-development" }
+      ],
+      "suggestions": [
+        "Do you currently supply Fertilized Eggs?",
+        "What is your 5-year strategy?",
+        "Partner on Poultry & Hatchery"
+      ]
+    },
+    {
+      "id": "news-updates",
+      "category": "news",
+      "title": "Company News, Announcements & Business Updates",
+      "keywords": [
+        "news",
+        "updates",
+        "announcements",
+        "articles",
+        "blog",
+        "press",
+        "latest",
+        "events"
+      ],
+      "answer": "Our **News & Updates** center covers Lijemrakel Trading PLC’s corporate milestones across three categories:\n\n• **Company News:** International manufacturer partnerships and veterinary supply updates.\n• **Announcements:** Cold-chain warehousing protocols (`+2°C to +8°C`), fertilized hatching egg import schedules, and regulatory stewardship.\n• **Business Updates:** Our 4-phase strategic roadmap and planned poultry & hatchery development aligned with *Gebeta Le Hager*.",
+      "links": [
+        { "label": "Read Latest News & Updates", "href": "/news" }
+      ],
+      "suggestions": [
+        "What products do you supply?",
+        "What is your 5-year strategy?",
+        "How can I contact you?"
+      ]
+    },
+    {
+      "id": "contact-location",
+      "category": "contact",
+      "title": "Contact Details, WhatsApp & Office Location",
+      "keywords": [
+        "contact",
+        "whatsapp",
+        "whats app",
+        "wa",
+        "phone",
+        "telephone",
+        "call",
+        "number",
+        "mobile",
+        "email",
+        "mail",
+        "address",
+        "location",
+        "where",
+        "office",
+        "mexico",
+        "debrewerk",
+        "tower",
+        "addis ababa",
+        "hours",
+        "open",
+        "ደብረወርቅ",
+        "ሜክሲኮ"
+      ],
+      "answer": "You can reach **Lijemrakel Trading PLC** directly via WhatsApp, phone, email, or at our Addis Ababa office:\n\n• **WhatsApp & Phone:** `0913514767` (+251 913 514 767)\n• **Office Location:** Debrewerk Tower | Mexico | ደብረወርቅ ህንጻ | ሜክሲኮ, Addis Ababa, Ethiopia\n• **Email:** `inquiries@lijemrakel.com`\n• **Business Hours:** Monday – Friday: 8:30 AM – 5:30 PM | Saturday: 8:30 AM – 12:30 PM",
+      "links": [
+        {
+          "label": "Contact Us on WhatsApp",
+          "href": "https://wa.me/251913514767?text=Hello%2C%20I%E2%80%99m%20contacting%20Lijemrakel%20Trading%20PLC.%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20products%20and%20services."
+        },
+        { "label": "Call 0913514767", "href": "tel:0913514767" },
+        { "label": "Open Contact Page", "href": "/contact" }
+      ],
+      "suggestions": [
+        "How do I become a supplier partner?",
+        "What products do you supply?",
+        "Who is on the leadership team?"
+      ]
+    },
+    {
+      "id": "supplier-partnership",
+      "category": "contact",
+      "title": "International Supplier & Distribution Partnerships",
+      "keywords": [
+        "supplier",
+        "manufacturer",
+        "partner",
+        "partnership",
+        "distributor",
+        "distribution",
+        "export",
+        "import partner",
+        "representation",
+        "register product"
+      ],
+      "answer": "**Partnering with Lijemrakel Trading PLC:**\nWe actively collaborate with reputable international manufacturers of veterinary medicines, vaccines, feed premixes, reproductive hormones, and certified hatching eggs seeking reliable registration, cold-chain storage, and distribution representation in Ethiopia.\n\nOur **International Business Manager (Ato Yelekal Kebede)** and **General & Technical Manager (Dr Etsubdink Negash)** coordinate supplier qualification, technical dossiers, and regulatory registration.",
+      "links": [
+        {
+          "label": "Contact Us on WhatsApp",
+          "href": "https://wa.me/251913514767?text=Hello%2C%20I%E2%80%99m%20contacting%20Lijemrakel%20Trading%20PLC.%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20products%20and%20services."
+        },
+        { "label": "Supplier Partnership Form", "href": "/contact?type=supplier-partnership" },
+        { "label": "Call 0913514767", "href": "tel:0913514767" }
+      ],
+      "suggestions": [
+        "Who leads International Business?",
+        "What products do you supply?",
+        "Where is your office located?"
+      ]
+    },
+    {
+      "id": "pricing-stock-guardrail",
+      "category": "guardrail",
+      "title": "Pricing, Quotations & Stock Availability",
+      "keywords": [
+        "price",
+        "pricing",
+        "cost",
+        "how much",
+        "quote",
+        "quotation",
+        "buy",
+        "order",
+        "purchase",
+        "stock",
+        "available",
+        "availability",
+        "discount",
+        "birr",
+        "usd"
+      ],
+      "answer": "Specific product pricing, batch availability, and volume quotations depend on current import shipments, pack sizes, and regulatory registration status, and are not published directly on the website.\n\nPlease message us directly on **WhatsApp (0913514767)**, call our commercial desk, or submit a **Product Inquiry** for an immediate quotation.",
+      "links": [
+        {
+          "label": "Contact Us on WhatsApp",
+          "href": "https://wa.me/251913514767?text=Hello%2C%20I%E2%80%99m%20contacting%20Lijemrakel%20Trading%20PLC.%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20products%20and%20services."
+        },
+        { "label": "Request a Quotation", "href": "/contact?type=product-inquiry" },
+        { "label": "Call 0913514767", "href": "tel:0913514767" }
+      ],
+      "suggestions": [
+        "What products do you supply?",
+        "Where is your office located?",
+        "How can I contact you?"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-brand-navy: #0B0E29;
+    --color-brand-orange: #F7941D;
+    --color-brand-cream: #F7F7F3;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-brand-body font-sans antialiased selection:bg-brand-orange selection:text-brand-navy;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-brand-navy tracking-tight;
+  }
+}
+
+/* ============================================================================
+   PUBLIC WEBSITE DARK MODE THEME SYSTEM
+   Scoped to .public-site-shell so Admin & Login keep their exact light themes
+============================================================================ */
+html.dark body {
+  background-color: #070B1E;
+}
+
+html.dark .public-site-shell {
+  background-color: #070B1E;
+  color: #CBD5E1;
+}
+
+/* Primary & Secondary Surfaces in Dark Mode */
+html.dark .public-site-shell .bg-white {
+  background-color: #0F1631 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark .public-site-shell .bg-white\/95 {
+  background-color: rgba(15, 22, 49, 0.95) !important;
+}
+
+html.dark .public-site-shell .bg-\[\#F7F7F3\],
+html.dark .public-site-shell .bg-\[\#FAF9F5\],
+html.dark .public-site-shell .bg-brand-cream,
+html.dark .public-site-shell .bg-brand-surface {
+  background-color: #0A1026 !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
+}
+
+/* Nested cards inside secondary surfaces */
+html.dark .public-site-shell .bg-\[\#F7F7F3\] .bg-white,
+html.dark .public-site-shell .bg-\[\#FAF9F5\] .bg-white {
+  background-color: #131C3E !important;
+}
+
+html.dark .public-site-shell .bg-white .bg-\[\#F7F7F3\],
+html.dark .public-site-shell .bg-white .bg-\[\#FAF9F5\] {
+  background-color: #151F44 !important;
+}
+
+/* Typography Contrast in Dark Mode */
+html.dark .public-site-shell .text-brand-navy,
+html.dark .public-site-shell .text-\[\#0B0E29\] {
+  color: #F8FAFC !important;
+}
+
+/* Keep dark navy text when placed directly inside a bright orange badge/button */
+html.dark .public-site-shell .bg-brand-orange.text-brand-navy,
+html.dark .public-site-shell .bg-brand-orange .text-brand-navy,
+html.dark .public-site-shell .bg-brand-orange.text-\[\#0B0E29\],
+html.dark .public-site-shell .bg-brand-orange .text-\[\#0B0E29\] {
+  color: #0B0E29 !important;
+}
+
+html.dark .public-site-shell .text-brand-body {
+  color: #CBD5E1 !important;
+}
+
+html.dark .public-site-shell .text-brand-muted {
+  color: #94A3B8 !important;
+}
+
+html.dark .public-site-shell .text-brand-goldDark {
+  color: #F7941D !important;
+}
+
+/* Borders in Dark Mode */
+html.dark .public-site-shell .border-brand-border,
+html.dark .public-site-shell .border-brand-border\/80,
+html.dark .public-site-shell .border-brand-border\/70,
+html.dark .public-site-shell .border-brand-border\/60 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Form inputs inside public website in Dark Mode */
+html.dark .public-site-shell input,
+html.dark .public-site-shell select,
+html.dark .public-site-shell textarea {
+  background-color: #131C3E;
+  color: #F8FAFC;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+html.dark .public-site-shell input::placeholder,
+html.dark .public-site-shell textarea::placeholder {
+  color: #94A3B8;
+}
+
+@layer components {
+  /* Asymmetric Cutout Card Corner Helper */
+  .cutout-corner-tl {
+    @apply bg-white rounded-br-[24px] pr-4 pb-3;
+  }
+
+  .cutout-corner-bl {
+    @apply bg-white rounded-tr-[24px] pr-4 pt-3;
+  }
+
+  .cutout-corner-br {
+    @apply bg-white rounded-tl-[24px] pl-4 pt-3;
+  }
+}
+
+/* Focus Ring Accessibility */
+:focus-visible {
+  outline: 2px solid #F7941D;
+  outline-offset: 2px;
+}

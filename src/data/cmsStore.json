@@ -1,0 +1,1523 @@
+{
+  "products": [
+    {
+      "id": "MED-ANT-01",
+      "slug": "albendazole-veterinary-anthelmintic",
+      "name": "Albendazole Oral Suspension & Bolus",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Anthelmintics (dewormers)",
+      "classification": "Veterinary Medicine",
+      "activeIngredientOrComposition": "Albendazole USP/BP (Broad-spectrum benzimidazole anthelmintic)",
+      "dosageForm": "Oral Suspension / Scored Bolus",
+      "packSize": "1 Liter Jerrican / Box of 50 Boluses",
+      "intendedSpecies": [
+        "Cattle",
+        "Sheep",
+        "Goats",
+        "Camels"
+      ],
+      "approvedIndicationsSummary": "Broad-spectrum control and treatment of gastrointestinal roundworms, lungworms, tapeworms, and adult liver flukes in accordance with approved market labeling.",
+      "storageConditions": "Store below 25°C–30°C in a dry place, protected from direct sunlight.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Observe meat and milk withdrawal periods as printed on the approved manufacturer label.",
+      "manufacturerStatus": "International GMP Veterinary Manufacturer",
+      "authorizationStatusNote": "Supplied in accordance with national veterinary registration",
+      "stewardshipWarning": "Use the correct product label and species-specific dosing directions approved for the market.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Veterinary pharmaceutical category profile.",
+      "featured": true
+    },
+    {
+      "id": "MED-ANT-02",
+      "slug": "fenbendazole-veterinary-dewormer",
+      "name": "Fenbendazole Oral Drench & Granules",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Anthelmintics (dewormers)",
+      "classification": "Veterinary Medicine",
+      "activeIngredientOrComposition": "Fenbendazole BP/EP (Benzimidazole anthelmintic)",
+      "dosageForm": "Oral Drench Suspension / Bolus / Powder",
+      "packSize": "500 mL / 1 Liter / Sachet Pack",
+      "intendedSpecies": [
+        "Cattle",
+        "Sheep",
+        "Goats",
+        "Poultry"
+      ],
+      "approvedIndicationsSummary": "Targeted control of mature and immature gastrointestinal nematodes and lungworms in livestock and poultry per approved label directions.",
+      "storageConditions": "Store in original tightly closed container below 30°C, protected from light.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Follow approved species-specific meat, milk, and egg withdrawal intervals.",
+      "manufacturerStatus": "International GMP Veterinary Manufacturer",
+      "authorizationStatusNote": "Supplied in accordance with national veterinary registration",
+      "stewardshipWarning": "Administer strictly according to accurate animal body weight and approved species directions.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Livestock antiparasitic health category profile.",
+      "featured": false
+    },
+    {
+      "id": "MED-ANT-03",
+      "slug": "ivermectin-injectable-endectocide",
+      "name": "Ivermectin Veterinary Solution",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Anthelmintics (dewormers)",
+      "classification": "Veterinary Medicine",
+      "activeIngredientOrComposition": "Ivermectin (Macrocyclic lactone endectocide — sterile solution)",
+      "dosageForm": "Sterile Injectable Solution / Oral Solution",
+      "packSize": "50 mL / 100 mL Multi-dose Vial",
+      "intendedSpecies": [
+        "Cattle",
+        "Sheep",
+        "Goats",
+        "Camels"
+      ],
+      "approvedIndicationsSummary": "Control of internal gastrointestinal and pulmonary nematodes as well as external parasites (mites, ticks, lice, grubs) according to approved market labeling.",
+      "storageConditions": "Store below 25°C–30°C inside protective outer carton away from light.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Observe pre-slaughter meat withdrawal period and lactating dairy restrictions per approved leaflet.",
+      "manufacturerStatus": "International GMP Veterinary Manufacturer",
+      "authorizationStatusNote": "Supplied in accordance with national veterinary registration",
+      "stewardshipWarning": "Use only via the route of administration and in the target species specified on the approved product label.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Veterinary injectable endectocide profile.",
+      "featured": true
+    },
+    {
+      "id": "MED-ABX-01",
+      "slug": "oxytetracycline-veterinary-antibiotic",
+      "name": "Oxytetracycline Veterinary Preparation",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Antibiotics",
+      "classification": "Veterinary Medicine",
+      "activeIngredientOrComposition": "Oxytetracycline Hydrochloride / Dihydrate (10% / 20% LA Injectable or Water-Soluble Powder)",
+      "dosageForm": "Sterile Injectable Solution / Water-Soluble Powder",
+      "packSize": "100 mL Amber Vial / 100 g – 1 kg Foil Pack",
+      "intendedSpecies": [
+        "Cattle",
+        "Sheep",
+        "Goats",
+        "Poultry"
+      ],
+      "approvedIndicationsSummary": "Treatment of bacterial infections caused by oxytetracycline-susceptible organisms in livestock and poultry, supplied strictly under veterinary prescription.",
+      "storageConditions": "Store in a cool, dry place below 25°C, protected from light.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Strict meat, milk, and egg withdrawal periods apply per the approved manufacturer specification.",
+      "manufacturerStatus": "International GMP Veterinary Manufacturer",
+      "authorizationStatusNote": "Prescription veterinary medicine — registration verified",
+      "stewardshipWarning": "Supplied and promoted only in line with applicable veterinary prescription, antimicrobial stewardship, and registration requirements.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Veterinary antimicrobial preparation profile.",
+      "featured": true
+    },
+    {
+      "id": "MED-ABX-02",
+      "slug": "penicillin-streptomycin-combination",
+      "name": "Penicillin–Streptomycin Injectable Suspension",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Antibiotics",
+      "classification": "Veterinary Medicine",
+      "activeIngredientOrComposition": "Procaine Penicillin G + Dihydrostreptomycin Sulphate",
+      "dosageForm": "Sterile Aqueous Suspension for Injection",
+      "packSize": "100 mL Multi-dose Vial",
+      "intendedSpecies": [
+        "Cattle",
+        "Sheep",
+        "Goats"
+      ],
+      "approvedIndicationsSummary": "Systemic bacterial infections responsive to combined beta-lactam and aminoglycoside therapy under licensed veterinary oversight.",
+      "storageConditions": "Store between +8°C and +25°C (or refrigerate per specific approved manufacturer label). Shake well before use.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Strict meat and milk withdrawal periods must be observed in compliance with the approved label.",
+      "manufacturerStatus": "International GMP Veterinary Manufacturer",
+      "authorizationStatusNote": "Prescription veterinary medicine — registration verified",
+      "stewardshipWarning": "For veterinary prescription use only. Follow exact dosage regimen and withdrawal intervals.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Prescription veterinary suspension profile.",
+      "featured": false
+    },
+    {
+      "id": "MED-ABX-03",
+      "slug": "amoxicillin-veterinary-preparation",
+      "name": "Amoxicillin Trihydrate Veterinary Preparation",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Antibiotics",
+      "classification": "Veterinary Medicine",
+      "activeIngredientOrComposition": "Amoxicillin Trihydrate (Water-Soluble Powder or Long-Acting Injectable)",
+      "dosageForm": "Water-Soluble Powder / Long-Acting Injectable Suspension",
+      "packSize": "100 mL Vial / 500 g – 1 kg Container",
+      "intendedSpecies": [
+        "Poultry",
+        "Cattle",
+        "Sheep",
+        "Goats"
+      ],
+      "approvedIndicationsSummary": "Respiratory, alimentary, and systemic infections caused by amoxicillin-sensitive bacteria under veterinary prescription.",
+      "storageConditions": "Store below 25°C in a dry environment. Reseal containers tightly after opening.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Adhere strictly to approved meat, milk, and egg withdrawal periods specified on the product label.",
+      "manufacturerStatus": "International GMP Veterinary Manufacturer",
+      "authorizationStatusNote": "Prescription veterinary medicine — registration verified",
+      "stewardshipWarning": "Promote and dispense solely in accordance with veterinary prescription and responsible antimicrobial use guidelines.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Veterinary pharmaceutical category profile.",
+      "featured": false
+    },
+    {
+      "id": "MED-APR-01",
+      "slug": "toltrazuril-anticoccidial-solution",
+      "name": "Toltrazuril Oral Anticoccidial Solution",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Antiprotozoals",
+      "classification": "Veterinary Medicine",
+      "activeIngredientOrComposition": "Toltrazuril 2.5% Oral Solution for drinking water administration",
+      "dosageForm": "Oral Solution for Drinking Water",
+      "packSize": "100 mL / 500 mL / 1 Liter Bottle",
+      "intendedSpecies": [
+        "Poultry"
+      ],
+      "approvedIndicationsSummary": "Prevention and treatment of clinical coccidiosis (Eimeria species) in poultry flocks as authorized on the registered product label.",
+      "storageConditions": "Store below 25°C in original container. Prepare fresh medicated drinking water daily.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Observe meat withdrawal period and laying-hen restrictions as stated on the approved leaflet.",
+      "manufacturerStatus": "International GMP Veterinary Manufacturer",
+      "authorizationStatusNote": "Supplied in accordance with national veterinary registration",
+      "stewardshipWarning": "Confirm target species, indications, withdrawal periods, and local authorization prior to administration.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Poultry health management profile.",
+      "featured": true
+    },
+    {
+      "id": "MED-APR-02",
+      "slug": "amprolium-water-soluble-anticoccidial",
+      "name": "Amprolium Water-Soluble Powder",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Antiprotozoals",
+      "classification": "Veterinary Medicine",
+      "activeIngredientOrComposition": "Amprolium Hydrochloride (Thiamine analogue anticoccidial)",
+      "dosageForm": "Water-Soluble Oral Powder",
+      "packSize": "100 g / 500 g / 1 kg Sachet or Jar",
+      "intendedSpecies": [
+        "Poultry",
+        "Cattle",
+        "Sheep",
+        "Goats"
+      ],
+      "approvedIndicationsSummary": "Management of intestinal and cecal coccidiosis in poultry and young ruminants according to registered label directions.",
+      "storageConditions": "Store in a cool, dry place below 25°C. Protect from moisture after opening.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Confirm meat and egg withdrawal intervals per approved manufacturer documentation.",
+      "manufacturerStatus": "International GMP Veterinary Manufacturer",
+      "authorizationStatusNote": "Supplied in accordance with national veterinary registration",
+      "stewardshipWarning": "Confirm species-specific dosage and treatment duration on the approved product label.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Poultry and ruminant antiprotozoal profile.",
+      "featured": false
+    },
+    {
+      "id": "MED-APR-03",
+      "slug": "diminazene-aceturate-trypanocide",
+      "name": "Diminazene Aceturate Granules for Injection",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Antiprotozoals",
+      "classification": "Veterinary Medicine",
+      "activeIngredientOrComposition": "Diminazene Aceturate + Phenazone (Sterile reconstitutable granules)",
+      "dosageForm": "Granules / Powder for Reconstitution & Injection",
+      "packSize": "2.36 g / 23.6 g Sachet Box",
+      "intendedSpecies": [
+        "Cattle",
+        "Sheep",
+        "Goats"
+      ],
+      "approvedIndicationsSummary": "Treatment of protozoal hemoparasitic infections (such as Trypanosomosis and Babesiosis) in livestock per authorized veterinary indications.",
+      "storageConditions": "Store dry sachets below 25°C. Use reconstituted solution within the period stated on the approved label.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Strict meat and milk withdrawal periods apply per the approved manufacturer leaflet.",
+      "manufacturerStatus": "International GMP Veterinary Manufacturer",
+      "authorizationStatusNote": "Supplied in accordance with national veterinary registration",
+      "stewardshipWarning": "Administer via deep intramuscular injection at accurate body-weight dosage under veterinary guidance.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Cattle hemoparasite management profile.",
+      "featured": false
+    },
+    {
+      "id": "MED-VIT-01",
+      "slug": "vitamin-a-d3-e-veterinary-preparation",
+      "name": "Vitamin A-D3-E Nutritional Preparation",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Multivitamins and nutritional supplements",
+      "classification": "Nutritional / Feed Supplement",
+      "activeIngredientOrComposition": "Balanced Vitamin A (Retinol), Vitamin D3 (Cholecalciferol), and Vitamin E (Alpha-Tocopherol)",
+      "dosageForm": "Oral Liquid for Drinking Water / Sterile Solution",
+      "packSize": "100 mL / 500 mL / 1 Liter",
+      "intendedSpecies": [
+        "Poultry",
+        "Cattle",
+        "Sheep",
+        "Goats"
+      ],
+      "approvedIndicationsSummary": "Nutritional vitamin supplementation during periods of physiological stress, peak production, rapid growth, or deficiency risk.",
+      "storageConditions": "Store below 25°C away from direct light and heat sources.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Follow approved manufacturer label guidance.",
+      "manufacturerStatus": "International Veterinary Nutrition Manufacturer",
+      "authorizationStatusNote": "Nutritional supplement — distinct from therapeutic medicines",
+      "stewardshipWarning": "Clearly distinguish nutritional vitamin supplements from therapeutic veterinary medicines and follow approved label claims.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Livestock and poultry vitamin supplementation profile.",
+      "featured": false
+    },
+    {
+      "id": "MED-VIT-02",
+      "slug": "b-complex-vitamins-preparation",
+      "name": "B-Complex Vitamins Preparation",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Multivitamins and nutritional supplements",
+      "classification": "Nutritional / Feed Supplement",
+      "activeIngredientOrComposition": "Vitamins B1, B2, B6, B12, Nicotinamide, and D-Panthenol",
+      "dosageForm": "Oral Liquid / Water-Soluble Powder / Injectable Solution",
+      "packSize": "100 mL / 500 mL / 1 Liter Bottle",
+      "intendedSpecies": [
+        "Poultry",
+        "Cattle",
+        "Sheep",
+        "Goats"
+      ],
+      "approvedIndicationsSummary": "B-vitamin supplementation supporting energy metabolism, appetite recovery, hepatic function, and convalescence in livestock and poultry.",
+      "storageConditions": "Store in a cool, dark place below 25°C. Protect from light.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Follow approved manufacturer label guidance.",
+      "manufacturerStatus": "International Veterinary Nutrition Manufacturer",
+      "authorizationStatusNote": "Nutritional supplement — distinct from therapeutic medicines",
+      "stewardshipWarning": "Clearly distinguish nutritional vitamin preparations from therapeutic medicines and adhere to label directions.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "B-complex vitamin preparation profile.",
+      "featured": false
+    },
+    {
+      "id": "MED-VIT-03",
+      "slug": "electrolyte-and-vitamin-combinations",
+      "name": "Electrolyte & Vitamin Combination",
+      "categorySlug": "veterinary-medicines",
+      "categoryName": "Veterinary Medicines",
+      "subcategory": "Multivitamins and nutritional supplements",
+      "classification": "Nutritional / Feed Supplement",
+      "activeIngredientOrComposition": "Balanced Sodium, Potassium, Magnesium, Citrate/Bicarbonate Electrolytes + Vitamin C & Multivitamins",
+      "dosageForm": "Water-Soluble Oral Powder",
+      "packSize": "100 g / 500 g / 1 kg Foil Sachet or Jar",
+      "intendedSpecies": [
+        "Poultry",
+        "Cattle",
+        "Sheep",
+        "Goats"
+      ],
+      "approvedIndicationsSummary": "Nutritional rehydration, heat-stress mitigation, chick arrival support, and post-vaccination recovery via drinking water.",
+      "storageConditions": "Store in a cool, dry place below 25°C. Reseal tightly to prevent moisture absorption.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Zero withdrawal period when used as an oral nutritional electrolyte supplement.",
+      "manufacturerStatus": "International Veterinary Nutrition Manufacturer",
+      "authorizationStatusNote": "Nutritional electrolyte and vitamin supplement",
+      "stewardshipWarning": "Oral nutritional and electrolyte supplement — does not replace specific antimicrobial or antiparasitic therapy.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Poultry and livestock hydration supplement profile.",
+      "featured": false
+    },
+    {
+      "id": "VAC-PLT-01",
+      "slug": "poultry-disease-prevention-vaccines",
+      "name": "Poultry Viral & Bacterial Vaccines",
+      "categorySlug": "vaccines",
+      "categoryName": "Veterinary Vaccines",
+      "classification": "Biological / Vaccine",
+      "activeIngredientOrComposition": "Freeze-dried live attenuated and inactivated oil-emulsion poultry vaccines",
+      "dosageForm": "Lyophilized Freeze-Dried Vial with Diluent / Inactivated Emulsion",
+      "packSize": "500 Doses / 1,000 Doses / 2,500 Doses Vials",
+      "intendedSpecies": [
+        "Poultry"
+      ],
+      "approvedIndicationsSummary": "Active immunization of healthy poultry flocks against key viral and bacterial poultry diseases, subject to national registration and authorized vaccination schedules.",
+      "storageConditions": "MANDATORY COLD CHAIN: Store and transport continuously between +2°C and +8°C in the dark. Do not freeze.",
+      "coldChainRequired": true,
+      "withdrawalPeriodNote": "Follow vaccine-specific pre-slaughter withdrawal intervals printed on the approved manufacturer leaflet.",
+      "manufacturerStatus": "International Veterinary Biologicals Manufacturer",
+      "authorizationStatusNote": "Subject to registration, cold-chain certification & availability",
+      "stewardshipWarning": "Maintain unbroken +2°C to +8°C storage from reception through farm administration. Follow approved label reconstitution instructions.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Cold-chain veterinary biologicals profile.",
+      "featured": true
+    },
+    {
+      "id": "VAC-LVS-02",
+      "slug": "livestock-ruminant-preventive-vaccines",
+      "name": "Livestock & Ruminant Preventive Vaccines",
+      "categorySlug": "vaccines",
+      "categoryName": "Veterinary Vaccines",
+      "classification": "Biological / Vaccine",
+      "activeIngredientOrComposition": "Authorized ruminant and livestock biological immunogens",
+      "dosageForm": "Injectable Suspension / Reconstitutable Freeze-Dried Vaccine",
+      "packSize": "50 Doses / 100 Doses Multi-dose Vial",
+      "intendedSpecies": [
+        "Cattle",
+        "Sheep",
+        "Goats"
+      ],
+      "approvedIndicationsSummary": "Preventive herd immunization against economically significant livestock diseases in accordance with national veterinary guidelines.",
+      "storageConditions": "MANDATORY COLD CHAIN: Store between +2°C and +8°C protected from light.",
+      "coldChainRequired": true,
+      "withdrawalPeriodNote": "Observe approved label withdrawal period prior to slaughter.",
+      "manufacturerStatus": "International Veterinary Biologicals Manufacturer",
+      "authorizationStatusNote": "Subject to registration, cold-chain certification & availability",
+      "stewardshipWarning": "Administer only to healthy animals under veterinary supervision using sterile equipment and unbroken cold-chain handling.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Livestock immunization cold-chain profile.",
+      "featured": false
+    },
+    {
+      "id": "PRM-PLT-01",
+      "slug": "poultry-vitamin-mineral-premix",
+      "name": "Broiler & Layer Vitamin-Mineral Premix",
+      "categorySlug": "feed-premixes",
+      "categoryName": "Feed Premixes",
+      "classification": "Nutritional / Feed Supplement",
+      "activeIngredientOrComposition": "Vitamins (A, D3, E, K3, B-group), Trace Minerals (Zn, Mn, Fe, Cu, I, Se), Choline, and Antioxidants",
+      "dosageForm": "Free-Flowing Micro-Granular Powder for Feed Inclusion",
+      "packSize": "25 kg Multi-Wall Moisture-Barrier Bag",
+      "intendedSpecies": [
+        "Poultry"
+      ],
+      "approvedIndicationsSummary": "Complete vitamin and trace-mineral fortification for commercial starter, grower, finisher, layer, and breeder poultry rations.",
+      "storageConditions": "Store in a cool, dry, well-ventilated warehouse on pallets away from direct sunlight.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Not applicable (nutritional feed premix).",
+      "manufacturerStatus": "International Animal Nutrition Manufacturer",
+      "authorizationStatusNote": "Supplied with official composition & inclusion specification",
+      "stewardshipWarning": "Ensure homogeneous mixing in complete feed according to the manufacturer’s recommended inclusion rate.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Poultry vitamin-mineral feed premix profile.",
+      "featured": true
+    },
+    {
+      "id": "PRM-LVS-02",
+      "slug": "livestock-ruminant-nutritional-premix",
+      "name": "Dairy & Beef Cattle Nutritional Premix",
+      "categorySlug": "feed-premixes",
+      "categoryName": "Feed Premixes",
+      "classification": "Nutritional / Feed Supplement",
+      "activeIngredientOrComposition": "Macro & Trace Minerals (Ca, P, Mg, Zn, Cu, Co, Se, I) + Essential Vitamins (A, D3, E)",
+      "dosageForm": "Concentrated Nutritional Premix Powder / Granules",
+      "packSize": "25 kg Heavy-Duty Bag",
+      "intendedSpecies": [
+        "Cattle",
+        "Sheep",
+        "Goats"
+      ],
+      "approvedIndicationsSummary": "Balances commercial dairy, beef fattening, and small-ruminant concentrate feeds to support milk yield, fertility, and growth.",
+      "storageConditions": "Store on pallets in a dry, cool feed store protected from humidity.",
+      "coldChainRequired": false,
+      "withdrawalPeriodNote": "Not applicable (approved nutritional feed premix).",
+      "manufacturerStatus": "International Animal Nutrition Manufacturer",
+      "authorizationStatusNote": "Supplied with official composition & inclusion specification",
+      "stewardshipWarning": "Follow species-specific inclusion rates on the official product specification.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Ruminant nutritional premix profile.",
+      "featured": false
+    },
+    {
+      "id": "HRM-REP-01",
+      "slug": "authorized-veterinary-reproductive-hormones",
+      "name": "Authorized Veterinary Reproductive Hormones",
+      "categorySlug": "hormones",
+      "categoryName": "Hormones and Related Products",
+      "classification": "Reproductive / Herd-Management Hormone",
+      "activeIngredientOrComposition": "Authorized veterinary reproductive hormone preparations (e.g., Prostaglandin F2α / GnRH analogues)",
+      "dosageForm": "Sterile Injectable Solution for Veterinary Clinical Use",
+      "packSize": "10 mL / 20 mL / 50 mL Vial",
+      "intendedSpecies": [
+        "Cattle"
+      ],
+      "approvedIndicationsSummary": "Authorized veterinary reproductive management, estrus synchronization, and clinical herd-health applications where registered and legally permitted.",
+      "storageConditions": "Store below 25°C (or refrigerate between +2°C and +8°C per approved manufacturer label), protected from light.",
+      "coldChainRequired": true,
+      "withdrawalPeriodNote": "Observe approved meat and milk withdrawal periods printed on the registered product leaflet.",
+      "manufacturerStatus": "International GMP Veterinary Pharmaceutical Manufacturer",
+      "authorizationStatusNote": "Restricted to registered & legally permitted veterinary use",
+      "stewardshipWarning": "For use strictly by licensed veterinarians in authorized reproductive or herd-management applications. Never imply unapproved uses.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Dairy reproductive herd-management profile.",
+      "featured": true
+    },
+    {
+      "id": "EGG-HTC-01",
+      "slug": "certified-poultry-fertilized-hatching-eggs",
+      "name": "Certified Broiler & Layer Hatching Eggs",
+      "categorySlug": "fertilized-eggs",
+      "categoryName": "Fertilized Eggs",
+      "classification": "Certified Hatching Input",
+      "activeIngredientOrComposition": "Specific-Pathogen-Monitored Commercial Broiler & Layer Parent-Stock Fertilized Hatching Eggs",
+      "dosageForm": "Sanitized, Graded Hatching Eggs in Export Setter Trays",
+      "packSize": "360 Eggs per Biosecure Ventilated Export Carton",
+      "intendedSpecies": [
+        "Poultry"
+      ],
+      "approvedIndicationsSummary": "Certified fertilized hatching eggs imported for commercial hatchery incubation, backed by breeder flock health certificates, import permits, and biosecure transport.",
+      "storageConditions": "CLIMATE-CONTROLLED LOGISTICS: Maintain holding temperature of 15°C–18°C and 75%–80% relative humidity.",
+      "coldChainRequired": true,
+      "withdrawalPeriodNote": "Dedicated exclusively for commercial hatchery incubation under veterinary biosecurity oversight.",
+      "manufacturerStatus": "Certified International Poultry Breeder Supplier",
+      "authorizationStatusNote": "Subject to veterinary health certificate & import permit",
+      "stewardshipWarning": "Requires official country-of-origin veterinary certification, parent-flock health documentation, and climate-controlled transit.",
+      "verificationStatus": "category-example-pending-verification",
+      "image": "https://images.unsplash.com/photo-1569288052389-dac9b01c9c05?auto=format&fit=crop&w=800&q=80",
+      "imageCaption": "Certified hatching eggs profile.",
+      "featured": true
+    }
+  ],
+  "newsPosts": [
+    {
+      "id": "news-01",
+      "slug": "lijemrakel-strengthens-international-veterinary-sourcing",
+      "title": "Lijemrakel Trading PLC Strengthens International Sourcing for Veterinary Medicines & Vaccines",
+      "categoryLabel": "Company News",
+      "status": "Published",
+      "date": "October 2026",
+      "authorName": "Dr Etsubdink Negash",
+      "excerpt": "Expanding supplier partnerships with certified international manufacturers to ensure reliable veterinary pharmaceutical and biological supply across Ethiopia.",
+      "image": "/images/hero/lijemrakel-hero-handshake.jpg"
+    },
+    {
+      "id": "news-02",
+      "slug": "poultry-nutrition-feed-premix-portfolio-expansion",
+      "title": "Supporting Farm Productivity Through Balanced Poultry & Livestock Feed Premixes",
+      "categoryLabel": "Business Updates",
+      "status": "Published",
+      "date": "October 2026",
+      "authorName": "Mr Lijalem Abayneh",
+      "excerpt": "Delivering essential vitamin, trace mineral, and amino acid premix formulations tailored for commercial layer, broiler, breeder, and dairy operations.",
+      "image": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=85"
+    },
+    {
+      "id": "news-03",
+      "slug": "strategic-roadmap-poultry-and-hatchery-development",
+      "title": "Strategic Roadmap Update: Phase 3 Planning for Modern Poultry & Hatchery Operations",
+      "categoryLabel": "Announcements",
+      "status": "Published",
+      "date": "September 2026",
+      "authorName": "Dr Etsubdink Negash",
+      "excerpt": "Outlining our long-term strategic framework to transition from fertilized hatching egg supply into integrated domestic poultry production and hatchery development.",
+      "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=85"
+    },
+    {
+      "id": "news-04",
+      "slug": "cold-chain-stewardship-for-veterinary-biologicals",
+      "title": "Commitment to Cold-Chain Integrity Across Veterinary Vaccine & Egg Logistics",
+      "categoryLabel": "Business Updates",
+      "status": "Published",
+      "date": "September 2026",
+      "authorName": "Ato Desalegn Tamene",
+      "excerpt": "Maintaining strict temperature monitoring and handling protocols from international port of entry to regional veterinary clinics and hatcheries.",
+      "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=85"
+    },
+    {
+      "id": "news-05",
+      "slug": "b2b-supplier-and-distributor-partnership-desk",
+      "title": "Official Announcement: Dedicated B2B Desk for Clinics, Farms & Global Suppliers",
+      "categoryLabel": "Announcements",
+      "status": "Published",
+      "date": "August 2026",
+      "authorName": "Ato Yelekal Kebede",
+      "excerpt": "Streamlining technical product inquiries, specification requests, and international manufacturer agency discussions through our corporate portal.",
+      "image": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=85"
+    },
+    {
+      "id": "news-06",
+      "slug": "supporting-ethiopias-agricultural-self-reliance",
+      "title": "Aligning Veterinary Trade With Ethiopia’s Agricultural Growth Priorities",
+      "categoryLabel": "Company News",
+      "status": "Published",
+      "date": "August 2026",
+      "authorName": "Ato Abel Girma",
+      "excerpt": "How Lijemrakel Trading PLC combines veterinary technical leadership and international trade expertise to serve Ethiopian agriculture.",
+      "image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=85"
+    }
+  ],
+  "teamMembers": [
+    {
+      "id": "lijalem-abayneh",
+      "name": "Lijalem Abayneh",
+      "formalTitlePrefix": "Mr",
+      "displayName": "Mr Lijalem Abayneh",
+      "initials": "LA",
+      "roleTitle": "Deputy General Manager",
+      "department": "Founding Member · Board of Directors",
+      "isFoundingMember": true,
+      "isProposedBoardMember": true,
+      "isManagementTeam": true,
+      "summary": "Supports the General Manager in executing strategy and daily operations, coordinates departments, and manages key customer and supplier relationships.",
+      "responsibilities": [
+        "Supports the General Manager in executing strategy and daily operations.",
+        "Coordinates departments and follows up on decisions and performance targets.",
+        "Helps manage key customer and supplier relationships.",
+        "Monitors business development, internal procedures, and continuity of operations."
+      ],
+      "portraitUrl": "/images/leadership/leader-lijalem.jpg",
+      "portraitNote": ""
+    },
+    {
+      "id": "etsubdink-negash",
+      "name": "Etsubdink Negash",
+      "formalTitlePrefix": "Dr",
+      "displayName": "Dr Etsubdink Negash",
+      "initials": "EN",
+      "roleTitle": "General and Technical Manager",
+      "department": "Founding Member · Board of Directors",
+      "isFoundingMember": true,
+      "isProposedBoardMember": true,
+      "isManagementTeam": true,
+      "summary": "Leads day-to-day company management, veterinary technical direction, product evaluation, regulatory registration coordination, and technical customer support.",
+      "responsibilities": [
+        "Leads day-to-day company management and technical direction.",
+        "Coordinates product evaluation and supplier technical documentation.",
+        "Oversees product registration and regulatory coordination with the relevant authorities.",
+        "Guides quality, safe handling, product information, and technical customer support.",
+        "Prepares operating plans and reports to the board."
+      ],
+      "portraitUrl": "/images/leadership/leader-etsubdink.jpg",
+      "portraitNote": ""
+    },
+    {
+      "id": "abel-girma",
+      "name": "Abel Girma",
+      "formalTitlePrefix": "Ato",
+      "displayName": "Ato Abel Girma",
+      "initials": "AG",
+      "roleTitle": "Financial Manager",
+      "department": "Founding Member · Board of Directors",
+      "isFoundingMember": true,
+      "isProposedBoardMember": true,
+      "isManagementTeam": true,
+      "summary": "Oversees budgeting, cash-flow planning, accounting, import-cost calculations, pricing, investment analysis, and internal financial controls.",
+      "responsibilities": [
+        "Oversees budgeting, cash-flow planning, accounting, payment controls, financial statements, tax coordination, and financial reporting.",
+        "Supports import-cost calculations, pricing, and investment analysis.",
+        "Monitors receivables, payables, working capital, and internal financial controls."
+      ],
+      "portraitUrl": "/images/leadership/leader-abel.jpg",
+      "portraitNote": ""
+    },
+    {
+      "id": "yelekal-kebede",
+      "name": "Yelekal Kebede",
+      "formalTitlePrefix": "Ato",
+      "displayName": "Ato Yelekal Kebede",
+      "initials": "YK",
+      "roleTitle": "International Business Manager",
+      "department": "Board of Directors · International Trade",
+      "isFoundingMember": false,
+      "isProposedBoardMember": true,
+      "isManagementTeam": true,
+      "summary": "Develops international supplier relationships, identifies manufacturers and export opportunities, and coordinates quotations, purchase orders, and shipping.",
+      "responsibilities": [
+        "Develops and maintains international supplier relationships.",
+        "Identifies manufacturers and export opportunities.",
+        "Coordinates quotations, negotiations, purchase orders, shipping, and supplier documentation.",
+        "Works with the technical and operations teams to ensure import plans meet quality, compliance, timing, and cost requirements."
+      ],
+      "portraitUrl": "/images/leadership/leader-yelekal.jpg",
+      "portraitNote": ""
+    },
+    {
+      "id": "desalegn-tamene",
+      "name": "Desalegn Tamene",
+      "formalTitlePrefix": "Ato",
+      "displayName": "Ato Desalegn Tamene",
+      "initials": "DT",
+      "roleTitle": "Operational Manager",
+      "department": "Board of Directors · Operations & Logistics",
+      "isFoundingMember": false,
+      "isProposedBoardMember": true,
+      "isManagementTeam": true,
+      "summary": "Coordinates warehousing, inventory, order fulfilment, transport, cold-chain storage procedures, workplace safety, and national distribution.",
+      "responsibilities": [
+        "Coordinates warehousing, inventory, order fulfilment, transport, and distribution.",
+        "Maintains stock records and delivery schedules.",
+        "Supports proper storage and cold-chain procedures where required.",
+        "Monitors operational costs, workplace safety, and service quality.",
+        "Escalates supply or logistics risks."
+      ],
+      "portraitUrl": "/images/leadership/leader-desalegn.jpg",
+      "portraitNote": ""
+    }
+  ],
+  "inquiries": [
+    {
+      "id": "INQ-2026-0104",
+      "senderName": "Dr. Dawit Bekele",
+      "organization": "Bishoftu Commercial Poultry & Feed PLC",
+      "email": "dawit.bekele@bishoftupoultry.et",
+      "phone": "+251 911 402 819",
+      "country": "Ethiopia",
+      "inquiryType": "Product Inquiry",
+      "subject": "Bulk Quotation Request: Poultry Vaccines & Layer Vitamin-Mineral Premix",
+      "message": "Hello Lijemrakel Technical Desk, we operate a 45,000-bird layer and broiler operation in Bishoftu and would like to request technical data sheets and batch availability for your poultry vaccines (+2°C to +8°C cold-chain) and 2.5% Layer Vitamin-Mineral Premix.",
+      "date": "2026-10-27 14:22",
+      "status": "unread",
+      "assignedDepartment": "General & Technical Management (Dr Etsubdink Negash)",
+      "isDemoSample": true
+    },
+    {
+      "id": "INQ-2026-0103",
+      "senderName": "Hendrik Van Der Berg",
+      "organization": "EuroVet Biologics & Nutrition B.V.",
+      "email": "h.vanderberg@eurovet-biologics.nl",
+      "phone": "+31 30 711 9420",
+      "country": "Netherlands",
+      "inquiryType": "Supplier Partnership",
+      "subject": "GMP Veterinary Pharmaceuticals & Hatching Egg Export Partnership for Ethiopia",
+      "message": "Dear International Business Manager (Ato Yelekal Kebede), we are an EU-GMP certified manufacturer of veterinary anthelmintics, injectable antibiotics, and parent-stock hatching eggs. We would like to schedule an introductory call regarding registration and distribution representation in Ethiopia.",
+      "date": "2026-10-26 11:05",
+      "status": "unread",
+      "assignedDepartment": "International Business Desk (Ato Yelekal Kebede)",
+      "isDemoSample": true
+    },
+    {
+      "id": "INQ-2026-0102",
+      "senderName": "Ato Solomon Tadesse",
+      "organization": "Hawassa Regional Veterinary Pharmacy & Clinic",
+      "email": "solomon.vet@hawassaclinic.com",
+      "phone": "+251 916 883 104",
+      "country": "Ethiopia",
+      "inquiryType": "Product Inquiry",
+      "subject": "Regional Distribution Schedule for Albendazole, Ivermectin & Oxytetracycline",
+      "message": "We are inquiring about regional wholesale distribution terms and delivery schedules to Hawassa for broad-spectrum anthelmintics and injectable antibiotics.",
+      "date": "2026-10-24 09:40",
+      "status": "read",
+      "assignedDepartment": "Operations & Logistics (Ato Desalegn Tamene)",
+      "isDemoSample": true
+    },
+    {
+      "id": "INQ-2026-0101",
+      "senderName": "Dr. Selamawit Hailu",
+      "organization": "Adama Hatchery & Breeder Enterprise",
+      "email": "selam.hailu@adamahatchery.et",
+      "phone": "+251 922 510 390",
+      "country": "Ethiopia",
+      "inquiryType": "Poultry & Hatchery",
+      "subject": "Fertilized Broiler Hatching Eggs Import Consignment & Phase 3 Collaboration",
+      "message": "We would like to discuss recurring import consignments of certified broiler fertilized hatching eggs and explore long-term technical collaboration on hatchery incubation capacity.",
+      "date": "2026-10-21 16:15",
+      "status": "replied",
+      "assignedDepartment": "Deputy General Manager (Mr Lijalem Abayneh)",
+      "isDemoSample": true
+    }
+  ],
+  "mediaAssets": [
+    {
+      "id": "MEDIA-01",
+      "title": "Official Lijemrakel Trading PLC Emblem Logo",
+      "fileName": "lijemrakel-logo.png",
+      "url": "/images/logo/lijemrakel-logo.png",
+      "category": "Logo & Brand",
+      "fileType": "PNG",
+      "dimensions": "800 × 600 px",
+      "uploadedAt": "2026-10-20",
+      "altText": "Lijemrakel Trading PLC official corporate logo"
+    },
+    {
+      "id": "MEDIA-02",
+      "title": "Hero Executive Handshake (Uncompressed HQ)",
+      "fileName": "lijemrakel-hero-handshake-hq.jpg",
+      "url": "/images/hero/lijemrakel-hero-handshake-hq.jpg",
+      "category": "Hero & Office",
+      "fileType": "JPEG (HQ)",
+      "dimensions": "1920 × 1005 px",
+      "uploadedAt": "2026-10-28",
+      "altText": "Lijemrakel Trading PLC leadership partnership handshake in front of wall emblem"
+    },
+    {
+      "id": "MEDIA-03",
+      "title": "Executive Office Desk Portrait — Mr Lijalem Abayneh",
+      "fileName": "lijemrakel-about-final.jpg",
+      "url": "/images/hero/lijemrakel-about-final.jpg",
+      "category": "Hero & Office",
+      "fileType": "JPEG",
+      "dimensions": "1280 × 580 px",
+      "uploadedAt": "2026-10-27",
+      "altText": "Lijemrakel Trading PLC executive office desk in Addis Ababa"
+    },
+    {
+      "id": "MEDIA-04",
+      "title": "Phase 1 Strategy — Addis Ababa Executive Boardroom",
+      "fileName": "phase-1.jpg",
+      "url": "/images/strategy/phase-1.jpg",
+      "category": "Strategy",
+      "fileType": "JPEG",
+      "dimensions": "1400 × 788 px",
+      "uploadedAt": "2026-10-27",
+      "altText": "Phase 1 Foundation and Market Entry"
+    },
+    {
+      "id": "MEDIA-05",
+      "title": "Phase 2 Strategy — Cold-Chain & Quality Warehousing",
+      "fileName": "phase-2.jpg",
+      "url": "/images/strategy/phase-2.jpg",
+      "category": "Strategy",
+      "fileType": "JPEG",
+      "dimensions": "1400 × 788 px",
+      "uploadedAt": "2026-10-27",
+      "altText": "Phase 2 Market Expansion and Portfolio Growth"
+    },
+    {
+      "id": "MEDIA-06",
+      "title": "Phase 3 Strategy — Modern Hatchery & Egg Incubation",
+      "fileName": "phase-3.jpg",
+      "url": "/images/strategy/phase-3.jpg",
+      "category": "Strategy",
+      "fileType": "JPEG",
+      "dimensions": "1400 × 788 px",
+      "uploadedAt": "2026-10-27",
+      "altText": "Phase 3 Poultry and Hatchery Development"
+    },
+    {
+      "id": "MEDIA-07",
+      "title": "Phase 4 Strategy — National Scale & Export Readiness",
+      "fileName": "phase-4.jpg",
+      "url": "/images/strategy/phase-4.jpg",
+      "category": "Strategy",
+      "fileType": "JPEG",
+      "dimensions": "1400 × 788 px",
+      "uploadedAt": "2026-10-27",
+      "altText": "Phase 4 Consolidation, Scale, and Export Readiness"
+    },
+    {
+      "id": "MEDIA-08",
+      "title": "Mr Lijalem Abayneh — Deputy General Manager Portrait",
+      "fileName": "leader-lijalem.jpg",
+      "url": "/images/leadership/leader-lijalem.jpg",
+      "category": "Leadership",
+      "fileType": "JPEG",
+      "dimensions": "800 × 800 px",
+      "uploadedAt": "2026-10-28",
+      "altText": "Mr Lijalem Abayneh — Founding Member & Deputy General Manager"
+    },
+    {
+      "id": "MEDIA-09",
+      "title": "Dr Etsubdink Negash — General & Technical Manager Portrait",
+      "fileName": "leader-etsubdink.jpg",
+      "url": "/images/leadership/leader-etsubdink.jpg",
+      "category": "Leadership",
+      "fileType": "JPEG",
+      "dimensions": "800 × 800 px",
+      "uploadedAt": "2026-10-28",
+      "altText": "Dr Etsubdink Negash — Founding Member & General and Technical Manager"
+    }
+  ],
+  "seoConfigs": [
+    {
+      "id": "SEO-HOME",
+      "route": "/",
+      "pageName": "Homepage",
+      "metaTitle": "Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions",
+      "metaDescription": "Supporting Ethiopia’s Agriculture Through Reliable Veterinary and Poultry Solutions. Importing veterinary medicines, vaccines, feed premixes, hormones, and fertilized eggs.",
+      "keywords": "Lijemrakel Trading PLC, Veterinary Medicines Ethiopia, Veterinary Vaccines Ethiopia, Feed Premixes, Fertilized Hatching Eggs",
+      "ogImage": "/images/hero/lijemrakel-hero-handshake-hq.jpg",
+      "indexStatus": "index, follow",
+      "lastUpdated": "2026-10-28"
+    },
+    {
+      "id": "SEO-ABOUT",
+      "route": "/about",
+      "pageName": "About Us — Company Overview",
+      "metaTitle": "About Lijemrakel Trading PLC | Ethiopian Veterinary & Agricultural Trade",
+      "metaDescription": "Learn about Lijemrakel Trading PLC, connecting reputable international manufacturers with veterinary professionals, livestock producers, and poultry farms across Ethiopia.",
+      "keywords": "About Lijemrakel Trading, Ethiopian Veterinary Importer, Gebeta Le Hager Agriculture",
+      "ogImage": "/images/hero/lijemrakel-about-final.jpg",
+      "indexStatus": "index, follow",
+      "lastUpdated": "2026-10-28"
+    },
+    {
+      "id": "SEO-STRATEGY",
+      "route": "/about/strategy",
+      "pageName": "Our Strategy — 5-Year Roadmap",
+      "metaTitle": "Our Strategy — 5-Year Strategic Direction | Lijemrakel Trading PLC",
+      "metaDescription": "Explore Lijemrakel Trading PLC’s 4-phase, 5-year strategic roadmap from veterinary market entry to domestic poultry production and hatchery development.",
+      "keywords": "Lijemrakel Strategy, Poultry Hatchery Roadmap Ethiopia, Veterinary Distribution Plan",
+      "ogImage": "/images/strategy/phase-1.jpg",
+      "indexStatus": "index, follow",
+      "lastUpdated": "2026-10-28"
+    },
+    {
+      "id": "SEO-LEADERSHIP",
+      "route": "/about/leadership",
+      "pageName": "Leadership & Governance",
+      "metaTitle": "Leadership — Founders, Board & Executive Management | Lijemrakel Trading PLC",
+      "metaDescription": "Meet the Founding Members, Board of Directors, and Executive Management Team guiding Lijemrakel Trading PLC.",
+      "keywords": "Lijalem Abayneh, Dr Etsubdink Negash, Abel Girma, Yelekal Kebede, Desalegn Tamene",
+      "ogImage": "/images/leadership/leader-lijalem.jpg",
+      "indexStatus": "index, follow",
+      "lastUpdated": "2026-10-28"
+    },
+    {
+      "id": "SEO-PRODUCTS",
+      "route": "/products",
+      "pageName": "Products & Divisions Catalogue",
+      "metaTitle": "Product Catalogue — Veterinary Medicines, Vaccines, Premixes & Hatching Eggs",
+      "metaDescription": "Browse Lijemrakel Trading PLC’s veterinary medicines, vaccines, feed premixes, reproductive hormones, and certified fertilized hatching eggs.",
+      "keywords": "Albendazole Ethiopia, Ivermectin, Oxytetracycline, Poultry Vaccines, Broiler Premix",
+      "ogImage": "/images/hero/lijemrakel-hero-handshake-hq.jpg",
+      "indexStatus": "index, follow",
+      "lastUpdated": "2026-10-28"
+    },
+    {
+      "id": "SEO-CONTACT",
+      "route": "/contact",
+      "pageName": "Contact Us",
+      "metaTitle": "Contact Lijemrakel Trading PLC | Debrewerk Tower, Mexico, Addis Ababa",
+      "metaDescription": "Contact Lijemrakel Trading PLC at Debrewerk Tower | Mexico, Addis Ababa or call 0913514767 for veterinary product inquiries and supplier partnerships.",
+      "keywords": "Contact Lijemrakel Trading, Debrewerk Tower Mexico Addis Ababa, 0913514767",
+      "ogImage": "/images/hero/lijemrakel-hero-handshake-hq.jpg",
+      "indexStatus": "index, follow",
+      "lastUpdated": "2026-10-28"
+    }
+  ],
+  "orbitEntries": [
+    {
+      "id": "greeting",
+      "category": "general",
+      "title": "Welcome to Lijemrakel Trading PLC",
+      "keywords": [
+        "hello",
+        "hi",
+        "hey",
+        "selam",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "help",
+        "start",
+        "who are you",
+        "orbit",
+        "assistant"
+      ],
+      "answer": "Hello! Welcome to **Lijemrakel Trading PLC**. I am **Orbit Assistant**, here to help you explore our verified company information, veterinary and poultry product lines, strategic roadmap, leadership team, and contact details. How can I assist you today?",
+      "links": [
+        {
+          "label": "Explore Products",
+          "href": "/products"
+        },
+        {
+          "label": "About Lijemrakel",
+          "href": "/about"
+        },
+        {
+          "label": "Contact Us",
+          "href": "/contact"
+        }
+      ],
+      "suggestions": [
+        "What products do you supply?",
+        "Tell me about Lijemrakel Trading PLC",
+        "Where is your office located?"
+      ]
+    },
+    {
+      "id": "company-overview",
+      "category": "company",
+      "title": "About Lijemrakel Trading PLC",
+      "keywords": [
+        "who we are",
+        "about",
+        "company",
+        "lijemrakel",
+        "lij emrakel",
+        "overview",
+        "profile",
+        "what do you do",
+        "business",
+        "import",
+        "export",
+        "ethiopia",
+        "gebeta le hager"
+      ],
+      "answer": "**Lijemrakel Trading PLC** is an Ethiopian import and export company primarily focused on the veterinary, livestock, and poultry sectors.\n\nWe connect the Ethiopian market with dependable international manufacturers of **veterinary medicines, vaccines, feed premixes, hormones, and fertilized eggs**. Our long-term direction also includes **poultry production and hatchery development**, supporting livestock and poultry productivity in alignment with national agricultural priorities including *Gebeta Le Hager*.",
+      "links": [
+        {
+          "label": "Company Overview",
+          "href": "/about"
+        },
+        {
+          "label": "Mission & Vision",
+          "href": "/about/mission-vision-values"
+        },
+        {
+          "label": "Our Strategy",
+          "href": "/about/strategy"
+        }
+      ],
+      "suggestions": [
+        "What is your mission and vision?",
+        "What products do you supply?",
+        "Who are the founders?"
+      ]
+    },
+    {
+      "id": "mission-vision-values",
+      "category": "company",
+      "title": "Mission, Vision & Core Values",
+      "keywords": [
+        "mission",
+        "vision",
+        "values",
+        "core values",
+        "purpose",
+        "goal",
+        "principles",
+        "integrity",
+        "quality"
+      ],
+      "answer": "**Our Mission:**\nTo supply quality veterinary and poultry-sector products through reliable international sourcing, responsible importation, and customer-focused distribution—supporting animal health, productive farms, and the development of Ethiopia’s agricultural economy.\n\n**Our Vision:**\nTo become one of Ethiopia’s leading and most trusted suppliers of veterinary and poultry-sector products, while developing competitive poultry production and hatchery operations that contribute to sustainable agricultural growth.\n\n**Core Values:**\n• Quality and safety\n• Integrity\n• Agricultural impact\n• Customer focus\n• Professionalism\n• Partnership\n• Continuous improvement",
+      "links": [
+        {
+          "label": "View Mission, Vision & Values",
+          "href": "/about/mission-vision-values"
+        }
+      ],
+      "suggestions": [
+        "What is your 5-year strategy?",
+        "Who leads Lijemrakel Trading PLC?",
+        "What products do you supply?"
+      ]
+    },
+    {
+      "id": "strategy-roadmap",
+      "category": "company",
+      "title": "5-Year Strategic Roadmap (4 Phases)",
+      "keywords": [
+        "strategy",
+        "roadmap",
+        "plan",
+        "5 year",
+        "five year",
+        "phase",
+        "phases",
+        "future",
+        "expansion",
+        "growth"
+      ],
+      "answer": "Lijemrakel Trading PLC follows a structured **4-Phase, 5-Year Strategic Roadmap**:\n\n• **Phase 1 — Foundation and Market Entry (Year 1):** Finalize supplier partnerships, complete regulatory registrations, establish storage & cold-chain procedures, and launch core veterinary and poultry-input imports.\n• **Phase 2 — Market Expansion and Portfolio Growth (Years 2–3):** Expand regional customer coverage across Ethiopia, broaden registered medicines, vaccines, premixes, and fertilized egg supply.\n• **Phase 3 — Poultry and Hatchery Development (Years 3–4):** Complete feasibility and biosecurity planning to launch or partner in poultry production and hatchery operations.\n• **Phase 4 — Consolidation, Scale, and Export Readiness (Years 4–5):** Scale national distribution, strengthen hatchery output, and develop agricultural export opportunities.",
+      "links": [
+        {
+          "label": "Explore Full Strategy",
+          "href": "/about/strategy"
+        },
+        {
+          "label": "Poultry & Hatchery Division",
+          "href": "/poultry-hatchery"
+        }
+      ],
+      "suggestions": [
+        "Tell me about Poultry & Hatchery",
+        "Who is on the leadership team?",
+        "How can we partner with you?"
+      ]
+    },
+    {
+      "id": "leadership-governance",
+      "category": "company",
+      "title": "Founders, Board & Executive Management",
+      "keywords": [
+        "leadership",
+        "founders",
+        "founding members",
+        "management",
+        "board",
+        "directors",
+        "ceo",
+        "manager",
+        "lijalem",
+        "abayneh",
+        "etsubdink",
+        "negash",
+        "abel",
+        "girma",
+        "yelekal",
+        "kebede",
+        "desalegn",
+        "tamene",
+        "team"
+      ],
+      "answer": "**Founding Members:**\n• **Mr Lijalem Abayneh** — Founding Member & Deputy General Manager\n• **Dr Etsubdink Negash** — Founding Member & General and Technical Manager\n• **Ato Abel Girma** — Founding Member & Financial Manager\n\n**Executive Management Team & Proposed Board of Directors:**\n• **Dr Etsubdink Negash** — General and Technical Manager (Veterinary technical direction, regulatory registration & quality assurance)\n• **Mr Lijalem Abayneh** — Deputy General Manager (Strategy execution, department coordination & key partnerships)\n• **Ato Abel Girma** — Financial Manager (Budgeting, import costing & financial controls)\n• **Ato Yelekal Kebede** — International Business Manager & Board Member (Global supplier relationships, quotations & shipping)\n• **Ato Desalegn Tamene** — Operational Manager & Board Member (Warehousing, cold-chain storage & distribution logistics)",
+      "links": [
+        {
+          "label": "View Leadership Directory",
+          "href": "/about/leadership"
+        }
+      ],
+      "suggestions": [
+        "How can I contact management?",
+        "What products do you supply?",
+        "Where is your office located?"
+      ]
+    },
+    {
+      "id": "products-overview",
+      "category": "products",
+      "title": "Veterinary & Poultry Product Lines",
+      "keywords": [
+        "products",
+        "catalogue",
+        "catalog",
+        "supply",
+        "what do you sell",
+        "items",
+        "categories",
+        "veterinary",
+        "livestock",
+        "inputs"
+      ],
+      "answer": "Lijemrakel Trading PLC focuses on **5 core veterinary and poultry product divisions**:\n\n1. **Veterinary Medicines:** Anthelmintics (Albendazole, Fenbendazole, Ivermectin), antibiotics (Oxytetracycline, Penicillin–Streptomycin, Amoxicillin), antiprotozoals (Toltrazuril, Amprolium, Diminazene), and vitamin/mineral supplements.\n2. **Veterinary Vaccines:** Poultry and livestock immunization products managed under strict cold-chain (`+2°C to +8°C`) handling.\n3. **Feed Premixes:** Broiler, layer, and ruminant vitamin-mineral premixes with verified inclusion rates.\n4. **Hormones & Related Products:** Authorized veterinary reproductive and herd-management products for professional use.\n5. **Fertilized Eggs:** Certified broiler and layer hatching eggs from healthy parent stock with veterinary health certification.",
+      "links": [
+        {
+          "label": "Browse Full Product Catalogue",
+          "href": "/products"
+        },
+        {
+          "label": "Request Product Inquiry",
+          "href": "/contact?type=product-inquiry"
+        }
+      ],
+      "suggestions": [
+        "Tell me about Veterinary Medicines",
+        "Do you supply Veterinary Vaccines?",
+        "Tell me about Fertilized Eggs",
+        "Feed Premixes details"
+      ]
+    },
+    {
+      "id": "veterinary-medicines",
+      "category": "products",
+      "title": "Veterinary Medicines",
+      "keywords": [
+        "medicine",
+        "medicines",
+        "drugs",
+        "pharmaceuticals",
+        "antibiotics",
+        "anthelmintics",
+        "dewormer",
+        "antiprotozoal",
+        "albendazole",
+        "fenbendazole",
+        "ivermectin",
+        "oxytetracycline",
+        "penicillin",
+        "streptomycin",
+        "amoxicillin",
+        "toltrazuril",
+        "amprolium",
+        "diminazene",
+        "vitamins",
+        "electrolytes"
+      ],
+      "answer": "**Veterinary Medicines Division:**\nWe supply essential veterinary pharmaceuticals and nutritional supplements in line with national veterinary registration and stewardship requirements:\n\n• **Anthelmintics & Antiparasitics:** Albendazole, Fenbendazole, and Ivermectin.\n• **Antibacterials / Antibiotics:** Oxytetracycline, Penicillin–Streptomycin, and Amoxicillin.\n• **Antiprotozoals & Anticoccidials:** Toltrazuril, Amprolium, and Diminazene aceturate.\n• **Vitamins & Supportive Care:** Vitamin A-D3-E, B-Complex, Electrolytes, and mineral supplements.",
+      "links": [
+        {
+          "label": "View Veterinary Medicines",
+          "href": "/products/veterinary-medicines"
+        },
+        {
+          "label": "Inquire About Availability",
+          "href": "/contact?type=product-inquiry"
+        }
+      ],
+      "suggestions": [
+        "Tell me about Veterinary Vaccines",
+        "Do you supply Feed Premixes?",
+        "How do I place a product inquiry?"
+      ]
+    },
+    {
+      "id": "veterinary-vaccines",
+      "category": "products",
+      "title": "Veterinary Vaccines & Cold-Chain Handling",
+      "keywords": [
+        "vaccine",
+        "vaccines",
+        "vaccination",
+        "immunization",
+        "cold chain",
+        "cold-chain",
+        "newcastle",
+        "gumboro",
+        "ibd",
+        "infectious bronchitis",
+        "marek",
+        "fowl pox",
+        "lsd",
+        "lumpy skin",
+        "ppr",
+        "storage temperature"
+      ],
+      "answer": "**Veterinary Vaccines Division:**\nWe supply poultry and livestock vaccines supported by strict cold-chain storage (`+2°C to +8°C`), batch traceability, and technical guidance:\n\n• **Poultry Vaccines:** Protection against major viral and bacterial poultry diseases (such as Newcastle disease, Infectious Bursal Disease / Gumboro, Infectious Bronchitis, and Fowl Pox).\n• **Livestock Vaccines:** Preventive immunization for cattle, sheep, and goats in accordance with national veterinary schedules.\n• **Cold-Chain Integrity:** Continuous temperature monitoring from international arrival through warehouse storage and customer dispatch.",
+      "links": [
+        {
+          "label": "View Veterinary Vaccines",
+          "href": "/products/vaccines"
+        },
+        {
+          "label": "Contact Technical Team",
+          "href": "/contact?type=product-inquiry"
+        }
+      ],
+      "suggestions": [
+        "Tell me about Fertilized Eggs",
+        "What Veterinary Medicines do you have?",
+        "How can I contact your team?"
+      ]
+    },
+    {
+      "id": "feed-premixes",
+      "category": "products",
+      "title": "Feed Premixes & Animal Nutrition",
+      "keywords": [
+        "premix",
+        "premixes",
+        "feed",
+        "nutrition",
+        "vitamin premix",
+        "mineral premix",
+        "broiler premix",
+        "layer premix",
+        "dairy premix",
+        "feed mill",
+        "inclusion rate"
+      ],
+      "answer": "**Feed Premixes Division:**\nWe supply balanced vitamin-mineral premixes and nutritional concentrates for commercial poultry farms, livestock operations, and feed mills:\n\n• **Poultry Nutrition:** Starter, grower, finisher broiler premixes and layer/breeder vitamin-mineral premixes.\n• **Ruminant & Livestock Nutrition:** Dairy and beef cattle mineral-vitamin premixes.\n• **Quality Assurance:** Clear manufacturer specifications, verified nutrient composition, and recommended inclusion rates (`e.g., 0.25% – 2.5%`).",
+      "links": [
+        {
+          "label": "View Feed Premixes",
+          "href": "/products/feed-premixes"
+        },
+        {
+          "label": "Request Specifications",
+          "href": "/contact?type=product-inquiry"
+        }
+      ],
+      "suggestions": [
+        "Tell me about Fertilized Eggs",
+        "Tell me about Hormones",
+        "Contact for bulk supply"
+      ]
+    },
+    {
+      "id": "hormones-reproductive",
+      "category": "products",
+      "title": "Hormones & Reproductive Management Products",
+      "keywords": [
+        "hormone",
+        "hormones",
+        "reproductive",
+        "breeding",
+        "estrus",
+        "synchronization",
+        "prostaglandin",
+        "gnrh",
+        "oxytocin",
+        "artificial insemination",
+        "fertility"
+      ],
+      "answer": "**Hormones & Related Products Division:**\nWe supply authorized veterinary reproductive hormones strictly for licensed veterinary professionals and supervised breeding programs where registered and permitted:\n\n• **Clinical Applications:** Estrus synchronization, luteolysis, ovulation induction, and postpartum reproductive management in dairy and beef herds.\n• **Stewardship:** Supplied exclusively in compliance with Ethiopian regulatory requirements, prescription rules, and approved label withdrawal periods.",
+      "links": [
+        {
+          "label": "View Hormones Division",
+          "href": "/products/hormones"
+        },
+        {
+          "label": "Veterinary Inquiry",
+          "href": "/contact?type=product-inquiry"
+        }
+      ],
+      "suggestions": [
+        "What Veterinary Medicines do you supply?",
+        "Tell me about Fertilized Eggs",
+        "Contact Technical Manager"
+      ]
+    },
+    {
+      "id": "fertilized-eggs",
+      "category": "products",
+      "title": "Fertilized Hatching Eggs",
+      "keywords": [
+        "egg",
+        "eggs",
+        "fertilized",
+        "fertilised",
+        "hatching eggs",
+        "broiler eggs",
+        "layer eggs",
+        "parent stock",
+        "cobb",
+        "ross",
+        "lohmann",
+        "bovans",
+        "hatchability"
+      ],
+      "answer": "**Fertilized Eggs Division:**\nWe source and import certified fertilized hatching eggs from reputable international parent-stock breeders for commercial hatcheries and poultry producers:\n\n• **Broiler & Layer Genetics:** High-performing commercial broiler and layer hatching eggs.\n• **Biosecurity & Certification:** Accompanied by official veterinary health certificates, flock vaccination histories, and import permits.\n• **Climate-Controlled Logistics:** Handled under controlled temperature (`16°C–18°C`) and humidity (`75%–80% RH`) to preserve embryo viability and hatchability.",
+      "links": [
+        {
+          "label": "View Fertilized Eggs",
+          "href": "/products/fertilized-eggs"
+        },
+        {
+          "label": "Poultry & Hatchery Division",
+          "href": "/poultry-hatchery"
+        }
+      ],
+      "suggestions": [
+        "Tell me about Poultry & Hatchery plans",
+        "Do you supply Poultry Vaccines?",
+        "How do I request a shipment quote?"
+      ]
+    },
+    {
+      "id": "poultry-hatchery",
+      "category": "poultry-hatchery",
+      "title": "Poultry Production & Hatchery Development",
+      "keywords": [
+        "poultry",
+        "hatchery",
+        "chick",
+        "chicks",
+        "day old chicks",
+        "doc",
+        "incubation",
+        "incubator",
+        "setter",
+        "hatcher",
+        "broiler farm",
+        "layer farm",
+        "farm",
+        "production"
+      ],
+      "answer": "**Poultry Production & Hatchery Development (Strategic Growth Area):**\nAlongside our active veterinary and poultry-input import business, Lijemrakel Trading PLC is developing long-term capabilities in **Poultry Production** and **Hatchery Operations** (planned for **Phase 3: Years 3–4** of our strategic roadmap):\n\n• **Poultry Production:** Planned development of biosecure broiler and layer operations with modern housing, balanced nutrition, and veterinary health management.\n• **Hatchery Development:** Planned investment in modern setter and hatcher incubation systems, biosecurity workflows, and quality day-old chick supply.\n• **National Alignment:** Supports domestic agricultural value-chain growth in alignment with *Gebeta Le Hager*.",
+      "links": [
+        {
+          "label": "Poultry & Hatchery Overview",
+          "href": "/poultry-hatchery"
+        },
+        {
+          "label": "Poultry Production",
+          "href": "/poultry-hatchery/poultry-production"
+        },
+        {
+          "label": "Hatchery Development",
+          "href": "/poultry-hatchery/hatchery-development"
+        }
+      ],
+      "suggestions": [
+        "Do you currently supply Fertilized Eggs?",
+        "What is your 5-year strategy?",
+        "Partner on Poultry & Hatchery"
+      ]
+    },
+    {
+      "id": "news-updates",
+      "category": "news",
+      "title": "Company News, Announcements & Business Updates",
+      "keywords": [
+        "news",
+        "updates",
+        "announcements",
+        "articles",
+        "blog",
+        "press",
+        "latest",
+        "events"
+      ],
+      "answer": "Our **News & Updates** center covers Lijemrakel Trading PLC’s corporate milestones across three categories:\n\n• **Company News:** International manufacturer partnerships and veterinary supply updates.\n• **Announcements:** Cold-chain warehousing protocols (`+2°C to +8°C`), fertilized hatching egg import schedules, and regulatory stewardship.\n• **Business Updates:** Our 4-phase strategic roadmap and planned poultry & hatchery development aligned with *Gebeta Le Hager*.",
+      "links": [
+        {
+          "label": "Read Latest News & Updates",
+          "href": "/news"
+        }
+      ],
+      "suggestions": [
+        "What products do you supply?",
+        "What is your 5-year strategy?",
+        "How can I contact you?"
+      ]
+    },
+    {
+      "id": "contact-location",
+      "category": "contact",
+      "title": "Contact Details, WhatsApp & Office Location",
+      "keywords": [
+        "contact",
+        "whatsapp",
+        "whats app",
+        "wa",
+        "phone",
+        "telephone",
+        "call",
+        "number",
+        "mobile",
+        "email",
+        "mail",
+        "address",
+        "location",
+        "where",
+        "office",
+        "mexico",
+        "debrewerk",
+        "tower",
+        "addis ababa",
+        "hours",
+        "open",
+        "ደብረወርቅ",
+        "ሜክሲኮ"
+      ],
+      "answer": "You can reach **Lijemrakel Trading PLC** directly via WhatsApp, phone, email, or at our Addis Ababa office:\n\n• **WhatsApp & Phone:** `0913514767` (+251 913 514 767)\n• **Office Location:** Debrewerk Tower | Mexico | ደብረወርቅ ህንጻ | ሜክሲኮ, Addis Ababa, Ethiopia\n• **Email:** `inquiries@lijemrakel.com`\n• **Business Hours:** Monday – Friday: 8:30 AM – 5:30 PM | Saturday: 8:30 AM – 12:30 PM",
+      "links": [
+        {
+          "label": "Contact Us on WhatsApp",
+          "href": "https://wa.me/251913514767?text=Hello%2C%20I%E2%80%99m%20contacting%20Lijemrakel%20Trading%20PLC.%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20products%20and%20services."
+        },
+        {
+          "label": "Call 0913514767",
+          "href": "tel:0913514767"
+        },
+        {
+          "label": "Open Contact Page",
+          "href": "/contact"
+        }
+      ],
+      "suggestions": [
+        "How do I become a supplier partner?",
+        "What products do you supply?",
+        "Who is on the leadership team?"
+      ]
+    },
+    {
+      "id": "supplier-partnership",
+      "category": "contact",
+      "title": "International Supplier & Distribution Partnerships",
+      "keywords": [
+        "supplier",
+        "manufacturer",
+        "partner",
+        "partnership",
+        "distributor",
+        "distribution",
+        "export",
+        "import partner",
+        "representation",
+        "register product"
+      ],
+      "answer": "**Partnering with Lijemrakel Trading PLC:**\nWe actively collaborate with reputable international manufacturers of veterinary medicines, vaccines, feed premixes, reproductive hormones, and certified hatching eggs seeking reliable registration, cold-chain storage, and distribution representation in Ethiopia.\n\nOur **International Business Manager (Ato Yelekal Kebede)** and **General & Technical Manager (Dr Etsubdink Negash)** coordinate supplier qualification, technical dossiers, and regulatory registration.",
+      "links": [
+        {
+          "label": "Contact Us on WhatsApp",
+          "href": "https://wa.me/251913514767?text=Hello%2C%20I%E2%80%99m%20contacting%20Lijemrakel%20Trading%20PLC.%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20products%20and%20services."
+        },
+        {
+          "label": "Supplier Partnership Form",
+          "href": "/contact?type=supplier-partnership"
+        },
+        {
+          "label": "Call 0913514767",
+          "href": "tel:0913514767"
+        }
+      ],
+      "suggestions": [
+        "Who leads International Business?",
+        "What products do you supply?",
+        "Where is your office located?"
+      ]
+    },
+    {
+      "id": "pricing-stock-guardrail",
+      "category": "guardrail",
+      "title": "Pricing, Quotations & Stock Availability",
+      "keywords": [
+        "price",
+        "pricing",
+        "cost",
+        "how much",
+        "quote",
+        "quotation",
+        "buy",
+        "order",
+        "purchase",
+        "stock",
+        "available",
+        "availability",
+        "discount",
+        "birr",
+        "usd"
+      ],
+      "answer": "Specific product pricing, batch availability, and volume quotations depend on current import shipments, pack sizes, and regulatory registration status, and are not published directly on the website.\n\nPlease message us directly on **WhatsApp (0913514767)**, call our commercial desk, or submit a **Product Inquiry** for an immediate quotation.",
+      "links": [
+        {
+          "label": "Contact Us on WhatsApp",
+          "href": "https://wa.me/251913514767?text=Hello%2C%20I%E2%80%99m%20contacting%20Lijemrakel%20Trading%20PLC.%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20products%20and%20services."
+        },
+        {
+          "label": "Request a Quotation",
+          "href": "/contact?type=product-inquiry"
+        },
+        {
+          "label": "Call 0913514767",
+          "href": "tel:0913514767"
+        }
+      ],
+      "suggestions": [
+        "What products do you supply?",
+        "Where is your office located?",
+        "How can I contact you?"
+      ]
+    }
+  ],
+  "content": {
+    "heroHeadline": "Supporting Ethiopia’s Agriculture Through Reliable Veterinary and Poultry Solutions",
+    "heroSupportingLine": "Importing essential veterinary and poultry-sector products while building long-term capabilities in livestock health, poultry production, and hatchery development.",
+    "whoWeAreP1": "Lijemrakel Trading PLC is an import and export company primarily focused on the veterinary and agricultural sectors. The company aims to connect the Ethiopian market with dependable international manufacturers and suppliers of veterinary medicines, vaccines, feed premixes, hormones, and fertilized eggs. Building on technical knowledge, international business relationships, and a commitment to responsible supply, the company seeks to become a trusted supplier for veterinary professionals, livestock producers, poultry farms, hatcheries, and agricultural businesses.",
+    "whoWeAreP2": "The company’s long-term direction also includes poultry production and hatchery business development. Through these activities, Lijemrakel Trading PLC aims to contribute to a stronger agricultural value chain, support livestock and poultry productivity, and align its growth with national agricultural development priorities, including the government’s Gebeta Le Hager initiative.",
+    "mission": "To supply quality veterinary and poultry-sector products through reliable international sourcing, responsible importation, and customer-focused distribution—supporting animal health, productive farms, and the development of Ethiopia’s agricultural economy.",
+    "vision": "To become one of Ethiopia’s leading and most trusted suppliers of veterinary and poultry-sector products, while developing competitive poultry production and hatchery operations that contribute to sustainable agricultural growth."
+  },
+  "settings": {
+    "legalName": "Lijemrakel Trading PLC",
+    "shortName": "Lijemrakel Trading",
+    "tagline": "IMPORT & EXPORT | BUSINESS | LOGISTICS | INTERNATIONAL TRADE",
+    "phone": "0913514767",
+    "email": "inquiries@lijemrakel.com",
+    "officeLocation": "Debrewerk Tower | Mexico | ደብረወርቅ ህንጻ | ሜክሲኮ",
+    "businessHours": "Monday – Friday: 8:30 AM – 5:30 PM | Saturday: 8:30 AM – 12:30 PM",
+    "whatsappUrl": "https://wa.me/251913514767"
+  }
+}
