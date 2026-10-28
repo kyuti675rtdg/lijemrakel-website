@@ -3,8 +3,19 @@
 import React, { useMemo, useState } from 'react';
 import { Globe, Users, Plus, Minus, RotateCcw } from 'lucide-react';
 import { VisitorCountryStat } from '@/types/admin';
+import worldMapData from '@/data/worldMapLocations.json';
 
 export type AnalyticsDaysRange = 7 | 30 | 90 | 365;
+
+interface WorldMapLocation {
+  code: string;
+  name: string;
+  cx: number;
+  cy: number;
+  path: string;
+}
+
+const WORLD_LOCATIONS = (worldMapData.locations || []) as WorldMapLocation[];
 
 /**
  * Crisp inline SVG Country Flags so flags render identically across Windows, macOS, and mobile
@@ -239,290 +250,6 @@ export function CountryFlag({
   }
 }
 
-interface WorldCountryShape {
-  code: string;
-  name: string;
-  d: string;
-}
-
-/**
- * Detailed, accurate geographic world map country & territory polygons (1000 x 500 viewBox)
- * Styled after professional SaaS choropleth analytics maps.
- */
-const WORLD_COUNTRY_SHAPES: WorldCountryShape[] = [
-  // NORTH AMERICA
-  {
-    code: 'CA',
-    name: 'Canada',
-    d: 'M122,72 L145,60 L178,56 L212,62 L248,54 L278,66 L305,82 L318,104 L302,126 L284,138 L260,144 L236,140 L198,140 L152,138 L134,122 L118,98 Z M72,74 L116,68 L120,98 L98,104 L68,94 Z M234,36 L278,32 L294,48 L266,54 L236,48 Z M178,38 L218,34 L224,48 L184,50 Z',
-  },
-  {
-    code: 'US',
-    name: 'United States',
-    d: 'M136,138 L198,140 L238,140 L264,144 L286,138 L296,150 L282,168 L272,186 L262,206 L252,204 L244,192 L222,196 L210,210 L196,198 L176,194 L154,188 L138,172 L132,154 Z',
-  },
-  {
-    code: 'MX',
-    name: 'Mexico & Central America',
-    d: 'M158,190 L178,194 L196,200 L208,212 L222,218 L234,234 L244,250 L232,254 L214,240 L194,228 L174,214 Z M242,222 L266,220 L274,228 L248,228 Z',
-  },
-  {
-    code: 'GL',
-    name: 'Greenland',
-    d: 'M322,26 L368,20 L414,28 L422,52 L398,78 L368,90 L344,82 L326,56 Z',
-  },
-
-  // SOUTH AMERICA
-  {
-    code: 'CO',
-    name: 'Northern South America',
-    d: 'M246,252 L272,248 L298,256 L312,268 L292,286 L264,296 L246,282 Z',
-  },
-  {
-    code: 'PE',
-    name: 'Peru & Bolivia',
-    d: 'M246,282 L268,294 L290,312 L292,344 L274,352 L254,324 L242,298 Z',
-  },
-  {
-    code: 'BR',
-    name: 'Brazil',
-    d: 'M294,268 L322,272 L352,286 L372,306 L366,336 L348,364 L326,382 L308,372 L292,344 L290,312 L268,294 Z',
-  },
-  {
-    code: 'AR',
-    name: 'Argentina & Chile',
-    d: 'M274,352 L292,344 L310,372 L324,384 L314,414 L302,446 L292,464 L278,454 L274,418 L272,382 Z',
-  },
-
-  // EUROPE
-  {
-    code: 'IS',
-    name: 'Iceland',
-    d: 'M434,82 L456,78 L460,90 L438,92 Z',
-  },
-  {
-    code: 'GB',
-    name: 'United Kingdom',
-    d: 'M468,112 L484,108 L492,126 L488,140 L470,138 L464,126 Z M456,120 L466,118 L466,132 L456,132 Z',
-  },
-  {
-    code: 'NO',
-    name: 'Norway',
-    d: 'M502,98 L516,74 L538,56 L552,60 L534,86 L520,108 L504,108 Z',
-  },
-  {
-    code: 'SE',
-    name: 'Sweden & Finland',
-    d: 'M520,108 L534,84 L552,60 L574,66 L580,96 L562,110 L544,120 L526,118 Z',
-  },
-  {
-    code: 'FR',
-    name: 'France',
-    d: 'M478,144 L502,140 L514,150 L512,168 L494,172 L478,164 Z',
-  },
-  {
-    code: 'ES',
-    name: 'Spain & Portugal',
-    d: 'M462,164 L492,168 L496,184 L476,190 L460,184 Z',
-  },
-  {
-    code: 'NL',
-    name: 'Netherlands',
-    d: 'M502,128 L514,126 L514,138 L502,140 Z',
-  },
-  {
-    code: 'BE',
-    name: 'Belgium',
-    d: 'M498,138 L512,138 L512,146 L498,146 Z',
-  },
-  {
-    code: 'DE',
-    name: 'Germany',
-    d: 'M512,126 L534,126 L538,142 L532,154 L512,152 Z',
-  },
-  {
-    code: 'CH',
-    name: 'Switzerland & Austria',
-    d: 'M512,152 L540,152 L542,160 L512,160 Z',
-  },
-  {
-    code: 'IT',
-    name: 'Italy',
-    d: 'M514,160 L534,160 L548,178 L542,190 L532,184 L520,170 Z',
-  },
-  {
-    code: 'PL',
-    name: 'Central & Eastern Europe',
-    d: 'M534,124 L564,122 L572,142 L568,162 L552,176 L538,166 L534,148 Z',
-  },
-  {
-    code: 'UA',
-    name: 'Ukraine & Belarus',
-    d: 'M564,118 L598,118 L608,138 L596,156 L568,154 Z',
-  },
-
-  // EURASIA & MIDDLE EAST
-  {
-    code: 'RU',
-    name: 'Russia',
-    d: 'M576,66 L628,56 L702,48 L788,52 L872,62 L928,78 L916,108 L874,124 L842,146 L798,148 L748,138 L698,136 L646,136 L608,136 L596,116 L578,96 Z',
-  },
-  {
-    code: 'KZ',
-    name: 'Central Asia',
-    d: 'M616,136 L698,136 L724,156 L696,178 L636,176 L614,158 Z',
-  },
-  {
-    code: 'TR',
-    name: 'Turkey',
-    d: 'M562,172 L608,170 L614,186 L566,188 Z',
-  },
-  {
-    code: 'IR',
-    name: 'Iran & Iraq',
-    d: 'M608,184 L646,180 L668,198 L660,220 L626,216 L606,198 Z',
-  },
-  {
-    code: 'SA',
-    name: 'Saudi Arabia',
-    d: 'M596,204 L626,204 L650,224 L656,244 L628,258 L608,248 L596,222 Z',
-  },
-  {
-    code: 'AE',
-    name: 'United Arab Emirates',
-    d: 'M644,222 L662,222 L664,236 L646,238 Z',
-  },
-
-  // AFRICA
-  {
-    code: 'MA',
-    name: 'Morocco',
-    d: 'M454,194 L486,192 L488,214 L452,224 Z',
-  },
-  {
-    code: 'DZ',
-    name: 'Algeria & Tunisia',
-    d: 'M486,190 L526,188 L532,216 L508,242 L478,236 L484,212 Z',
-  },
-  {
-    code: 'LY',
-    name: 'Libya',
-    d: 'M526,196 L564,198 L564,238 L528,238 Z',
-  },
-  {
-    code: 'EG',
-    name: 'Egypt',
-    d: 'M564,200 L594,202 L598,236 L564,236 Z',
-  },
-  {
-    code: 'NG',
-    name: 'Nigeria & West Africa',
-    d: 'M452,224 L482,236 L528,238 L544,264 L536,288 L508,290 L476,286 L450,266 Z',
-  },
-  {
-    code: 'SD',
-    name: 'Sudan & Chad',
-    d: 'M544,238 L598,236 L606,258 L592,286 L556,286 L542,262 Z',
-  },
-  {
-    code: 'DJ',
-    name: 'Djibouti & Horn Coast',
-    d: 'M610,258 L636,262 L638,284 L620,298 L614,284 Z',
-  },
-  {
-    code: 'ET',
-    name: 'Ethiopia',
-    d: 'M590,258 L614,256 L628,270 L620,288 L594,290 L586,274 Z',
-  },
-  {
-    code: 'KE',
-    name: 'Kenya',
-    d: 'M592,290 L618,288 L620,314 L596,316 L588,302 Z',
-  },
-  {
-    code: 'CD',
-    name: 'Central Africa & DRC',
-    d: 'M522,288 L562,286 L588,290 L588,324 L568,346 L532,342 L520,312 Z',
-  },
-  {
-    code: 'TZ',
-    name: 'Tanzania & East Africa',
-    d: 'M586,314 L616,314 L616,348 L586,352 L578,332 Z',
-  },
-  {
-    code: 'AO',
-    name: 'Southern Central Africa',
-    d: 'M528,342 L574,344 L608,350 L602,382 L568,386 L528,378 Z',
-  },
-  {
-    code: 'ZA',
-    name: 'South Africa',
-    d: 'M532,378 L588,382 L594,404 L572,424 L544,422 L532,398 Z',
-  },
-  {
-    code: 'MG',
-    name: 'Madagascar',
-    d: 'M624,354 L638,348 L642,386 L626,392 Z',
-  },
-
-  // ASIA & OCEANIA
-  {
-    code: 'PK',
-    name: 'Pakistan & Afghanistan',
-    d: 'M666,184 L698,182 L706,208 L684,228 L662,216 Z',
-  },
-  {
-    code: 'IN',
-    name: 'India',
-    d: 'M692,202 L728,200 L752,218 L742,244 L722,282 L708,282 L696,248 L684,226 Z M724,284 L732,284 L732,294 L724,294 Z',
-  },
-  {
-    code: 'CN',
-    name: 'China & Mongolia',
-    d: 'M704,138 L758,136 L812,144 L848,144 L858,168 L846,198 L824,224 L792,232 L762,226 L744,212 L718,196 L702,174 Z',
-  },
-  {
-    code: 'TH',
-    name: 'Southeast Asia',
-    d: 'M756,224 L796,228 L812,252 L796,278 L782,292 L770,272 L756,248 Z',
-  },
-  {
-    code: 'SG',
-    name: 'Singapore',
-    d: 'M778,290 L790,290 L790,298 L778,298 Z',
-  },
-  {
-    code: 'ID',
-    name: 'Indonesia & Maritime SEA',
-    d: 'M760,296 L792,312 L818,320 L786,324 L756,308 Z M802,294 L828,292 L830,312 L804,312 Z M836,302 L878,306 L884,322 L840,320 Z',
-  },
-  {
-    code: 'PH',
-    name: 'Philippines',
-    d: 'M832,248 L846,246 L852,276 L836,278 Z',
-  },
-  {
-    code: 'KR',
-    name: 'Korea',
-    d: 'M842,172 L856,172 L858,192 L844,192 Z',
-  },
-  {
-    code: 'JP',
-    name: 'Japan',
-    d: 'M874,154 L890,156 L892,176 L876,196 L864,192 L872,172 Z',
-  },
-  {
-    code: 'AU',
-    name: 'Australia',
-    d: 'M784,344 L828,334 L868,342 L894,368 L888,402 L856,422 L816,412 L782,396 L774,368 Z M858,426 L870,426 L868,436 L858,434 Z',
-  },
-  {
-    code: 'NZ',
-    name: 'New Zealand',
-    d: 'M918,412 L934,402 L942,428 L924,442 Z',
-  },
-];
-
 interface GlobalVisitorMapProps {
   countryStats: VisitorCountryStat[];
   totalPageViews: number;
@@ -536,11 +263,18 @@ export function GlobalVisitorMap({
   uniqueVisitors,
 }: GlobalVisitorMapProps) {
   const [zoom, setZoom] = useState<number>(1);
+  const [pan, setPan] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
   const [selectedCode, setSelectedCode] = useState<string>(
-    countryStats[0]?.countryCode || 'US'
+    countryStats[0]?.countryCode || 'ET'
   );
+  const [hoveredCode, setHoveredCode] = useState<string | null>(null);
 
-  // Build lookup map of countryCode -> stat
+  // Lookup map of countryCode -> visitor stat
   const statByCode = useMemo(() => {
     const map = new Map<string, VisitorCountryStat>();
     for (const s of countryStats) {
@@ -549,8 +283,36 @@ export function GlobalVisitorMap({
     return map;
   }, [countryStats]);
 
-  const activeCountry =
-    statByCode.get(selectedCode) || countryStats[0] || null;
+  // Lookup map of countryCode -> high-precision Mercator location geometry
+  const locationByCode = useMemo(() => {
+    const map = new Map<string, WorldMapLocation>();
+    for (const loc of WORLD_LOCATIONS) {
+      map.set(loc.code, loc);
+    }
+    return map;
+  }, []);
+
+  const activeCode = hoveredCode || selectedCode || countryStats[0]?.countryCode || null;
+
+  const activeCountry = useMemo(() => {
+    if (activeCode && statByCode.has(activeCode)) {
+      return statByCode.get(activeCode)!;
+    }
+    if (activeCode && hoveredCode && locationByCode.has(activeCode)) {
+      const loc = locationByCode.get(activeCode)!;
+      return {
+        countryCode: loc.code,
+        countryName: loc.name,
+        region: 'International',
+        visitors: 0,
+        pageViews: 0,
+        visitorShare: 0,
+        trafficShare: 0,
+        coordinates: { x: loc.cx, y: loc.cy },
+      } satisfies VisitorCountryStat;
+    }
+    return countryStats[0] || null;
+  }, [activeCode, hoveredCode, statByCode, locationByCode, countryStats]);
 
   const topCountry = countryStats[0] || null;
   const maxVisitors = Math.max(
@@ -562,11 +324,12 @@ export function GlobalVisitorMap({
   const getCountryFill = (code: string): string => {
     const stat = statByCode.get(code);
     const isSelected = activeCountry?.countryCode === code;
+    const isHovered = hoveredCode === code;
 
     if (!stat || stat.visitors <= 0) {
-      return '#DCE8F7';
+      return isHovered ? '#BFDBFE' : '#C9DDF8';
     }
-    if (isSelected) {
+    if (isSelected || isHovered) {
       return '#1D4ED8';
     }
 
@@ -577,7 +340,7 @@ export function GlobalVisitorMap({
     return '#93C5FD';
   };
 
-  // Build Top Countries rows (up to 8 individual + "Other Countries" row if > 8)
+  // Build Top Countries rows (up to 8 individual + "Other Countries" row if > 9)
   const topCountriesRows = useMemo(() => {
     if (countryStats.length <= 9) {
       return {
@@ -589,7 +352,9 @@ export function GlobalVisitorMap({
     const rest = countryStats.slice(8);
     const otherVisitors = rest.reduce((sum, c) => sum + c.visitors, 0);
     const otherShare = Number(
-      rest.reduce((sum, c) => sum + (c.visitorShare || c.trafficShare || 0), 0).toFixed(1)
+      rest
+        .reduce((sum, c) => sum + (c.visitorShare || c.trafficShare || 0), 0)
+        .toFixed(1)
     );
     return {
       primary,
@@ -602,16 +367,42 @@ export function GlobalVisitorMap({
     };
   }, [countryStats]);
 
-  // Compute safe tooltip anchor percentages inside the map container
+  // Compute safe tooltip anchor percentages inside the 1010x666 Mercator map container
   const tooltipPos = useMemo(() => {
     if (!activeCountry) return { leftPct: 24, topPct: 42 };
-    const xPct = (activeCountry.coordinates.x / 1000) * 100;
-    const yPct = (activeCountry.coordinates.y / 480) * 100;
+    const loc = locationByCode.get(activeCountry.countryCode.toUpperCase());
+    const cx = loc?.cx ?? activeCountry.coordinates.x ?? 505;
+    const cy = loc?.cy ?? activeCountry.coordinates.y ?? 333;
+    const xPct = (cx / 1010) * 100;
+    const yPct = (cy / 666) * 100;
     return {
-      leftPct: Math.min(64, Math.max(10, xPct - 6)),
-      topPct: Math.min(68, Math.max(16, yPct - 8)),
+      leftPct: Math.min(62, Math.max(8, xPct - 6)),
+      topPct: Math.min(68, Math.max(12, yPct - 10)),
     };
-  }, [activeCountry]);
+  }, [activeCountry, locationByCode]);
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (zoom <= 1) return;
+    setIsDragging(true);
+    setDragStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    setPan({
+      x: Math.max(-180, Math.min(180, e.clientX - dragStart.x)),
+      y: Math.max(-120, Math.min(120, e.clientY - dragStart.y)),
+    });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleResetView = () => {
+    setZoom(1);
+    setPan({ x: 0, y: 0 });
+  };
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200/80 shadow-2xs p-5 sm:p-6 flex flex-col justify-between h-full">
@@ -666,16 +457,31 @@ export function GlobalVisitorMap({
         </div>
       </div>
 
-      {/* Main Split: Choropleth Map (7 cols) + Top Countries Ranking (5 cols) */}
+      {/* Main Split: High-Precision Mercator Choropleth Map (7 cols) + Top Countries Ranking (5 cols) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 pt-4 items-stretch flex-1">
-        {/* Left: Light Choropleth World Map */}
-        <div className="lg:col-span-7 relative rounded-2xl bg-[#F8FAFC] border border-slate-100 min-h-[310px] flex flex-col justify-between overflow-hidden p-3">
+        {/* Left: High-Precision Vector Choropleth World Map Matching Reference Silhouette */}
+        <div
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={() => {
+            handleMouseUp();
+            setHoveredCode(null);
+          }}
+          className={`lg:col-span-7 relative rounded-2xl bg-[#F8FAFC] border border-slate-100 min-h-[325px] flex flex-col justify-between overflow-hidden p-3 ${
+            zoom > 1
+              ? isDragging
+                ? 'cursor-grabbing'
+                : 'cursor-grab'
+              : 'cursor-default'
+          }`}
+        >
           {/* Zoom + / - Controls */}
           <div className="absolute top-3 left-3 z-20 flex flex-col bg-white rounded-lg border border-slate-200 shadow-2xs overflow-hidden">
             <button
               type="button"
               onClick={() =>
-                setZoom((z) => Math.min(1.6, +(z + 0.2).toFixed(2)))
+                setZoom((z) => Math.min(2.4, +(z + 0.3).toFixed(2)))
               }
               aria-label="Zoom in"
               className="p-1.5 text-slate-600 hover:bg-slate-50 border-b border-slate-200 transition-colors"
@@ -684,18 +490,22 @@ export function GlobalVisitorMap({
             </button>
             <button
               type="button"
-              onClick={() =>
-                setZoom((z) => Math.max(1, +(z - 0.2).toFixed(2)))
-              }
+              onClick={() => {
+                setZoom((z) => {
+                  const next = Math.max(1, +(z - 0.3).toFixed(2));
+                  if (next === 1) setPan({ x: 0, y: 0 });
+                  return next;
+                });
+              }}
               aria-label="Zoom out"
               className="p-1.5 text-slate-600 hover:bg-slate-50 transition-colors"
             >
               <Minus className="w-3.5 h-3.5" />
             </button>
-            {zoom > 1 && (
+            {(zoom > 1 || pan.x !== 0 || pan.y !== 0) && (
               <button
                 type="button"
-                onClick={() => setZoom(1)}
+                onClick={handleResetView}
                 aria-label="Reset zoom"
                 className="p-1.5 text-slate-500 hover:bg-slate-50 border-t border-slate-200 transition-colors"
               >
@@ -704,40 +514,49 @@ export function GlobalVisitorMap({
             )}
           </div>
 
-          {/* SVG Choropleth Map */}
-          <div className="flex-1 flex items-center justify-center overflow-hidden my-auto py-1">
+          {/* High-Precision 256-Country Mercator SVG World Map */}
+          <div className="flex-1 flex items-center justify-center overflow-hidden my-auto">
             <svg
-              viewBox="60 15 900 455"
-              className="w-full h-full max-h-[265px] transition-transform duration-300 select-none"
-              style={{ transform: `scale(${zoom})` }}
+              viewBox="0 18 1010 638"
+              preserveAspectRatio="xMidYMid meet"
+              className="w-full h-full max-h-[290px] transition-transform duration-200 select-none"
+              style={{
+                transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
+                transformOrigin: 'center center',
+              }}
               role="img"
-              aria-label="Global Visitor Choropleth Map"
+              aria-label="Global Visitor Choropleth World Map"
             >
-              <g stroke="#FFFFFF" strokeWidth="1.2" strokeLinejoin="round">
-                {WORLD_COUNTRY_SHAPES.map((shape) => {
-                  const hasStats = statByCode.has(shape.code);
+              <g
+                stroke="#FFFFFF"
+                strokeWidth="0.7"
+                strokeLinejoin="round"
+                strokeLinecap="round"
+              >
+                {WORLD_LOCATIONS.map((loc) => {
+                  const stat = statByCode.get(loc.code);
+                  const hasStats = Boolean(stat && stat.visitors > 0);
                   return (
                     <path
-                      key={shape.code}
-                      d={shape.d}
-                      fill={getCountryFill(shape.code)}
-                      className={
-                        hasStats
-                          ? 'cursor-pointer transition-colors duration-200 hover:opacity-90'
-                          : 'transition-colors duration-200'
-                      }
-                      onClick={() => {
-                        if (hasStats) setSelectedCode(shape.code);
+                      key={loc.code}
+                      d={loc.path}
+                      fill={getCountryFill(loc.code)}
+                      className="cursor-pointer transition-colors duration-150"
+                      onMouseEnter={() => setHoveredCode(loc.code)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedCode(loc.code);
                       }}
                     >
                       <title>
-                        {shape.name}
-                        {hasStats
-                          ? `: ${statByCode.get(shape.code)?.visitors.toLocaleString()} visitors (${
-                              statByCode.get(shape.code)?.visitorShare ??
-                              statByCode.get(shape.code)?.trafficShare
-                            }%)`
-                          : ''}
+                        {loc.name}
+                        {hasStats && stat
+                          ? `: ${stat.visitors.toLocaleString()} visitors (${(
+                              stat.visitorShare ||
+                              stat.trafficShare ||
+                              0
+                            ).toFixed(1)}%)`
+                          : ': 0 visitors'}
                       </title>
                     </path>
                   );
@@ -746,30 +565,36 @@ export function GlobalVisitorMap({
 
               {/* Interactive Country Pins for All Recorded Countries */}
               {countryStats.map((stat) => {
+                const loc = locationByCode.get(stat.countryCode.toUpperCase());
+                const cx = loc?.cx ?? stat.coordinates.x;
+                const cy = loc?.cy ?? stat.coordinates.y;
                 const isSelected =
                   activeCountry?.countryCode === stat.countryCode;
                 return (
                   <g
                     key={`pin-${stat.countryCode}`}
                     className="cursor-pointer"
-                    onClick={() => setSelectedCode(stat.countryCode)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedCode(stat.countryCode);
+                    }}
                   >
                     {isSelected && (
                       <circle
-                        cx={stat.coordinates.x}
-                        cy={stat.coordinates.y}
-                        r={12}
+                        cx={cx}
+                        cy={cy}
+                        r={13}
                         fill="#1D4ED8"
                         opacity={0.22}
                       />
                     )}
                     <circle
-                      cx={stat.coordinates.x}
-                      cy={stat.coordinates.y}
-                      r={isSelected ? 5 : 3.2}
+                      cx={cx}
+                      cy={cy}
+                      r={isSelected ? 5.2 : 3.5}
                       fill={isSelected ? '#1E40AF' : '#2563EB'}
                       stroke="#FFFFFF"
-                      strokeWidth="1.5"
+                      strokeWidth="1.6"
                     />
                   </g>
                 );
@@ -777,21 +602,23 @@ export function GlobalVisitorMap({
             </svg>
           </div>
 
-          {/* Floating Selected Country Tooltip Card Matching Reference */}
+          {/* Floating Selected/Hovered Country Tooltip Card Matching Reference */}
           {activeCountry && (
             <div
               style={{
                 left: `${tooltipPos.leftPct}%`,
                 top: `${tooltipPos.topPct}%`,
               }}
-              className="absolute z-20 bg-white/95 backdrop-blur-xs rounded-xl border border-slate-200/90 shadow-lg px-3.5 py-2.5 space-y-1 min-w-[152px] transition-all duration-300 pointer-events-none"
+              className="absolute z-20 bg-white/95 backdrop-blur-xs rounded-xl border border-slate-200/90 shadow-lg px-3.5 py-2.5 space-y-1 min-w-[156px] transition-all duration-200 pointer-events-none"
             >
               <div className="flex items-center gap-2 font-heading text-xs font-extrabold text-[#0B1938]">
                 <CountryFlag
                   code={activeCountry.countryCode}
                   className="w-4 h-3"
                 />
-                <span>{activeCountry.countryName}</span>
+                <span className="truncate max-w-[140px]">
+                  {activeCountry.countryName}
+                </span>
               </div>
               <div className="flex items-center gap-1.5 text-[11px] text-slate-600">
                 <span className="w-2 h-2 rotate-45 bg-[#F59E0B] inline-block shrink-0" />
@@ -823,7 +650,7 @@ export function GlobalVisitorMap({
           <div className="relative z-10 pt-2 flex items-center justify-between gap-4">
             <div className="flex flex-col gap-1 w-60 max-w-full">
               <div className="grid grid-cols-5 h-2 rounded-full overflow-hidden border border-slate-200/60">
-                <div className="bg-[#DCE8F7]" />
+                <div className="bg-[#C9DDF8]" />
                 <div className="bg-[#93C5FD]" />
                 <div className="bg-[#60A5FA]" />
                 <div className="bg-[#2563EB]" />
