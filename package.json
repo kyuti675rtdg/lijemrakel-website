@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -H 0.0.0.0",
+    "start": "node scripts/start-prod.mjs",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
   },
