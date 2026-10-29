@@ -25,6 +25,9 @@ function ensureDir(dirPath) {
 ensureDir(dataDir);
 ensureDir(uploadsDir);
 
+const restoreDbFile = path.join(dataDir, 'production-db.restore.json');
+const bakDbFile = path.join(dataDir, 'production-db.json.bak');
+
 function logEvent(message) {
   const line = `[${new Date().toISOString()}] ${message}\n`;
   process.stdout.write(line);
@@ -35,63 +38,49 @@ function logEvent(message) {
   }
 }
 
-/**
- * Safely links sourcePath -> targetPath inside .next/standalone without ever
- * deleting persistent data or uploaded files.
- */
-function safeLinkDir(sourcePath, targetPath) {
+// Restore production database snapshot if queued before startup
+if (fs.existsSync(restoreDbFile)) {
   try {
-    if (!fs.existsSync(sourcePath)) return;
-
-    try {
-      const stat = fs.lstatSync(targetPath);
-      if (stat.isSymbolicLink()) {
-        const currentTarget = fs.readlinkSync(targetPath);
-        if (path.resolve(path.dirname(targetPath), currentTarget) === path.resolve(sourcePath)) {
-          return;
-        }
-        fs.unlinkSync(targetPath);
-      } else if (stat.isDirectory()) {
-        // Preserve any runtime files before replacing directory with symlink
-        if (path.basename(targetPath) === 'data') {
-          const standaloneDb = path.join(targetPath, 'production-db.json');
-          if (fs.existsSync(standaloneDb) && !fs.existsSync(dbFile)) {
-            fs.copyFileSync(standaloneDb, dbFile);
-          }
-        } else if (path.basename(targetPath) === 'public') {
-          const standaloneUploads = path.join(targetPath, 'uploads');
-          if (fs.existsSync(standaloneUploads)) {
-            for (const item of fs.readdirSync(standaloneUploads)) {
-              const srcItem = path.join(standaloneUploads, item);
-              const dstItem = path.join(uploadsDir, item);
-              if (!fs.existsSync(dstItem)) {
-                fs.copyFileSync(srcItem, dstItem);
-              }
-            }
-          }
-        }
-        fs.rmSync(targetPath, { recursive: true, force: true });
-      } else {
-        fs.rmSync(targetPath, { force: true });
-      }
-    } catch {
-      // targetPath does not exist yet
-    }
-
-    ensureDir(path.dirname(targetPath));
-    try {
-      fs.symlinkSync(
-        sourcePath,
-        targetPath,
-        process.platform === 'win32' ? 'junction' : 'dir'
-      );
-      logEvent(`Linked ${targetPath} -> ${sourcePath}`);
-    } catch {
-      fs.cpSync(sourcePath, targetPath, { recursive: true, force: true });
-      logEvent(`Copied ${sourcePath} -> ${targetPath}`);
+    const stat = fs.statSync(restoreDbFile);
+    if (stat.size > 64) {
+      fs.copyFileSync(restoreDbFile, dbFile);
+      fs.copyFileSync(restoreDbFile, bakDbFile);
+      fs.unlinkSync(restoreDbFile);
+      logEvent(`Restored production database (${stat.size} bytes) from production-db.restore.json`);
     }
   } catch (err) {
-    logEvent(`Warning linking ${sourcePath}: ${err?.message || err}`);
+    logEvent(`Warning restoring production DB: ${err?.message || err}`);
+  }
+}
+
+/**
+ * Safely unlinks a symlink without touching its target directory.
+ */
+function unlinkIfSymlink(targetPath) {
+  try {
+    const stat = fs.lstatSync(targetPath);
+    if (stat.isSymbolicLink()) {
+      fs.unlinkSync(targetPath);
+      logEvent(`Removed legacy symlink ${targetPath}`);
+    }
+  } catch {
+    // targetPath does not exist
+  }
+}
+
+/**
+ * Copies static assets into .next/standalone without creating symlinks.
+ * Avoids symlinks inside .next/ so `next build` cleanup never traverses into /app/data or /app/public.
+ */
+function syncStandaloneDir(sourcePath, targetPath) {
+  try {
+    if (!fs.existsSync(sourcePath)) return;
+    unlinkIfSymlink(targetPath);
+    ensureDir(path.dirname(targetPath));
+    fs.cpSync(sourcePath, targetPath, { recursive: true, force: true });
+    logEvent(`Synced ${sourcePath} -> ${targetPath}`);
+  } catch (err) {
+    logEvent(`Warning syncing ${sourcePath}: ${err?.message || err}`);
   }
 }
 
@@ -179,12 +168,12 @@ const standaloneDir = path.join(rootDir, '.next', 'standalone');
 const standaloneServer = path.join(standaloneDir, 'server.js');
 
 if (fs.existsSync(standaloneServer)) {
-  safeLinkDir(path.join(rootDir, 'public'), path.join(standaloneDir, 'public'));
-  safeLinkDir(
+  unlinkIfSymlink(path.join(standaloneDir, 'data'));
+  syncStandaloneDir(path.join(rootDir, 'public'), path.join(standaloneDir, 'public'));
+  syncStandaloneDir(
     path.join(rootDir, '.next', 'static'),
     path.join(standaloneDir, '.next', 'static')
   );
-  safeLinkDir(dataDir, path.join(standaloneDir, 'data'));
 }
 
 // Intercept http.createServer in-process so we run a single Node process
