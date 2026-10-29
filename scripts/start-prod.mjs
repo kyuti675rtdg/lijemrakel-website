@@ -171,7 +171,8 @@ process.env.NEXT_TELEMETRY_DISABLED = '1';
 process.env.APP_ROOT_DIR = rootDir;
 process.env.DATA_DIR = dataDir;
 process.env.UPLOADS_DIR = uploadsDir;
-process.env.HOSTNAME = process.env.HOSTNAME || '0.0.0.0';
+// Force 0.0.0.0 (Podman pre-populates HOSTNAME with container ID, which binds only one IP)
+process.env.HOSTNAME = '0.0.0.0';
 process.env.PORT = process.env.PORT || '3000';
 
 const standaloneDir = path.join(rootDir, '.next', 'standalone');
@@ -295,15 +296,13 @@ const patchedCreateServer = function patchedCreateServer(optionsOrListener, mayb
 
   const originalListen = server.listen.bind(server);
   server.listen = function patchedListen(...args) {
-    // Bind dual-stack '::' on Linux when '0.0.0.0' is requested so both IPv4 (127.0.0.1)
-    // and IPv6 (::1) loopback health probes succeed.
+    // Ensure wildcard 0.0.0.0 binding on TCP port so both 127.0.0.1 loopback and container eth0 work
     if (
-      process.platform === 'linux' &&
       typeof args[0] === 'number' &&
-      args[1] === '0.0.0.0' &&
+      typeof args[1] === 'string' &&
       !process.env.PASSENGER_APP_ENV
     ) {
-      args[1] = '::';
+      args[1] = '0.0.0.0';
     }
     return originalListen(...args);
   };
