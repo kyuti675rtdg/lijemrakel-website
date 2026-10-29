@@ -2,6 +2,9 @@
   "name": "lijemrakel-trading-corporate-web",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "description": "Official Corporate & Technical Product Catalogue Website for Lijemrakel Trading PLC — Developed by Orbit Technology Solution PLC",
   "scripts": {
     "dev": "next dev",

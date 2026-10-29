@@ -5,7 +5,12 @@ import {
   getAuthenticatedUserFromRequest,
   hasModulePermission,
 } from '@/lib/server/auth';
-import { appendAuditLog, readDb, writeDb } from '@/lib/server/db';
+import {
+  appendAuditLog,
+  readDb,
+  resolveUploadsDir,
+  writeDb,
+} from '@/lib/server/db';
 import { MediaAssetItem, SiteImagesConfig } from '@/types/admin';
 
 export async function POST(req: NextRequest) {
@@ -69,7 +74,7 @@ export async function POST(req: NextRequest) {
 
     let publicUrl = '';
     try {
-      const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
+      const uploadsDir = resolveUploadsDir();
       if (!fs.existsSync(uploadsDir)) {
         fs.mkdirSync(uploadsDir, { recursive: true });
       }

@@ -402,11 +402,32 @@ function getDefaults(): ProductionDatabaseSchema {
   return cachedDefaults;
 }
 
+export function resolveAppRootDir(): string {
+  if (process.env.APP_ROOT_DIR) {
+    return path.resolve(process.env.APP_ROOT_DIR);
+  }
+  const cwd = process.cwd();
+  const normalized = cwd.replace(/\\/g, '/');
+  if (normalized.endsWith('/.next/standalone')) {
+    return path.resolve(cwd, '..', '..');
+  }
+  return cwd;
+}
+
+export function resolveUploadsDir(): string {
+  if (process.env.UPLOADS_DIR) {
+    return path.resolve(process.env.UPLOADS_DIR);
+  }
+  return path.join(resolveAppRootDir(), 'public', 'uploads');
+}
+
 function resolveDbFilePath(): string {
   if (cachedDbFilePath) {
     return cachedDbFilePath;
   }
-  const primaryDir = path.join(process.cwd(), 'data');
+  const primaryDir = process.env.DATA_DIR
+    ? path.resolve(process.env.DATA_DIR)
+    : path.join(resolveAppRootDir(), 'data');
   try {
     if (!fs.existsSync(primaryDir)) {
       fs.mkdirSync(primaryDir, { recursive: true });
@@ -426,14 +447,19 @@ function resolveDbFilePath(): string {
 export function readDb(): ProductionDatabaseSchema {
   try {
     const dbPath = resolveDbFilePath();
+    const bakPath = `${dbPath}.bak`;
+    if (!fs.existsSync(dbPath)) {
+      if (fs.existsSync(bakPath)) {
+        try {
+          fs.copyFileSync(bakPath, dbPath);
+        } catch {
+          // ignore recovery copy failure
+        }
+      }
+    }
     if (!fs.existsSync(dbPath)) {
       const initial = buildInitialDatabase();
-      fs.writeFileSync(dbPath, JSON.stringify(initial, null, 2), 'utf8');
-      try {
-        lastReadMtimeMs = fs.statSync(dbPath).mtimeMs;
-      } catch {
-        lastReadMtimeMs = Date.now();
-      }
+      writeDb(initial);
       memoryFallbackDb = initial;
       return initial;
     }
@@ -443,8 +469,23 @@ export function readDb(): ProductionDatabaseSchema {
       return memoryFallbackDb;
     }
 
-    const raw = fs.readFileSync(dbPath, 'utf8');
-    const parsed = JSON.parse(raw) as Partial<ProductionDatabaseSchema>;
+    let parsed: Partial<ProductionDatabaseSchema>;
+    try {
+      const raw = fs.readFileSync(dbPath, 'utf8');
+      parsed = JSON.parse(raw) as Partial<ProductionDatabaseSchema>;
+    } catch (parseErr) {
+      if (fs.existsSync(bakPath)) {
+        const bakRaw = fs.readFileSync(bakPath, 'utf8');
+        parsed = JSON.parse(bakRaw) as Partial<ProductionDatabaseSchema>;
+        try {
+          fs.copyFileSync(bakPath, dbPath);
+        } catch {
+          // ignore restore failure
+        }
+      } else {
+        throw parseErr;
+      }
+    }
     const defaults = getDefaults();
 
     const merged: ProductionDatabaseSchema = {
@@ -522,7 +563,21 @@ export function writeDb(data: ProductionDatabaseSchema): void {
   memoryFallbackDb = data;
   try {
     const dbPath = resolveDbFilePath();
-    fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf8');
+    const serialized = JSON.stringify(data, null, 2);
+    const tmpPath = `${dbPath}.tmp.${process.pid}.${Date.now()}`;
+    const bakPath = `${dbPath}.bak`;
+    fs.writeFileSync(tmpPath, serialized, 'utf8');
+    if (fs.existsSync(dbPath)) {
+      try {
+        const currentStat = fs.statSync(dbPath);
+        if (currentStat.size > 64) {
+          fs.copyFileSync(dbPath, bakPath);
+        }
+      } catch {
+        // ignore backup copy failure
+      }
+    }
+    fs.renameSync(tmpPath, dbPath);
     try {
       lastReadMtimeMs = fs.statSync(dbPath).mtimeMs;
     } catch {
