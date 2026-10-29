@@ -25,9 +25,6 @@ function ensureDir(dirPath) {
 ensureDir(dataDir);
 ensureDir(uploadsDir);
 
-const restoreDbFile = path.join(dataDir, 'production-db.restore.json');
-const bakDbFile = path.join(dataDir, 'production-db.json.bak');
-
 function logEvent(message) {
   const line = `[${new Date().toISOString()}] ${message}\n`;
   process.stdout.write(line);
@@ -38,49 +35,59 @@ function logEvent(message) {
   }
 }
 
-// Restore production database snapshot if queued before startup
-if (fs.existsSync(restoreDbFile)) {
-  try {
-    const stat = fs.statSync(restoreDbFile);
-    if (stat.size > 64) {
-      fs.copyFileSync(restoreDbFile, dbFile);
-      fs.copyFileSync(restoreDbFile, bakDbFile);
-      fs.unlinkSync(restoreDbFile);
-      logEvent(`Restored production database (${stat.size} bytes) from production-db.restore.json`);
-    }
-  } catch (err) {
-    logEvent(`Warning restoring production DB: ${err?.message || err}`);
-  }
-}
-
 /**
- * Safely unlinks a symlink without touching its target directory.
+ * Safely links sourcePath -> targetPath inside .next/standalone without ever
+ * deleting persistent data or uploaded files.
  */
-function unlinkIfSymlink(targetPath) {
-  try {
-    const stat = fs.lstatSync(targetPath);
-    if (stat.isSymbolicLink()) {
-      fs.unlinkSync(targetPath);
-      logEvent(`Removed legacy symlink ${targetPath}`);
-    }
-  } catch {
-    // targetPath does not exist
-  }
-}
-
-/**
- * Copies static assets into .next/standalone without creating symlinks.
- * Avoids symlinks inside .next/ so `next build` cleanup never traverses into /app/data or /app/public.
- */
-function syncStandaloneDir(sourcePath, targetPath) {
+function safeLinkDir(sourcePath, targetPath) {
   try {
     if (!fs.existsSync(sourcePath)) return;
-    unlinkIfSymlink(targetPath);
+
+    try {
+      const stat = fs.lstatSync(targetPath);
+      if (stat.isSymbolicLink()) {
+        const currentTarget = fs.readlinkSync(targetPath);
+        if (path.resolve(path.dirname(targetPath), currentTarget) === path.resolve(sourcePath)) {
+          return;
+        }
+        fs.unlinkSync(targetPath);
+      } else if (stat.isDirectory()) {
+        // Preserve any runtime files before replacing directory with symlink
+        if (path.basename(targetPath) === 'data') {
+          const standaloneDb = path.join(targetPath, 'production-db.json');
+          if (fs.existsSync(standaloneDb) && !fs.existsSync(dbFile)) {
+            fs.copyFileSync(standaloneDb, dbFile);
+          }
+        } else if (path.basename(targetPath) === 'public') {
+          const standaloneUploads = path.join(targetPath, 'uploads');
+          if (fs.existsSync(standaloneUploads)) {
+            for (const item of fs.readdirSync(standaloneUploads)) {
+              const srcItem = path.join(standaloneUploads, item);
+              const dstItem = path.join(uploadsDir, item);
+              if (!fs.existsSync(dstItem)) {
+                fs.copyFileSync(srcItem, dstItem);
+              }
+            }
+          }
+        }
+        fs.rmSync(targetPath, { recursive: true, force: true });
+      } else {
+        fs.rmSync(targetPath, { force: true });
+      }
+    } catch {
+      // targetPath does not exist yet
+    }
+
     ensureDir(path.dirname(targetPath));
-    fs.cpSync(sourcePath, targetPath, { recursive: true, force: true });
-    logEvent(`Synced ${sourcePath} -> ${targetPath}`);
+    try {
+      fs.symlinkSync(sourcePath, targetPath, 'dir');
+      logEvent(`Linked ${targetPath} -> ${sourcePath}`);
+    } catch {
+      fs.cpSync(sourcePath, targetPath, { recursive: true, force: true });
+      logEvent(`Copied ${sourcePath} -> ${targetPath}`);
+    }
   } catch (err) {
-    logEvent(`Warning syncing ${sourcePath}: ${err?.message || err}`);
+    logEvent(`Warning linking ${sourcePath}: ${err?.message || err}`);
   }
 }
 
@@ -160,29 +167,27 @@ process.env.NEXT_TELEMETRY_DISABLED = '1';
 process.env.APP_ROOT_DIR = rootDir;
 process.env.DATA_DIR = dataDir;
 process.env.UPLOADS_DIR = uploadsDir;
-// Force 0.0.0.0 (Podman pre-populates HOSTNAME with container ID, which binds only one IP)
-process.env.HOSTNAME = '0.0.0.0';
+process.env.HOSTNAME = process.env.HOSTNAME || '0.0.0.0';
 process.env.PORT = process.env.PORT || '3000';
 
 const standaloneDir = path.join(rootDir, '.next', 'standalone');
 const standaloneServer = path.join(standaloneDir, 'server.js');
 
 if (fs.existsSync(standaloneServer)) {
-  unlinkIfSymlink(path.join(standaloneDir, 'data'));
-  syncStandaloneDir(path.join(rootDir, 'public'), path.join(standaloneDir, 'public'));
-  syncStandaloneDir(
+  safeLinkDir(path.join(rootDir, 'public'), path.join(standaloneDir, 'public'));
+  safeLinkDir(
     path.join(rootDir, '.next', 'static'),
     path.join(standaloneDir, '.next', 'static')
   );
+  safeLinkDir(dataDir, path.join(standaloneDir, 'data'));
 }
 
 // Intercept http.createServer in-process so we run a single Node process
 // with <1ms healthcheck responses, direct /uploads/* streaming, and dual-stack binding.
-const cjsHttp = require('http');
-const originalCreateServer = cjsHttp.createServer.bind(cjsHttp);
+const originalCreateServer = http.createServer.bind(http);
 let activeHttpServer = null;
 
-const patchedCreateServer = function patchedCreateServer(optionsOrListener, maybeListener) {
+http.createServer = function patchedCreateServer(optionsOrListener, maybeListener) {
   const hasOptions = typeof optionsOrListener === 'object' && optionsOrListener !== null;
   const originalListener = hasOptions ? maybeListener : optionsOrListener;
 
@@ -285,13 +290,15 @@ const patchedCreateServer = function patchedCreateServer(optionsOrListener, mayb
 
   const originalListen = server.listen.bind(server);
   server.listen = function patchedListen(...args) {
-    // Ensure wildcard 0.0.0.0 binding on TCP port so both 127.0.0.1 loopback and container eth0 work
+    // Bind dual-stack '::' on Linux when '0.0.0.0' is requested so both IPv4 (127.0.0.1)
+    // and IPv6 (::1) loopback health probes succeed.
     if (
+      process.platform === 'linux' &&
       typeof args[0] === 'number' &&
-      typeof args[1] === 'string' &&
+      args[1] === '0.0.0.0' &&
       !process.env.PASSENGER_APP_ENV
     ) {
-      args[1] = '0.0.0.0';
+      args[1] = '::';
     }
     return originalListen(...args);
   };
@@ -312,35 +319,6 @@ const patchedCreateServer = function patchedCreateServer(optionsOrListener, mayb
       if (!homePageCache || homePageCache.mtimeMs !== getDbMtimeMs()) {
         refreshHomePageCache(activePort);
       }
-
-      // 1. Direct IP HTTPS ping to LiteSpeed on host (bypasses container DNS EAI_AGAIN)
-      try {
-        const directReq = https.request(
-          {
-            host: process.env.HOST_PUBLIC_IP || '37.26.105.28',
-            port: 443,
-            path: '/api/health',
-            method: 'HEAD',
-            servername: 'lijemrakel.com',
-            rejectUnauthorized: false,
-            timeout: 5000,
-            headers: {
-              Host: 'lijemrakel.com',
-              'User-Agent': 'Lijemrakel-KeepAlive/1.0',
-            },
-          },
-          (res) => {
-            res.resume();
-          }
-        );
-        directReq.on('error', () => {});
-        directReq.on('timeout', () => directReq.destroy());
-        directReq.end();
-      } catch {
-        // ignore
-      }
-
-      // 2. Hostname-based HTTPS ping fallback
       const publicUrl = (
         process.env.APP_URL ||
         process.env.NEXT_PUBLIC_SITE_URL ||
@@ -351,17 +329,12 @@ const patchedCreateServer = function patchedCreateServer(optionsOrListener, mayb
           const pingUrl = new URL('/api/health', publicUrl);
           const pingReq = https.request(
             pingUrl,
-            {
-              method: 'HEAD',
-              rejectUnauthorized: false,
-              timeout: 5000,
-              headers: { 'User-Agent': 'Lijemrakel-KeepAlive/1.0' },
-            },
+            { method: 'HEAD', timeout: 5000 },
             (pingRes) => {
               pingRes.resume();
             }
           );
-          pingReq.on('error', () => {});
+          pingReq.on('error', () => { });
           pingReq.on('timeout', () => pingReq.destroy());
           pingReq.end();
         } catch {
@@ -374,9 +347,6 @@ const patchedCreateServer = function patchedCreateServer(optionsOrListener, mayb
 
   return server;
 };
-
-cjsHttp.createServer = patchedCreateServer;
-http.createServer = patchedCreateServer;
 
 let shuttingDown = false;
 function handleShutdown(signal) {

@@ -5,6 +5,8 @@ node_modules
 .env.*
 !.env.example
 *.tsbuildinfo
-data/production-db.json*
+*.zip
+data/*.bak
+data/*.tmp*
 data/supervisor.log
 data/.write-test*

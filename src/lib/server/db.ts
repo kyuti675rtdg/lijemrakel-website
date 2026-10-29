@@ -448,6 +448,7 @@ export function readDb(): ProductionDatabaseSchema {
   try {
     const dbPath = resolveDbFilePath();
     const bakPath = `${dbPath}.bak`;
+    const bundledDbPath = path.join(resolveAppRootDir(), 'data', 'production-db.json');
     if (!fs.existsSync(dbPath)) {
       if (fs.existsSync(bakPath)) {
         try {
@@ -455,9 +456,25 @@ export function readDb(): ProductionDatabaseSchema {
         } catch {
           // ignore recovery copy failure
         }
+      } else if (bundledDbPath !== dbPath && fs.existsSync(bundledDbPath)) {
+        try {
+          fs.copyFileSync(bundledDbPath, dbPath);
+        } catch {
+          // ignore bundled seed copy failure
+        }
       }
     }
     if (!fs.existsSync(dbPath)) {
+      if (bundledDbPath !== dbPath && fs.existsSync(bundledDbPath)) {
+        try {
+          const bundledRaw = fs.readFileSync(bundledDbPath, 'utf8');
+          const bundledParsed = JSON.parse(bundledRaw) as ProductionDatabaseSchema;
+          memoryFallbackDb = bundledParsed;
+          return bundledParsed;
+        } catch {
+          // fall through to buildInitialDatabase
+        }
+      }
       const initial = buildInitialDatabase();
       writeDb(initial);
       memoryFallbackDb = initial;

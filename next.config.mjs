@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  experimental: {
+    outputFileTracingIncludes: {
+      '/**': ['./data/production-db.json'],
+    },
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
