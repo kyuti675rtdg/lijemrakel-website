@@ -36,6 +36,10 @@ import {
 } from '@/data/adminInitialData';
 import orbitKnowledgeBaseRaw from '@/data/orbitKnowledgeBase.json';
 import { hashPassword } from '@/lib/server/crypto';
+import {
+  pullRemoteDbIfNeeded,
+  pushRemoteDbSync,
+} from '@/lib/server/cpanelStorage';
 
 export interface StoredAdminUser extends AdminUserRecord {
   passwordHash: string;
@@ -449,6 +453,10 @@ export function readDb(): ProductionDatabaseSchema {
     const dbPath = resolveDbFilePath();
     const bakPath = `${dbPath}.bak`;
     const bundledDbPath = path.join(resolveAppRootDir(), 'data', 'production-db.json');
+
+    // Sync from permanent cPanel storage (/home/lijemriy/cpanel-storage/production-db.json)
+    pullRemoteDbIfNeeded(dbPath, !fs.existsSync(dbPath));
+
     if (!fs.existsSync(dbPath)) {
       if (fs.existsSync(bakPath)) {
         try {
@@ -595,6 +603,7 @@ export function writeDb(data: ProductionDatabaseSchema): void {
       }
     }
     fs.renameSync(tmpPath, dbPath);
+    pushRemoteDbSync(dbPath);
     try {
       lastReadMtimeMs = fs.statSync(dbPath).mtimeMs;
     } catch {

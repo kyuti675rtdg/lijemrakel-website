@@ -11,6 +11,7 @@ import {
   resolveUploadsDir,
   writeDb,
 } from '@/lib/server/db';
+import { uploadMediaToCpanel } from '@/lib/server/cpanelStorage';
 import { MediaAssetItem, SiteImagesConfig } from '@/types/admin';
 
 export async function POST(req: NextRequest) {
@@ -73,6 +74,7 @@ export async function POST(req: NextRequest) {
     const uniqueFileName = `${Date.now()}-${safeOriginalName}`;
 
     let publicUrl = '';
+    const savedOnCpanel = await uploadMediaToCpanel(uniqueFileName, buffer);
     try {
       const uploadsDir = resolveUploadsDir();
       if (!fs.existsSync(uploadsDir)) {
@@ -82,8 +84,12 @@ export async function POST(req: NextRequest) {
       fs.writeFileSync(targetPath, buffer);
       publicUrl = `/uploads/${uniqueFileName}`;
     } catch {
-      const mime = file.type || 'image/jpeg';
-      publicUrl = `data:${mime};base64,${buffer.toString('base64')}`;
+      if (savedOnCpanel) {
+        publicUrl = `/uploads/${uniqueFileName}`;
+      } else {
+        const mime = file.type || 'image/jpeg';
+        publicUrl = `data:${mime};base64,${buffer.toString('base64')}`;
+      }
     }
 
     const ext =
