@@ -25,6 +25,71 @@
       "lastLoginAt": "2026-10-28T14:57:18.799Z",
       "createdAt": "2026-10-28T14:51:03.490Z",
       "updatedAt": "2026-10-28T14:51:03.490Z"
+    },
+    {
+      "id": "USR-CEO-001",
+      "fullName": "Mr Lijalem Abayneh",
+      "email": "lijalem@lijemrakel.com",
+      "passwordHash": "scrypt$b9632b5b79b3daac8cfd61ed18d20b32$1de3851dee380557c1e36a962b3db27c5b462c769b77bb48127746456ce39fc3161a8871eed682f5558cd305f081ced44db51d0bf49cb71c5e50757cec50ae1a",
+      "roleId": "ROLE-SUPER-ADMIN",
+      "roleName": "Super Administrator",
+      "status": "active",
+      "department": "Chief Executive Officer (CEO) · Board of Directors",
+      "lastLoginAt": null,
+      "createdAt": "2026-10-30T00:50:41.530Z",
+      "updatedAt": "2026-10-30T00:50:41.530Z"
+    },
+    {
+      "id": "USR-TECH-002",
+      "fullName": "Dr Etsubdink Negash",
+      "email": "etsubdink@lijemrakel.com",
+      "passwordHash": "scrypt$c3fede56ee92ace19dd142fcadd633ca$0688ef622fefb34e59461df9c96ba5b54eb3c4873cbc632d6902017aa60c58a3aabd6163d72e0cc10a863b227a8f9afc2a53c47f9f570a09456d5f7900a4d431",
+      "roleId": "ROLE-TECH-MANAGER",
+      "roleName": "Technical & Catalogue Manager",
+      "status": "active",
+      "department": "General and Technical Manager · Board of Directors",
+      "lastLoginAt": null,
+      "createdAt": "2026-10-30T00:50:41.530Z",
+      "updatedAt": "2026-10-30T00:50:41.530Z"
+    },
+    {
+      "id": "USR-FIN-003",
+      "fullName": "Ato Abel Girma",
+      "email": "abel@lijemrakel.com",
+      "passwordHash": "scrypt$592f8c004571cf6c3fb4dc0e140361d3$b2ff7a43a2fe028e746f7408cdddc2c2e910e45d77b63f29caa9009dd09d8c11f9ed6822fa56668585184e3b60a183bd9902c5b507550cb9e491d2956243d765",
+      "roleId": "ROLE-FINANCE-MANAGER",
+      "roleName": "Financial & Governance Manager",
+      "status": "active",
+      "department": "Financial Manager · Board of Directors",
+      "lastLoginAt": null,
+      "createdAt": "2026-10-30T00:50:41.530Z",
+      "updatedAt": "2026-10-30T00:50:41.530Z"
+    },
+    {
+      "id": "USR-INTL-004",
+      "fullName": "Ato Yelekal Kebede",
+      "email": "yelekal@lijemrakel.com",
+      "passwordHash": "scrypt$6712b5bb3b175f634e77e4d6b5c20290$3ff88a1bc8e6a6b8e13abe7af19546e337f3356c92af412e5079ba6be9d2869b2b3f0cc31d19175435bdd8369328cb311e2fbdcce287536477db871beb0ea5c4",
+      "roleId": "ROLE-INTL-BUSINESS-MANAGER",
+      "roleName": "International Trade & Communications Manager",
+      "status": "active",
+      "department": "International Business Manager · Board of Directors",
+      "lastLoginAt": null,
+      "createdAt": "2026-10-30T00:50:41.530Z",
+      "updatedAt": "2026-10-30T00:50:41.530Z"
+    },
+    {
+      "id": "USR-OPS-005",
+      "fullName": "Ato Desalegn Tamene",
+      "email": "desalegn@lijemrakel.com",
+      "passwordHash": "scrypt$6a19f0f4f25e748d07279b4ee1ed450f$4a893699f3228c44b677db9417323e3890cc6fb460037c7f2e804a39c32130f8de311e7705fb095ddb02d0a4d8f64aff550d8c1b4570ede4f73eb180cb12707a",
+      "roleId": "ROLE-OPS-MANAGER",
+      "roleName": "Operations & Logistics Manager",
+      "status": "active",
+      "department": "Operational Manager · Board of Directors",
+      "lastLoginAt": null,
+      "createdAt": "2026-10-30T00:50:41.530Z",
+      "updatedAt": "2026-10-30T00:50:41.530Z"
     }
   ],
   "roles": [
@@ -197,6 +262,143 @@
       },
       "createdAt": "2026-10-28T06:08:04.870Z",
       "updatedAt": "2026-10-28T06:08:04.870Z"
+    },
+    {
+      "id": "ROLE-FINANCE-MANAGER",
+      "name": "Financial & Governance Manager",
+      "description": "Oversees executive analytics, commercial inquiries, product catalogue pricing/review, leadership records, and governance.",
+      "isSystemRole": false,
+      "permissions": {
+        "dashboard": [
+          "view"
+        ],
+        "inbox": [
+          "view",
+          "create",
+          "edit"
+        ],
+        "news": [
+          "view"
+        ],
+        "products": [
+          "view",
+          "edit"
+        ],
+        "teams": [
+          "view"
+        ],
+        "media": [
+          "view"
+        ],
+        "orbit-assistant": [
+          "view"
+        ],
+        "seo": [
+          "view"
+        ],
+        "users": [
+          "view"
+        ],
+        "support": [
+          "view",
+          "create"
+        ]
+      },
+      "createdAt": "2026-10-30T00:50:41.530Z",
+      "updatedAt": "2026-10-30T00:50:41.530Z"
+    },
+    {
+      "id": "ROLE-INTL-BUSINESS-MANAGER",
+      "name": "International Trade & Communications Manager",
+      "description": "Manages international supplier/partner inquiries, trade announcements, export & import product catalogue, media, and Orbit Assistant.",
+      "isSystemRole": false,
+      "permissions": {
+        "dashboard": [
+          "view"
+        ],
+        "inbox": [
+          "view",
+          "create",
+          "edit"
+        ],
+        "news": [
+          "view",
+          "create",
+          "edit"
+        ],
+        "products": [
+          "view",
+          "create",
+          "edit"
+        ],
+        "teams": [
+          "view"
+        ],
+        "media": [
+          "view",
+          "create",
+          "edit"
+        ],
+        "orbit-assistant": [
+          "view",
+          "edit"
+        ],
+        "seo": [
+          "view",
+          "edit"
+        ],
+        "users": [],
+        "support": [
+          "view",
+          "create"
+        ]
+      },
+      "createdAt": "2026-10-30T00:50:41.530Z",
+      "updatedAt": "2026-10-30T00:50:41.530Z"
+    },
+    {
+      "id": "ROLE-OPS-MANAGER",
+      "name": "Operations & Logistics Manager",
+      "description": "Coordinates order and distribution inquiries, product stock and logistics catalogue updates, media assets, and operational support.",
+      "isSystemRole": false,
+      "permissions": {
+        "dashboard": [
+          "view"
+        ],
+        "inbox": [
+          "view",
+          "create",
+          "edit"
+        ],
+        "news": [
+          "view"
+        ],
+        "products": [
+          "view",
+          "create",
+          "edit"
+        ],
+        "teams": [
+          "view"
+        ],
+        "media": [
+          "view",
+          "create"
+        ],
+        "orbit-assistant": [
+          "view"
+        ],
+        "seo": [
+          "view"
+        ],
+        "users": [],
+        "support": [
+          "view",
+          "create"
+        ]
+      },
+      "createdAt": "2026-10-30T00:50:41.530Z",
+      "updatedAt": "2026-10-30T00:50:41.530Z"
     }
   ],
   "passwordResetTokens": [

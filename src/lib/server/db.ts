@@ -133,13 +133,76 @@ function getDefaultRoles(): AdminRoleDefinition[] {
       isSystemRole: false,
       permissions: {
         dashboard: ['view'],
-        inbox: ['view', 'edit'],
+        inbox: ['view', 'create', 'edit'],
         news: ['view', 'create', 'edit', 'delete'],
         products: ['view', 'create', 'edit', 'delete'],
         teams: ['view', 'create', 'edit'],
         media: ['view', 'create', 'edit', 'delete'],
         'orbit-assistant': ['view', 'create', 'edit', 'delete'],
         seo: ['view', 'edit'],
+        users: ['view'],
+        support: ['view', 'create'],
+      },
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: 'ROLE-FINANCE-MANAGER',
+      name: 'Financial & Governance Manager',
+      description:
+        'Oversees executive analytics, commercial inquiries, product catalogue pricing/review, leadership records, and governance.',
+      isSystemRole: false,
+      permissions: {
+        dashboard: ['view'],
+        inbox: ['view', 'create', 'edit'],
+        news: ['view'],
+        products: ['view', 'edit'],
+        teams: ['view'],
+        media: ['view'],
+        'orbit-assistant': ['view'],
+        seo: ['view'],
+        users: ['view'],
+        support: ['view', 'create'],
+      },
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: 'ROLE-INTL-BUSINESS-MANAGER',
+      name: 'International Trade & Communications Manager',
+      description:
+        'Manages international supplier/partner inquiries, trade announcements, export & import product catalogue, media, and Orbit Assistant.',
+      isSystemRole: false,
+      permissions: {
+        dashboard: ['view'],
+        inbox: ['view', 'create', 'edit'],
+        news: ['view', 'create', 'edit'],
+        products: ['view', 'create', 'edit'],
+        teams: ['view'],
+        media: ['view', 'create', 'edit'],
+        'orbit-assistant': ['view', 'edit'],
+        seo: ['view', 'edit'],
+        users: [],
+        support: ['view', 'create'],
+      },
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: 'ROLE-OPS-MANAGER',
+      name: 'Operations & Logistics Manager',
+      description:
+        'Coordinates order and distribution inquiries, product stock and logistics catalogue updates, media assets, and operational support.',
+      isSystemRole: false,
+      permissions: {
+        dashboard: ['view'],
+        inbox: ['view', 'create', 'edit'],
+        news: ['view'],
+        products: ['view', 'create', 'edit'],
+        teams: ['view'],
+        media: ['view', 'create'],
+        'orbit-assistant': ['view'],
+        seo: ['view'],
         users: [],
         support: ['view', 'create'],
       },
@@ -195,6 +258,71 @@ function getBootstrapUsers(): StoredAdminUser[] {
       roleName: 'Super Administrator',
       status: 'active',
       department: 'Executive & Technical Administration',
+      lastLoginAt: null,
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: 'USR-CEO-001',
+      fullName: 'Mr Lijalem Abayneh',
+      email: 'lijalem@lijemrakel.com',
+      passwordHash: hashPassword('Lij@CEO#2026!Ab'),
+      roleId: 'ROLE-SUPER-ADMIN',
+      roleName: 'Super Administrator',
+      status: 'active',
+      department: 'Chief Executive Officer (CEO) · Board of Directors',
+      lastLoginAt: null,
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: 'USR-TECH-002',
+      fullName: 'Dr Etsubdink Negash',
+      email: 'etsubdink@lijemrakel.com',
+      passwordHash: hashPassword('Lij@Tech#2026!En'),
+      roleId: 'ROLE-TECH-MANAGER',
+      roleName: 'Technical & Catalogue Manager',
+      status: 'active',
+      department: 'General and Technical Manager · Board of Directors',
+      lastLoginAt: null,
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: 'USR-FIN-003',
+      fullName: 'Ato Abel Girma',
+      email: 'abel@lijemrakel.com',
+      passwordHash: hashPassword('Lij@Fin#2026!Ag'),
+      roleId: 'ROLE-FINANCE-MANAGER',
+      roleName: 'Financial & Governance Manager',
+      status: 'active',
+      department: 'Financial Manager · Board of Directors',
+      lastLoginAt: null,
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: 'USR-INTL-004',
+      fullName: 'Ato Yelekal Kebede',
+      email: 'yelekal@lijemrakel.com',
+      passwordHash: hashPassword('Lij@Intl#2026!Yk'),
+      roleId: 'ROLE-INTL-BUSINESS-MANAGER',
+      roleName: 'International Trade & Communications Manager',
+      status: 'active',
+      department: 'International Business Manager · Board of Directors',
+      lastLoginAt: null,
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: 'USR-OPS-005',
+      fullName: 'Ato Desalegn Tamene',
+      email: 'desalegn@lijemrakel.com',
+      passwordHash: hashPassword('Lij@Ops#2026!Dt'),
+      roleId: 'ROLE-OPS-MANAGER',
+      roleName: 'Operations & Logistics Manager',
+      status: 'active',
+      department: 'Operational Manager · Board of Directors',
       lastLoginAt: null,
       createdAt: now,
       updatedAt: now,
@@ -570,19 +698,20 @@ export function readDb(): ProductionDatabaseSchema {
         : defaults.auditLogs,
     };
 
-    // Ensure bootstrap admin email from env exists and has current password if never logged in
-    const envEmail = (
-      process.env.BOOTSTRAP_ADMIN_EMAIL ||
-      process.env.SMTP_USER ||
-      'technical_support@orbit.et'
-    )
-      .trim()
-      .toLowerCase();
-    const hasBootstrap = merged.users.some(
-      (u) => u.email.toLowerCase() === envEmail
-    );
-    if (!hasBootstrap) {
-      merged.users.unshift(...defaults.users);
+    // Ensure all default RBAC roles and bootstrap/executive users exist
+    for (const defaultRole of defaults.roles) {
+      if (!merged.roles.some((r) => r.id === defaultRole.id)) {
+        merged.roles.push(defaultRole);
+      }
+    }
+    for (const defaultUser of defaults.users) {
+      if (
+        !merged.users.some(
+          (u) => u.email.toLowerCase() === defaultUser.email.toLowerCase()
+        )
+      ) {
+        merged.users.push(defaultUser);
+      }
     }
 
     lastReadMtimeMs = stat.mtimeMs;
