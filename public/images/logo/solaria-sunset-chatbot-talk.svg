@@ -1,0 +1,333 @@
+<svg id="solariaSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%" class="w-full h-full overflow-visible" data-mode="talk" style="--bot-speed: 5s;">
+              <defs>
+                <!-- Outer Speech Bubble / Sunset Silhouette Gradient -->
+                <linearGradient id="bubbleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FF3366"></stop>
+                  <stop offset="42%" stop-color="#FF5E62"></stop>
+                  <stop offset="78%" stop-color="#FF8C38"></stop>
+                  <stop offset="100%" stop-color="#FFC837"></stop>
+                </linearGradient>
+
+                <!-- Specular Sheen for Speech Bubble -->
+                <linearGradient id="bubbleGloss" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.45"></stop>
+                  <stop offset="40%" stop-color="#FFAE34" stop-opacity="0.1"></stop>
+                  <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"></stop>
+                </linearGradient>
+
+                <!-- Helmet Outer Ceramic Shell (Sunset bounced pearl white) -->
+                <linearGradient id="helmetShellGrad" x1="25%" y1="0%" x2="75%" y2="100%">
+                  <stop offset="0%" stop-color="#FFFFFF"></stop>
+                  <stop offset="65%" stop-color="#FFF3EC"></stop>
+                  <stop offset="100%" stop-color="#F9D4C2"></stop>
+                </linearGradient>
+
+                <!-- Visor Cavity Rim Shadow -->
+                <linearGradient id="visorBezelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#E5CFBE"></stop>
+                  <stop offset="100%" stop-color="#A58475"></stop>
+                </linearGradient>
+
+                <!-- Visor High-Tech Dark Glass Surface -->
+                <linearGradient id="visorGlassGrad" x1="10%" y1="0%" x2="90%" y2="100%">
+                  <stop offset="0%" stop-color="#2D193E"></stop>
+                  <stop offset="50%" stop-color="#1B0F28"></stop>
+                  <stop offset="100%" stop-color="#11091A"></stop>
+                </linearGradient>
+
+                <!-- Radiant Sunset Neon for Visor Expressions (Eyes & Mouth) -->
+                <linearGradient id="neonSunsetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFEF8A"></stop>
+                  <stop offset="35%" stop-color="#FFB338"></stop>
+                  <stop offset="75%" stop-color="#FF5E62"></stop>
+                  <stop offset="100%" stop-color="#FF2E83"></stop>
+                </linearGradient>
+
+                <!-- Headphone Ear-Cushions Gradient -->
+                <linearGradient id="headphoneCushionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFFFFF"></stop>
+                  <stop offset="50%" stop-color="#E2D0C5"></stop>
+                  <stop offset="100%" stop-color="#9C8277"></stop>
+                </linearGradient>
+
+                <!-- Headset Outer Dark Pivot Rings -->
+                <linearGradient id="headphoneCapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#3C1A52"></stop>
+                  <stop offset="100%" stop-color="#160924"></stop>
+                </linearGradient>
+
+                <!-- Visor Curved Specular Glass Flare -->
+                <linearGradient id="visorReflectionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.36"></stop>
+                  <stop offset="35%" stop-color="#FFFFFF" stop-opacity="0.12"></stop>
+                  <stop offset="85%" stop-color="#FFFFFF" stop-opacity="0"></stop>
+                </linearGradient>
+
+                <!-- Filters -->
+                <filter id="neonVisorGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="2.8" result="blur1"></feGaussianBlur>
+                  <feGaussianBlur stdDeviation="6.5" result="blur2"></feGaussianBlur>
+                  <feMerge>
+                    <feMergeNode in="blur2"></feMergeNode>
+                    <feMergeNode in="blur1"></feMergeNode>
+                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                  </feMerge>
+                </filter>
+
+                <filter id="botDropShadow" x="-20%" y="-20%" width="140%" height="150%">
+                  <feDropShadow dx="0" dy="14" stdDeviation="15.400000000000002" flood-color="#3A0825" flood-opacity="0.32"></feDropShadow>
+                </filter>
+
+                <!-- Embedded Dynamic Styles & Keyframe Logic -->
+                <style>
+                  #solariaSvg {
+                    --bot-speed: 3.2s;
+                  }
+
+                  /* Base Floating Breathing */
+                  #solariaSvg .bot-levitate {
+                    transform-origin: 100px 96px;
+                    animation: solariaFloat var(--bot-speed) ease-in-out infinite;
+                  }
+
+                  /* Natural Eye Blinking */
+                  #solariaSvg .eyes-container {
+                    transform-origin: 100px 92px;
+                    animation: solariaBlink var(--bot-speed) ease-in-out infinite;
+                  }
+
+                  /* Sonic Antenna Wave Pulse */
+                  #solariaSvg .sonic-wave {
+                    transform-origin: 100px 96px;
+                    animation: solariaSonic 2.2s ease-out infinite;
+                  }
+                  #solariaSvg .sonic-wave-2 {
+                    animation: solariaSonic 2.2s ease-out 0.4s infinite;
+                  }
+
+                  /* --- STATE-BASED ANIMATION OVERRIDES --- */
+
+                  /* State: Idle */
+                  #solariaSvg[data-mode="idle"] .bot-levitate {
+                    animation: solariaFloat var(--bot-speed) ease-in-out infinite;
+                  }
+
+                  /* State: Wave / Greet */
+                  #solariaSvg[data-mode="wave"] .bot-levitate {
+                    animation: solariaWaveBounce 1.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+                  }
+                  #solariaSvg[data-mode="wave"] .eyes-container {
+                    animation: solariaHappySquint 1.2s ease-in-out infinite;
+                  }
+                  #solariaSvg[data-mode="wave"] .mouth-path {
+                    animation: solariaBigGrin 1.2s ease-in-out infinite;
+                  }
+
+                  /* State: Think */
+                  #solariaSvg[data-mode="think"] .bot-levitate {
+                    animation: solariaThinkTilt 2.4s ease-in-out infinite;
+                  }
+                  #solariaSvg[data-mode="think"] .radar-ring {
+                    display: block !important;
+                    transform-origin: 100px 92px;
+                    animation: radarScan 1.8s linear infinite;
+                  }
+                  #solariaSvg[data-mode="think"] .eyes-container {
+                    animation: solariaThinkEyes 1.8s ease-in-out infinite;
+                  }
+
+                  /* State: Talk */
+                  #solariaSvg[data-mode="talk"] .bot-levitate {
+                    animation: solariaTalkJiggle 0.6s ease-in-out infinite alternate;
+                  }
+                  #solariaSvg[data-mode="talk"] .mouth-path {
+                    animation: solariaTalkMouth 0.45s ease-in-out infinite alternate;
+                    transform-origin: 100px 112px;
+                  }
+
+                  @keyframes solariaFloat {
+                    0%, 100% { transform: translateY(0px) rotate(0deg); }
+                    40% { transform: translateY(-4.5px) rotate(1deg); }
+                    75% { transform: translateY(2.5px) rotate(-0.8deg); }
+                  }
+
+                  @keyframes solariaBlink {
+                    0%, 46%, 50%, 94%, 98%, 100% { transform: scaleY(1); }
+                    48%, 96% { transform: scaleY(0.08); }
+                  }
+
+                  @keyframes solariaSonic {
+                    0% { opacity: 0.8; stroke-dashoffset: 0; }
+                    50% { opacity: 0.2; }
+                    100% { opacity: 0; stroke-dashoffset: 20; }
+                  }
+
+                  @keyframes solariaWaveBounce {
+                    0%, 100% { transform: translateY(0) rotate(0deg); }
+                    25% { transform: translateY(-7px) rotate(2.5deg); }
+                    50% { transform: translateY(0px) rotate(-1deg); }
+                    75% { transform: translateY(-4px) rotate(1.8deg); }
+                  }
+
+                  @keyframes solariaHappySquint {
+                    0%, 100% { transform: scaleY(0.4) scaleX(1.15) translateY(2px); }
+                    50% { transform: scaleY(0.65) scaleX(1.05) translateY(0); }
+                  }
+
+                  @keyframes solariaBigGrin {
+                    0%, 100% { transform: scale(1.12); }
+                    50% { transform: scale(1.22) translateY(-0.5px); }
+                  }
+
+                  @keyframes solariaThinkTilt {
+                    0%, 100% { transform: rotate(-3deg) translateY(0); }
+                    50% { transform: rotate(2.5deg) translateY(-3px); }
+                  }
+
+                  @keyframes solariaThinkEyes {
+                    0%, 100% { transform: translate(-3px, -1px); }
+                    50% { transform: translate(3px, 1px); }
+                  }
+
+                  @keyframes solariaTalkJiggle {
+                    0% { transform: translateY(-1.5px) rotate(-0.5deg); }
+                    100% { transform: translateY(1.5px) rotate(0.8deg); }
+                  }
+
+                  @keyframes solariaTalkMouth {
+                    0% { transform: scale(1, 0.7); }
+                    50% { transform: scale(1.15, 1.35) translateY(-1px); }
+                    100% { transform: scale(0.92, 1.1); }
+                  }
+                </style>
+              </defs>
+
+              <!-- 1. Exterior Silhouette: Speech Bubble Outline with Soft Shadow -->
+              <g class="speech-silhouette">
+                <!-- Iconic Chat Bubble Geometry (ViewBox 0 0 200 200) -->
+                <path d="M 100, 14 
+                         C 148, 14 186, 52 186, 100 
+                         C 186, 124 176, 145 160, 161
+                         C 155, 166 150, 175 153, 182
+                         C 156, 188 161, 192 167, 195
+                         C 146, 194 129, 183 115, 178
+                         C 110, 177 105, 176 100, 176
+                         C 52, 176 14, 138 14, 90
+                         C 14, 42 52, 14 100, 14 Z" fill="url(#bubbleGrad)"></path>
+
+                <!-- Bubble Upper Gloss Sheen -->
+                <path d="M 100, 17 
+                         C 145, 17 182, 53 182, 98 
+                         C 182, 115 176, 132 166, 147
+                         C 153, 104 115, 64 64, 44
+                         C 75, 27 87, 17 100, 17 Z" fill="url(#bubbleGloss)"></path>
+
+                <!-- Starlight Particle on Bubble Tail -->
+                <circle cx="156" cy="171" r="1.5" fill="#FFFFFF" opacity="0.75"></circle>
+                <circle cx="172" cy="182" r="1.2" fill="#FFC837" opacity="0.9"></circle>
+              </g>
+
+              <!-- 2. Floating Animated Robot Head Assembly -->
+              <g class="bot-levitate" filter="url(#botDropShadow)">
+
+                <!-- Sonic Wave Pulses around Antennae -->
+                <path class="sonic-wave" d="M 29 78 A 14 14 0 0 0 29 102" fill="none" stroke="url(#neonSunsetGrad)" stroke-width="1.4" stroke-linecap="round"></path>
+                <path class="sonic-wave-2" d="M 24 74 A 20 20 0 0 0 24 106" fill="none" stroke="#FFC837" stroke-width="1.1" stroke-linecap="round" opacity="0.6"></path>
+                
+                <path class="sonic-wave" d="M 171 78 A 14 14 0 0 1 171 102" fill="none" stroke="url(#neonSunsetGrad)" stroke-width="1.4" stroke-linecap="round"></path>
+                <path class="sonic-wave-2" d="M 176 74 A 20 20 0 0 1 176 106" fill="none" stroke="#FFC837" stroke-width="1.1" stroke-linecap="round" opacity="0.6"></path>
+
+                <!-- Left Ear Speaker Assembly -->
+                <g class="ear-left">
+                  <!-- Antenna Stem & Glow Bead -->
+                  <line x1="35" y1="84" x2="35" y2="67" stroke="#251236" stroke-width="2.2" stroke-linecap="round"></line>
+                  <circle cx="35" cy="65.5" r="2.2" fill="#FFC837" filter="url(#neonVisorGlow)"></circle>
+
+                  <!-- Cushion Pill -->
+                  <rect x="37.5" y="70" width="14" height="40" rx="7" fill="url(#headphoneCushionGrad)"></rect>
+                  <!-- Outer Dark Cap with Gold Core -->
+                  <circle cx="35" cy="90" r="6.8" fill="url(#headphoneCapGrad)"></circle>
+                  <circle cx="35" cy="90" r="2.4" fill="#FFC837"></circle>
+                </g>
+
+                <!-- Right Ear Speaker Assembly -->
+                <g class="ear-right">
+                  <!-- Antenna Stem & Glow Bead -->
+                  <line x1="165" y1="84" x2="165" y2="67" stroke="#251236" stroke-width="2.2" stroke-linecap="round"></line>
+                  <circle cx="165" cy="65.5" r="2.2" fill="#FF3366" filter="url(#neonVisorGlow)"></circle>
+
+                  <!-- Cushion Pill -->
+                  <rect x="148.5" y="70" width="14" height="40" rx="7" fill="url(#headphoneCushionGrad)"></rect>
+                  <!-- Outer Dark Cap with Coral Core -->
+                  <circle cx="165" cy="90" r="6.8" fill="url(#headphoneCapGrad)"></circle>
+                  <circle cx="165" cy="90" r="2.4" fill="#FF5E62"></circle>
+                </g>
+
+                <!-- Outer Helmet Bezel (Shadow Recess) -->
+                <path d="M 100, 37
+                         C 138, 37 162, 60 162, 95
+                         C 162, 123 139, 142 100, 142
+                         C 61, 142 38, 123 38, 95
+                         C 38, 60 62, 37 100, 37 Z" fill="url(#visorBezelGrad)"></path>
+
+                <!-- Helmet Front Shell (Pearl Shell) -->
+                <path d="M 100, 38
+                         C 136, 38 159.5, 60 159.5, 93.5
+                         C 159.5, 120.5 137.5, 139 100, 139
+                         C 62.5, 139 40.5, 120.5 40.5, 93.5
+                         C 40.5, 60 64, 38 100, 38 Z" fill="url(#helmetShellGrad)"></path>
+
+                <!-- Dark Visor Well (Inner Bezel Shadow) -->
+                <path d="M 100, 50
+                         C 131, 50 147, 67 147, 94
+                         C 147, 116 129, 130 100, 130
+                         C 71, 130 53, 116 53, 94
+                         C 53, 67 69, 50 100, 50 Z" fill="#12081d" opacity="0.8"></path>
+
+                <!-- Visor Screen Face (Deep Twilight Obsidian) -->
+                <path id="visorScreenFace" d="M 100, 51
+                         C 129, 51 144.5, 67 144.5, 93.5
+                         C 144.5, 114.5 127.5, 128 100, 128
+                         C 72.5, 128 55.5, 114.5 55.5, 93.5
+                         C 55.5, 67 71, 51 100, 51 Z" fill="url(#visorGlassGrad)"></path>
+
+                <!-- Curved Specular Glass Flare on Visor -->
+                <path d="M 61, 81
+                         C 67, 62 84, 53 100, 53
+                         C 116, 53 133, 62 139, 81
+                         C 124, 68 111, 64 100, 64
+                         C 89, 64 76, 68 61, 81 Z" fill="url(#visorReflectionGrad)"></path>
+
+                <!-- Visor Horizon Warmth Underglow -->
+                <ellipse cx="100" cy="123" rx="32" ry="5" fill="url(#bubbleGrad)" opacity="0.28" filter="url(#neonVisorGlow)"></ellipse>
+
+                <!-- Thinking Radar Scan Arc (Hidden unless in 'think' mode) -->
+                <circle class="radar-ring" cx="100" cy="92" r="30" fill="none" stroke="url(#neonSunsetGrad)" stroke-width="1.5" stroke-dasharray="14 36" opacity="0.7" style="display: none;"></circle>
+
+                <!-- 3. Expressive Glowing Eyes & Mouth Components -->
+                <g class="eyes-container" filter="url(#neonVisorGlow)">
+                  <!-- Left Eye Capsule -->
+                  <g class="eye-left" transform="translate(75, 89)">
+                    <circle cx="0" cy="0" r="6.8" fill="url(#neonSunsetGrad)"></circle>
+                    <!-- Catchlight sparkle -->
+                    <circle cx="-2" cy="-2.2" r="2.2" fill="#FFFFFF" opacity="0.95"></circle>
+                  </g>
+
+                  <!-- Right Eye Capsule -->
+                  <g class="eye-right" transform="translate(125, 89)">
+                    <circle cx="0" cy="0" r="6.8" fill="url(#neonSunsetGrad)"></circle>
+                    <!-- Catchlight sparkle -->
+                    <circle cx="-2" cy="-2.2" r="2.2" fill="#FFFFFF" opacity="0.95"></circle>
+                  </g>
+                </g>
+
+                <!-- Glowing Cheerful Mouth Path -->
+                <path class="mouth-path" d="M 90.5, 105.5 
+                         C 93.5, 113 106.5, 113 109.5, 105.5 
+                         C 107, 109 93, 109 90.5, 105.5 Z" fill="url(#neonSunsetGrad)" filter="url(#neonVisorGlow)"></path>
+
+                <!-- Cheeks Blush Warmth -->
+                <ellipse cx="64" cy="100" rx="4.8" ry="2.8" fill="#FF5E62" opacity="0.32" filter="url(#neonVisorGlow)"></ellipse>
+                <ellipse cx="136" cy="100" rx="4.8" ry="2.8" fill="#FF5E62" opacity="0.32" filter="url(#neonVisorGlow)"></ellipse>
+              </g>
+            </svg>

@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
   Send,
-  Sparkles,
   RotateCcw,
   PhoneCall,
   Mail,
@@ -37,51 +36,450 @@ interface OrbitAssistantProps {
 }
 
 /**
- * Custom Animated Orbit Assistant Emblem Icon (Navy, Gold & Orange)
+ * Solaria Sunset Chatbot Talk Animated Vector Icon
+ * Sourced from solaria-sunset-chatbot-talk.svg with dynamic state support
  */
-function OrbitEmblemIcon({ className = 'w-6 h-6' }: { className?: string }) {
+function OrbitEmblemIcon({
+  className = 'w-8 h-8',
+  mode = 'talk',
+}: {
+  className?: string;
+  mode?: 'idle' | 'wave' | 'think' | 'talk';
+}) {
   return (
     <svg
-      viewBox="0 0 36 36"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      viewBox="0 0 200 200"
+      width="100%"
+      height="100%"
+      className={`solaria-bot-svg overflow-visible ${className}`}
+      data-mode={mode}
       aria-hidden="true"
     >
-      {/* Outer Tilted Orbit Ring */}
-      <ellipse
-        cx="18"
-        cy="18"
-        rx="15"
-        ry="6.5"
-        transform="rotate(-28 18 18)"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeDasharray="4 2"
-        className="opacity-85"
-      />
-      {/* Secondary Intersecting Orbit Arc */}
-      <ellipse
-        cx="18"
-        cy="18"
-        rx="14"
-        ry="5.5"
-        transform="rotate(32 18 18)"
-        stroke="#D4AF37"
-        strokeWidth="1.6"
-        className="opacity-75"
-      />
-      {/* Central AI Core Sphere */}
-      <circle cx="18" cy="18" r="6.5" fill="currentColor" />
-      {/* Inner Sparkle Star Inside Core */}
-      <path
-        d="M18 13.5L19.1 16.9L22.5 18L19.1 19.1L18 22.5L16.9 19.1L13.5 18L16.9 16.9L18 13.5Z"
-        fill="#0B0E29"
-      />
-      {/* Orbiting Satellite Nodes */}
-      <circle cx="30" cy="11.5" r="2.4" fill="#F7941D" />
-      <circle cx="6.5" cy="24.5" r="2" fill="#D4AF37" />
+      <defs>
+        {/* Outer Speech Bubble / Sunset Silhouette Gradient */}
+        <linearGradient id="bubbleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FF3366" />
+          <stop offset="42%" stopColor="#FF5E62" />
+          <stop offset="78%" stopColor="#FF8C38" />
+          <stop offset="100%" stopColor="#FFC837" />
+        </linearGradient>
+
+        {/* Specular Sheen for Speech Bubble */}
+        <linearGradient id="bubbleGloss" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.45" />
+          <stop offset="40%" stopColor="#FFAE34" stopOpacity="0.1" />
+          <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+        </linearGradient>
+
+        {/* Helmet Outer Ceramic Shell (Sunset bounced pearl white) */}
+        <linearGradient id="helmetShellGrad" x1="25%" y1="0%" x2="75%" y2="100%">
+          <stop offset="0%" stopColor="#FFFFFF" />
+          <stop offset="65%" stopColor="#FFF3EC" />
+          <stop offset="100%" stopColor="#F9D4C2" />
+        </linearGradient>
+
+        {/* Visor Cavity Rim Shadow */}
+        <linearGradient id="visorBezelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#E5CFBE" />
+          <stop offset="100%" stopColor="#A58475" />
+        </linearGradient>
+
+        {/* Visor High-Tech Dark Glass Surface */}
+        <linearGradient id="visorGlassGrad" x1="10%" y1="0%" x2="90%" y2="100%">
+          <stop offset="0%" stopColor="#2D193E" />
+          <stop offset="50%" stopColor="#1B0F28" />
+          <stop offset="100%" stopColor="#11091A" />
+        </linearGradient>
+
+        {/* Radiant Sunset Neon for Visor Expressions (Eyes & Mouth) */}
+        <linearGradient id="neonSunsetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FFEF8A" />
+          <stop offset="35%" stopColor="#FFB338" />
+          <stop offset="75%" stopColor="#FF5E62" />
+          <stop offset="100%" stopColor="#FF2E83" />
+        </linearGradient>
+
+        {/* Headphone Ear-Cushions Gradient */}
+        <linearGradient
+          id="headphoneCushionGrad"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="0%" stopColor="#FFFFFF" />
+          <stop offset="50%" stopColor="#E2D0C5" />
+          <stop offset="100%" stopColor="#9C8277" />
+        </linearGradient>
+
+        {/* Headset Outer Dark Pivot Rings */}
+        <linearGradient
+          id="headphoneCapGrad"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="0%" stopColor="#3C1A52" />
+          <stop offset="100%" stopColor="#160924" />
+        </linearGradient>
+
+        {/* Visor Curved Specular Glass Flare */}
+        <linearGradient
+          id="visorReflectionGrad"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
+          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.36" />
+          <stop offset="35%" stopColor="#FFFFFF" stopOpacity="0.12" />
+          <stop offset="85%" stopColor="#FFFFFF" stopOpacity="0" />
+        </linearGradient>
+
+        {/* Filters */}
+        <filter
+          id="neonVisorGlow"
+          x="-30%"
+          y="-30%"
+          width="160%"
+          height="160%"
+        >
+          <feGaussianBlur stdDeviation="2.8" result="blur1" />
+          <feGaussianBlur stdDeviation="6.5" result="blur2" />
+          <feMerge>
+            <feMergeNode in="blur2" />
+            <feMergeNode in="blur1" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+
+        <filter
+          id="botDropShadow"
+          x="-20%"
+          y="-20%"
+          width="140%"
+          height="150%"
+        >
+          <feDropShadow
+            dx="0"
+            dy="14"
+            stdDeviation="15.4"
+            floodColor="#3A0825"
+            floodOpacity="0.32"
+          />
+        </filter>
+
+        <style>{`
+          .solaria-bot-svg {
+            --bot-speed: 3.2s;
+          }
+          .solaria-bot-svg .bot-levitate {
+            transform-origin: 100px 96px;
+            animation: solariaFloat var(--bot-speed) ease-in-out infinite;
+          }
+          .solaria-bot-svg .eyes-container {
+            transform-origin: 100px 92px;
+            animation: solariaBlink var(--bot-speed) ease-in-out infinite;
+          }
+          .solaria-bot-svg .sonic-wave {
+            transform-origin: 100px 96px;
+            animation: solariaSonic 2.2s ease-out infinite;
+          }
+          .solaria-bot-svg .sonic-wave-2 {
+            animation: solariaSonic 2.2s ease-out 0.4s infinite;
+          }
+          .solaria-bot-svg[data-mode="idle"] .bot-levitate {
+            animation: solariaFloat var(--bot-speed) ease-in-out infinite;
+          }
+          .solaria-bot-svg[data-mode="wave"] .bot-levitate {
+            animation: solariaWaveBounce 1.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+          }
+          .solaria-bot-svg[data-mode="wave"] .eyes-container {
+            animation: solariaHappySquint 1.2s ease-in-out infinite;
+          }
+          .solaria-bot-svg[data-mode="wave"] .mouth-path {
+            animation: solariaBigGrin 1.2s ease-in-out infinite;
+          }
+          .solaria-bot-svg[data-mode="think"] .bot-levitate {
+            animation: solariaThinkTilt 2.4s ease-in-out infinite;
+          }
+          .solaria-bot-svg[data-mode="think"] .radar-ring {
+            display: block !important;
+            transform-origin: 100px 92px;
+            animation: solariaRadarScan 1.8s linear infinite;
+          }
+          .solaria-bot-svg[data-mode="think"] .eyes-container {
+            animation: solariaThinkEyes 1.8s ease-in-out infinite;
+          }
+          .solaria-bot-svg[data-mode="talk"] .bot-levitate {
+            animation: solariaTalkJiggle 0.6s ease-in-out infinite alternate;
+          }
+          .solaria-bot-svg[data-mode="talk"] .mouth-path {
+            animation: solariaTalkMouth 0.45s ease-in-out infinite alternate;
+            transform-origin: 100px 112px;
+          }
+          @keyframes solariaFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            40% { transform: translateY(-4.5px) rotate(1deg); }
+            75% { transform: translateY(2.5px) rotate(-0.8deg); }
+          }
+          @keyframes solariaBlink {
+            0%, 46%, 50%, 94%, 98%, 100% { transform: scaleY(1); }
+            48%, 96% { transform: scaleY(0.08); }
+          }
+          @keyframes solariaSonic {
+            0% { opacity: 0.8; stroke-dashoffset: 0; }
+            50% { opacity: 0.2; }
+            100% { opacity: 0; stroke-dashoffset: 20; }
+          }
+          @keyframes solariaWaveBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-7px) rotate(2.5deg); }
+            50% { transform: translateY(0px) rotate(-1deg); }
+            75% { transform: translateY(-4px) rotate(1.8deg); }
+          }
+          @keyframes solariaHappySquint {
+            0%, 100% { transform: scaleY(0.4) scaleX(1.15) translateY(2px); }
+            50% { transform: scaleY(0.65) scaleX(1.05) translateY(0); }
+          }
+          @keyframes solariaBigGrin {
+            0%, 100% { transform: scale(1.12); }
+            50% { transform: scale(1.22) translateY(-0.5px); }
+          }
+          @keyframes solariaThinkTilt {
+            0%, 100% { transform: rotate(-3deg) translateY(0); }
+            50% { transform: rotate(2.5deg) translateY(-3px); }
+          }
+          @keyframes solariaThinkEyes {
+            0%, 100% { transform: translate(-3px, -1px); }
+            50% { transform: translate(3px, 1px); }
+          }
+          @keyframes solariaRadarScan {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          @keyframes solariaTalkJiggle {
+            0% { transform: translateY(-1.5px) rotate(-0.5deg); }
+            100% { transform: translateY(1.5px) rotate(0.8deg); }
+          }
+          @keyframes solariaTalkMouth {
+            0% { transform: scale(1, 0.7); }
+            50% { transform: scale(1.15, 1.35) translateY(-1px); }
+            100% { transform: scale(0.92, 1.1); }
+          }
+        `}</style>
+      </defs>
+
+      {/* 1. Exterior Silhouette: Speech Bubble Outline with Soft Shadow */}
+      <g className="speech-silhouette">
+        <path
+          d="M 100, 14 C 148, 14 186, 52 186, 100 C 186, 124 176, 145 160, 161 C 155, 166 150, 175 153, 182 C 156, 188 161, 192 167, 195 C 146, 194 129, 183 115, 178 C 110, 177 105, 176 100, 176 C 52, 176 14, 138 14, 90 C 14, 42 52, 14 100, 14 Z"
+          fill="url(#bubbleGrad)"
+        />
+        <path
+          d="M 100, 17 C 145, 17 182, 53 182, 98 C 182, 115 176, 132 166, 147 C 153, 104 115, 64 64, 44 C 75, 27 87, 17 100, 17 Z"
+          fill="url(#bubbleGloss)"
+        />
+        <circle cx="156" cy="171" r="1.5" fill="#FFFFFF" opacity="0.75" />
+        <circle cx="172" cy="182" r="1.2" fill="#FFC837" opacity="0.9" />
+      </g>
+
+      {/* 2. Floating Animated Robot Head Assembly */}
+      <g className="bot-levitate" filter="url(#botDropShadow)">
+        {/* Sonic Wave Pulses around Antennae */}
+        <path
+          className="sonic-wave"
+          d="M 29 78 A 14 14 0 0 0 29 102"
+          fill="none"
+          stroke="url(#neonSunsetGrad)"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+        <path
+          className="sonic-wave-2"
+          d="M 24 74 A 20 20 0 0 0 24 106"
+          fill="none"
+          stroke="#FFC837"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          opacity="0.6"
+        />
+        <path
+          className="sonic-wave"
+          d="M 171 78 A 14 14 0 0 1 171 102"
+          fill="none"
+          stroke="url(#neonSunsetGrad)"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+        <path
+          className="sonic-wave-2"
+          d="M 176 74 A 20 20 0 0 1 176 106"
+          fill="none"
+          stroke="#FFC837"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          opacity="0.6"
+        />
+
+        {/* Left Ear Speaker Assembly */}
+        <g className="ear-left">
+          <line
+            x1="35"
+            y1="84"
+            x2="35"
+            y2="67"
+            stroke="#251236"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+          />
+          <circle
+            cx="35"
+            cy="65.5"
+            r="2.2"
+            fill="#FFC837"
+            filter="url(#neonVisorGlow)"
+          />
+          <rect
+            x="37.5"
+            y="70"
+            width="14"
+            height="40"
+            rx="7"
+            fill="url(#headphoneCushionGrad)"
+          />
+          <circle cx="35" cy="90" r="6.8" fill="url(#headphoneCapGrad)" />
+          <circle cx="35" cy="90" r="2.4" fill="#FFC837" />
+        </g>
+
+        {/* Right Ear Speaker Assembly */}
+        <g className="ear-right">
+          <line
+            x1="165"
+            y1="84"
+            x2="165"
+            y2="67"
+            stroke="#251236"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+          />
+          <circle
+            cx="165"
+            cy="65.5"
+            r="2.2"
+            fill="#FF3366"
+            filter="url(#neonVisorGlow)"
+          />
+          <rect
+            x="148.5"
+            y="70"
+            width="14"
+            height="40"
+            rx="7"
+            fill="url(#headphoneCushionGrad)"
+          />
+          <circle cx="165" cy="90" r="6.8" fill="url(#headphoneCapGrad)" />
+          <circle cx="165" cy="90" r="2.4" fill="#FF5E62" />
+        </g>
+
+        {/* Outer Helmet Bezel (Shadow Recess) */}
+        <path
+          d="M 100, 37 C 138, 37 162, 60 162, 95 C 162, 123 139, 142 100, 142 C 61, 142 38, 123 38, 95 C 38, 60 62, 37 100, 37 Z"
+          fill="url(#visorBezelGrad)"
+        />
+
+        {/* Helmet Front Shell (Pearl Shell) */}
+        <path
+          d="M 100, 38 C 136, 38 159.5, 60 159.5, 93.5 C 159.5, 120.5 137.5, 139 100, 139 C 62.5, 139 40.5, 120.5 40.5, 93.5 C 40.5, 60 64, 38 100, 38 Z"
+          fill="url(#helmetShellGrad)"
+        />
+
+        {/* Dark Visor Well (Inner Bezel Shadow) */}
+        <path
+          d="M 100, 50 C 131, 50 147, 67 147, 94 C 147, 116 129, 130 100, 130 C 71, 130 53, 116 53, 94 C 53, 67 69, 50 100, 50 Z"
+          fill="#12081d"
+          opacity="0.8"
+        />
+
+        {/* Visor Screen Face (Deep Twilight Obsidian) */}
+        <path
+          d="M 100, 51 C 129, 51 144.5, 67 144.5, 93.5 C 144.5, 114.5 127.5, 128 100, 128 C 72.5, 128 55.5, 114.5 55.5, 93.5 C 55.5, 67 71, 51 100, 51 Z"
+          fill="url(#visorGlassGrad)"
+        />
+
+        {/* Curved Specular Glass Flare on Visor */}
+        <path
+          d="M 61, 81 C 67, 62 84, 53 100, 53 C 116, 53 133, 62 139, 81 C 124, 68 111, 64 100, 64 C 89, 64 76, 68 61, 81 Z"
+          fill="url(#visorReflectionGrad)"
+        />
+
+        {/* Visor Horizon Warmth Underglow */}
+        <ellipse
+          cx="100"
+          cy="123"
+          rx="32"
+          ry="5"
+          fill="url(#bubbleGrad)"
+          opacity="0.28"
+          filter="url(#neonVisorGlow)"
+        />
+
+        {/* Thinking Radar Scan Arc */}
+        <circle
+          className="radar-ring"
+          cx="100"
+          cy="92"
+          r="30"
+          fill="none"
+          stroke="url(#neonSunsetGrad)"
+          strokeWidth="1.5"
+          strokeDasharray="14 36"
+          opacity="0.7"
+          style={{ display: 'none' }}
+        />
+
+        {/* 3. Expressive Glowing Eyes & Mouth Components */}
+        <g className="eyes-container" filter="url(#neonVisorGlow)">
+          <g className="eye-left" transform="translate(75, 89)">
+            <circle cx="0" cy="0" r="6.8" fill="url(#neonSunsetGrad)" />
+            <circle cx="-2" cy="-2.2" r="2.2" fill="#FFFFFF" opacity="0.95" />
+          </g>
+          <g className="eye-right" transform="translate(125, 89)">
+            <circle cx="0" cy="0" r="6.8" fill="url(#neonSunsetGrad)" />
+            <circle cx="-2" cy="-2.2" r="2.2" fill="#FFFFFF" opacity="0.95" />
+          </g>
+        </g>
+
+        {/* Glowing Cheerful Mouth Path */}
+        <path
+          className="mouth-path"
+          d="M 90.5, 105.5 C 93.5, 113 106.5, 113 109.5, 105.5 C 107, 109 93, 109 90.5, 105.5 Z"
+          fill="url(#neonSunsetGrad)"
+          filter="url(#neonVisorGlow)"
+        />
+
+        {/* Cheeks Blush Warmth */}
+        <ellipse
+          cx="64"
+          cy="100"
+          rx="4.8"
+          ry="2.8"
+          fill="#FF5E62"
+          opacity="0.32"
+          filter="url(#neonVisorGlow)"
+        />
+        <ellipse
+          cx="136"
+          cy="100"
+          rx="4.8"
+          ry="2.8"
+          fill="#FF5E62"
+          opacity="0.32"
+          filter="url(#neonVisorGlow)"
+        />
+      </g>
     </svg>
   );
 }
@@ -373,18 +771,13 @@ export function OrbitAssistant({
             {/* 1. Navy, Gold & Orange Branded Header */}
             <div className="bg-[#0B0E29] text-white px-4 py-3.5 flex items-center justify-between border-b border-white/10 shrink-0">
               <div className="flex items-center gap-3">
-                <motion.div
-                  animate={{ rotate: [0, 6, -6, 0] }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-brand-orange via-[#F7941D] to-[#D4AF37] text-[#0B0E29] flex items-center justify-center shadow-md shrink-0"
-                >
-                  <OrbitEmblemIcon className="w-6 h-6" />
-                  <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0B0E29]" />
-                </motion.div>
+                <div className="relative w-11 h-11 flex items-center justify-center shrink-0">
+                  <OrbitEmblemIcon
+                    className="w-11 h-11 drop-shadow-md"
+                    mode={isTyping ? 'think' : 'talk'}
+                  />
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0B0E29]" />
+                </div>
                 <div>
                   <div className="flex items-center gap-1.5">
                     <h2 className="font-heading text-sm font-extrabold tracking-tight text-white">
@@ -460,16 +853,16 @@ export function OrbitAssistant({
                   >
                     {/* Avatar */}
                     <div
-                      className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${
+                      className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 mt-0.5 ${
                         isUser
                           ? 'bg-[#0B0E29] text-white'
-                          : 'bg-[#0B0E29] text-brand-orange border border-[#D4AF37]/40'
+                          : 'bg-transparent'
                       }`}
                     >
                       {isUser ? (
                         <User className="w-3.5 h-3.5" />
                       ) : (
-                        <OrbitEmblemIcon className="w-4 h-4" />
+                        <OrbitEmblemIcon className="w-8 h-8" mode="idle" />
                       )}
                     </div>
 
@@ -590,8 +983,8 @@ export function OrbitAssistant({
               {/* Typing Indicator */}
               {isTyping && (
                 <div className="flex items-center gap-2.5">
-                  <div className="w-7 h-7 rounded-lg bg-[#0B0E29] text-brand-orange flex items-center justify-center">
-                    <Sparkles className="w-3.5 h-3.5 animate-spin" />
+                  <div className="w-8 h-8 flex items-center justify-center shrink-0">
+                    <OrbitEmblemIcon className="w-8 h-8" mode="think" />
                   </div>
                   <div className="rounded-2xl bg-white border border-brand-border/80 px-3.5 py-2.5 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-bounce" />
@@ -661,18 +1054,23 @@ export function OrbitAssistant({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ delay: 0.8, duration: 0.35 }}
-            className="hidden sm:flex items-center gap-2.5 mb-3 bg-white text-brand-navy px-4 py-2.5 rounded-2xl shadow-lg border border-brand-orange/40 max-w-[270px]"
+            className="hidden sm:flex items-center gap-2.5 mb-3 bg-white text-brand-navy pl-3 pr-3.5 py-2.5 rounded-2xl shadow-lg border border-brand-orange/40 max-w-[300px]"
           >
             <button
               type="button"
               onClick={() => setIsOpen(true)}
-              className="text-left text-xs leading-snug font-medium text-brand-navy hover:text-brand-orange transition-colors"
+              className="flex items-center gap-2.5 text-left text-xs leading-snug font-medium text-brand-navy hover:text-brand-orange transition-colors"
             >
-              <span className="font-heading font-extrabold block text-[#0B0E29]">
-                Need product or trade info?
+              <span className="w-9 h-9 shrink-0 flex items-center justify-center">
+                <OrbitEmblemIcon className="w-9 h-9" mode="wave" />
               </span>
-              <span className="text-[11px] text-brand-muted">
-                Chat with Orbit Assistant or WhatsApp
+              <span>
+                <span className="font-heading font-extrabold block text-[#0B0E29]">
+                  Need product or trade info?
+                </span>
+                <span className="text-[11px] text-brand-muted">
+                  Chat with {liveAssistantName} or WhatsApp
+                </span>
               </span>
             </button>
             <button
@@ -727,26 +1125,24 @@ export function OrbitAssistant({
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           aria-label={isOpen ? 'Close Orbit Assistant' : 'Open Orbit Assistant'}
-          className="group relative flex items-center gap-2.5 rounded-full bg-[#0B0E29] text-white pl-3.5 pr-4 py-2.5 shadow-2xl border-2 border-brand-orange hover:bg-brand-orange hover:text-[#0B0E29] transition-colors"
+          className="group relative flex items-center gap-2.5 rounded-full bg-[#0B0E29] text-white pl-2.5 pr-4 py-2 shadow-2xl border-2 border-brand-orange hover:bg-[#131842] transition-colors"
         >
           {/* Animated Pulse Halo Ring */}
           {!isOpen && (
             <span className="absolute -inset-1 rounded-full border border-brand-orange/60 animate-ping pointer-events-none opacity-40" />
           )}
 
-          <motion.span
-            animate={isOpen ? { rotate: 0 } : { rotate: [0, 10, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-brand-orange to-[#D4AF37] text-[#0B0E29] group-hover:bg-[#0B0E29] group-hover:from-[#0B0E29] group-hover:to-[#0B0E29] group-hover:text-brand-orange transition-colors shadow-xs"
-          >
-            {isOpen ? (
+          {isOpen ? (
+            <span className="relative flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-brand-orange to-[#D4AF37] text-[#0B0E29] shadow-xs">
               <X className="w-4 h-4 stroke-[2.5]" />
-            ) : (
-              <OrbitEmblemIcon className="w-5 h-5" />
-            )}
-          </motion.span>
+            </span>
+          ) : (
+            <span className="relative flex items-center justify-center w-10 h-10 shrink-0 drop-shadow-md">
+              <OrbitEmblemIcon className="w-10 h-10" mode="talk" />
+            </span>
+          )}
 
-          <span className="font-heading text-xs font-extrabold tracking-tight">
+          <span className="font-heading text-xs font-extrabold tracking-tight text-white group-hover:text-brand-orange transition-colors">
             {isOpen ? 'Close Chat' : liveAssistantName}
           </span>
 
