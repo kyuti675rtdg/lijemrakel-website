@@ -596,7 +596,6 @@ export function OrbitAssistant({
     : ORBIT_WHATSAPP_URL;
 
   const [isOpen, setIsOpen] = useState(false);
-  const [showTeaser, setShowTeaser] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState<OrbitChatMessage[]>([]);
@@ -673,7 +672,6 @@ export function OrbitAssistant({
   // Auto-scroll to latest message
   useEffect(() => {
     if (isOpen) {
-      setShowTeaser(false);
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
       setTimeout(() => inputRef.current?.focus(), 150);
     }
@@ -1045,112 +1043,22 @@ export function OrbitAssistant({
       </AnimatePresence>
 
       {/* =====================================================================
-          VISITOR GREETING TEASER CALLOUT (Animated Floating Prompt)
+          STANDALONE FLOATING BOT ICON LAUNCHER (NO RECTANGLE BOX OR WHATSAPP PILL)
       ===================================================================== */}
-      <AnimatePresence>
-        {!isOpen && showTeaser && (
-          <motion.div
-            initial={{ opacity: 0, y: 12, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 8, scale: 0.95 }}
-            transition={{ delay: 0.8, duration: 0.35 }}
-            className="hidden sm:flex items-center gap-2.5 mb-3 bg-white text-brand-navy pl-3 pr-3.5 py-2.5 rounded-2xl shadow-lg border border-brand-orange/40 max-w-[300px]"
-          >
-            <button
-              type="button"
-              onClick={() => setIsOpen(true)}
-              className="flex items-center gap-2.5 text-left text-xs leading-snug font-medium text-brand-navy hover:text-brand-orange transition-colors"
-            >
-              <span className="w-9 h-9 shrink-0 flex items-center justify-center">
-                <OrbitEmblemIcon className="w-9 h-9" mode="wave" />
-              </span>
-              <span>
-                <span className="font-heading font-extrabold block text-[#0B0E29]">
-                  Need product or trade info?
-                </span>
-                <span className="text-[11px] text-brand-muted">
-                  Chat with {liveAssistantName} or WhatsApp
-                </span>
-              </span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowTeaser(false)}
-              aria-label="Dismiss greeting"
-              className="p-1 rounded-full text-brand-muted hover:text-brand-navy hover:bg-[#FAF9F5] transition-colors shrink-0"
-            >
-              <X className="w-3.5 h-3.5" />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* =====================================================================
-          FLOATING ACTION ROW: WHATSAPP QUICK PILL + ANIMATED ORBIT LAUNCHER
-      ===================================================================== */}
-      <div className="flex items-center gap-2.5">
-        {/* Quick Floating WhatsApp Button */}
-        {!isOpen && (
-          <motion.a
-            href={liveWhatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.06, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            title={`Contact Us on WhatsApp (${liveWhatsappNumber})`}
-            aria-label="Contact Us on WhatsApp"
-            className="flex items-center gap-2 rounded-full bg-[#0B0E29] text-white px-3.5 py-3 shadow-xl border-2 border-[#D4AF37] hover:bg-brand-orange hover:text-[#0B0E29] hover:border-brand-orange transition-colors"
-          >
-            <span className="w-6 h-6 rounded-full bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-xs">
-              <WhatsAppIcon className="w-3.5 h-3.5" />
-            </span>
-            <span className="hidden md:inline font-heading text-xs font-extrabold tracking-tight">
-              WhatsApp
-            </span>
-          </motion.a>
-        )}
-
-        {/* Animated Orbit Assistant Launcher Button */}
-        <motion.button
-          type="button"
-          onClick={() => setIsOpen((prev) => !prev)}
-          animate={isOpen ? { y: 0 } : { y: [0, -4, 0] }}
-          transition={
-            isOpen
-              ? { duration: 0.2 }
-              : { duration: 3.2, repeat: Infinity, ease: 'easeInOut' }
-          }
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label={isOpen ? 'Close Orbit Assistant' : 'Open Orbit Assistant'}
-          className="group relative flex items-center gap-2.5 rounded-full bg-[#0B0E29] text-white pl-2.5 pr-4 py-2 shadow-2xl border-2 border-brand-orange hover:bg-[#131842] transition-colors"
-        >
-          {/* Animated Pulse Halo Ring */}
-          {!isOpen && (
-            <span className="absolute -inset-1 rounded-full border border-brand-orange/60 animate-ping pointer-events-none opacity-40" />
-          )}
-
-          {isOpen ? (
-            <span className="relative flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-brand-orange to-[#D4AF37] text-[#0B0E29] shadow-xs">
-              <X className="w-4 h-4 stroke-[2.5]" />
-            </span>
-          ) : (
-            <span className="relative flex items-center justify-center w-10 h-10 shrink-0 drop-shadow-md">
-              <OrbitEmblemIcon className="w-10 h-10" mode="talk" />
-            </span>
-          )}
-
-          <span className="font-heading text-xs font-extrabold tracking-tight text-white group-hover:text-brand-orange transition-colors">
-            {isOpen ? 'Close Chat' : liveAssistantName}
-          </span>
-
-          {!isOpen && (
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          )}
-        </motion.button>
-      </div>
+      <motion.button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.94 }}
+        aria-label={isOpen ? 'Close Orbit Assistant' : 'Open Orbit Assistant'}
+        title={isOpen ? 'Close Orbit Assistant' : `Chat with ${liveAssistantName}`}
+        className="group relative flex items-center justify-center bg-transparent border-0 p-0 shadow-none focus:outline-none cursor-pointer"
+      >
+        <OrbitEmblemIcon
+          className="w-20 h-20 sm:w-24 sm:h-24 drop-shadow-[0_10px_24px_rgba(11,14,41,0.28)] transition-transform duration-300"
+          mode={isOpen ? 'idle' : 'talk'}
+        />
+      </motion.button>
     </div>
   );
 }
