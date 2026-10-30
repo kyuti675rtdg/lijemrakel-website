@@ -7,8 +7,10 @@ import {
   AlertCircle,
   ChevronsRight,
   RotateCcw,
+  Loader2,
 } from 'lucide-react';
 import { CATALOGUE_PRODUCTS } from '@/data/catalogueProducts';
+import { usePublicCms } from '@/lib/usePublicCms';
 
 interface InquiryFormState {
   inquiryType: string;
@@ -39,16 +41,21 @@ const INQUIRY_TABS = [
 
 export function BusinessInquiryForm() {
   const searchParams = useSearchParams();
+  const { products: cmsProducts } = usePublicCms();
   const [formData, setFormData] = useState<InquiryFormState>(INITIAL_STATE);
   const [errors, setErrors] = useState<
     Partial<Record<keyof InquiryFormState, string>>
   >({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string>('');
 
   useEffect(() => {
     const productParam = searchParams.get('product');
     const categoryParam = searchParams.get('category');
     const typeParam = searchParams.get('type');
+    const availableProducts =
+      cmsProducts.length > 0 ? cmsProducts : CATALOGUE_PRODUCTS;
 
     setFormData((prev) => {
       const next = { ...prev };
@@ -65,14 +72,14 @@ export function BusinessInquiryForm() {
         }
       }
       if (productParam) {
-        const matched = CATALOGUE_PRODUCTS.find((p) => p.slug === productParam);
+        const matched = availableProducts.find((p) => p.slug === productParam);
         next.productOrCategory = matched ? matched.name : productParam;
       } else if (categoryParam) {
         next.productOrCategory = categoryParam.replace(/-/g, ' ');
       }
       return next;
     });
-  }, [searchParams]);
+  }, [searchParams, cmsProducts]);
 
   const validate = (): boolean => {
     const newErrors: Partial<Record<keyof InquiryFormState, string>> = {};
@@ -124,17 +131,30 @@ export function BusinessInquiryForm() {
       assignedDepartment: 'Commercial & Technical Desk',
     };
 
+    setIsSubmitting(true);
+    setSubmitError('');
+
     try {
-      await fetch('/api/admin/store', {
+      const res = await fetch('/api/admin/store', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'addInquiry', inquiry: newInquiry }),
       });
+      if (!res.ok) {
+        setSubmitError(
+          'Could not submit inquiry right now. Please try again or call 0913514767.'
+        );
+        setIsSubmitting(false);
+        return;
+      }
+      setSubmitted(true);
     } catch {
-      // Fallback gracefully if offline
+      setSubmitError(
+        'Network error while sending message. Please check your connection or call 0913514767.'
+      );
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setSubmitted(true);
   };
 
   if (submitted) {
@@ -352,13 +372,21 @@ export function BusinessInquiryForm() {
       </div>
 
       {/* Split-Pill Style Submit Button */}
-      <div className="pt-2">
+      <div className="pt-2 space-y-2">
+        {submitError && (
+          <p className="text-xs text-red-600 flex items-center gap-1.5">
+            <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+            <span>{submitError}</span>
+          </p>
+        )}
         <button
           type="submit"
-          className="group inline-flex items-center rounded-full bg-brand-orange p-1 pr-4 shadow-xs hover:bg-brand-orangeHover transition-all duration-200 cursor-pointer"
+          disabled={isSubmitting}
+          className="group inline-flex items-center rounded-full bg-brand-orange p-1 pr-4 shadow-xs hover:bg-brand-orangeHover transition-all duration-200 cursor-pointer disabled:opacity-60"
         >
-          <span className="px-6 py-2.5 rounded-full bg-[#0B0E29] text-white font-heading font-bold text-xs sm:text-sm">
-            Send Message
+          <span className="px-6 py-2.5 rounded-full bg-[#0B0E29] text-white font-heading font-bold text-xs sm:text-sm inline-flex items-center gap-2">
+            {isSubmitting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+            <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
           </span>
           <ChevronsRight className="w-4 h-4 text-brand-navy ml-2.5 transition-transform group-hover:translate-x-0.5" />
         </button>

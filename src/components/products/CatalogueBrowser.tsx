@@ -55,11 +55,13 @@ export function CatalogueBrowser() {
 
   const filteredProducts = useMemo(() => {
     return catalogueProducts.filter((product) => {
-      if (
-        selectedCategory !== 'all' &&
-        product.categorySlug !== selectedCategory
-      ) {
-        return false;
+      if (selectedCategory !== 'all') {
+        const matchesCat =
+          selectedCategory === 'vaccines'
+            ? product.categorySlug === 'vaccines' ||
+              (product.categorySlug as string) === 'veterinary-vaccines'
+            : product.categorySlug === selectedCategory;
+        if (!matchesCat) return false;
       }
 
       if (selectedSpecies !== 'All Species') {
@@ -163,8 +165,11 @@ export function CatalogueBrowser() {
           </button>
 
           {PRODUCT_CATEGORIES.map((cat) => {
-            const count = catalogueProducts.filter(
-              (p) => p.categorySlug === cat.slug
+            const count = catalogueProducts.filter((p) =>
+              cat.slug === 'vaccines'
+                ? p.categorySlug === 'vaccines' ||
+                  (p.categorySlug as string) === 'veterinary-vaccines'
+                : p.categorySlug === cat.slug
             ).length;
             const isSelected = selectedCategory === cat.slug;
             return (

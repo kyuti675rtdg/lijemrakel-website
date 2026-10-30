@@ -72,11 +72,13 @@ export default function NewsArticlePage({ params }: NewsDetailProps) {
                 <div className="flex items-center gap-3">
                   <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-brand-orange shrink-0">
                     <Image
+                      key={article.author.avatar}
                       src={article.author.avatar}
                       alt={article.author.name}
                       fill
                       sizes="44px"
                       className="object-cover object-top"
+                      unoptimized
                     />
                   </div>
                   <div>
@@ -104,12 +106,14 @@ export default function NewsArticlePage({ params }: NewsDetailProps) {
               {/* Featured Article Image */}
               <div className="relative h-72 sm:h-96 w-full rounded-[20px] overflow-hidden bg-[#0B0E29]">
                 <Image
+                  key={article.image}
                   src={article.image}
                   alt={article.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 800px"
                   className="object-cover object-[center_20%]"
                   priority
+                  unoptimized
                 />
               </div>
 
@@ -225,11 +229,13 @@ export default function NewsArticlePage({ params }: NewsDetailProps) {
                     >
                       <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-[#0B0E29] shrink-0">
                         <Image
+                          key={rel.image}
                           src={rel.image}
                           alt={rel.title}
                           fill
                           sizes="64px"
                           className="object-cover group-hover:scale-105 transition-transform"
+                          unoptimized
                         />
                       </div>
                       <div className="min-w-0">

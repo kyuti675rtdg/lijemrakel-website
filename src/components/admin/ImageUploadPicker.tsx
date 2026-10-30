@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Upload,
   Image as ImageIcon,
@@ -13,6 +13,7 @@ import {
   Link2,
 } from 'lucide-react';
 import { MediaAssetItem } from '@/types/admin';
+import { notifyCmsUpdated } from '@/lib/usePublicCms';
 
 interface ImageUploadPickerProps {
   label: string;
@@ -28,6 +29,23 @@ interface ImageUploadPickerProps {
   previewHeightClass?: string;
   objectPositionClass?: string;
   helperText?: string;
+}
+
+function preloadSingleImage(url: string): Promise<void> {
+  if (typeof window === 'undefined' || !url) return Promise.resolve();
+  return new Promise((resolve) => {
+    const timeout = window.setTimeout(() => resolve(), 1200);
+    const img = new window.Image();
+    img.onload = () => {
+      window.clearTimeout(timeout);
+      resolve();
+    };
+    img.onerror = () => {
+      window.clearTimeout(timeout);
+      resolve();
+    };
+    img.src = url;
+  });
 }
 
 export function ImageUploadPicker({
@@ -50,12 +68,28 @@ export function ImageUploadPicker({
   const [showLibraryPicker, setShowLibraryPicker] = useState(false);
   const [showUrlInput, setShowUrlInput] = useState(false);
   const [librarySearch, setLibrarySearch] = useState('');
+  const [localPreviewUrl, setLocalPreviewUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (localPreviewUrl) {
+        URL.revokeObjectURL(localPreviewUrl);
+      }
+    };
+  }, [localPreviewUrl]);
 
   const handleFileUpload = async (file: File) => {
     if (!file) return;
     setUploadError('');
     setUploadStatus('');
     setIsUploading(true);
+
+    // Show immediate local preview so the old image never lingers or blinks
+    const tempBlobUrl = URL.createObjectURL(file);
+    setLocalPreviewUrl((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return tempBlobUrl;
+    });
 
     try {
       const formData = new FormData();
@@ -78,18 +112,36 @@ export function ImageUploadPicker({
 
       if (!res.ok || !data?.asset?.url) {
         setUploadError(data?.error || 'Failed to upload image.');
+        setLocalPreviewUrl((prev) => {
+          if (prev) URL.revokeObjectURL(prev);
+          return null;
+        });
         setIsUploading(false);
         return;
       }
 
-      onChange(data.asset.url);
+      const uploadedUrl: string = data.asset.url;
+      // Preload the server image into browser cache before switching from the local blob preview
+      await preloadSingleImage(uploadedUrl);
+
+      onChange(uploadedUrl);
+      setLocalPreviewUrl((prev) => {
+        if (prev) URL.revokeObjectURL(prev);
+        return null;
+      });
+
       if (onMediaUploaded && Array.isArray(data.media)) {
         onMediaUploaded(data.asset, data.media);
       }
+      notifyCmsUpdated();
       setUploadStatus('Photo uploaded from computer');
       setTimeout(() => setUploadStatus(''), 3500);
     } catch {
       setUploadError('Network error while uploading image.');
+      setLocalPreviewUrl((prev) => {
+        if (prev) URL.revokeObjectURL(prev);
+        return null;
+      });
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) {
@@ -117,7 +169,10 @@ export function ImageUploadPicker({
   };
 
   const filteredMedia = mediaLibrary.filter((item) => {
-    if (item.category === 'Document' && !item.url.match(/\.(jpg|jpeg|png|webp|svg|gif)$/i)) {
+    if (
+      item.category === 'Document' &&
+      !item.url.match(/\.(jpg|jpeg|png|webp|svg|gif)$/i)
+    ) {
       return false;
     }
     if (!librarySearch.trim()) return true;
@@ -128,6 +183,8 @@ export function ImageUploadPicker({
       item.category.toLowerCase().includes(q)
     );
   });
+
+  const displaySrc = localPreviewUrl || value;
 
   return (
     <div className="space-y-2.5">
@@ -170,10 +227,11 @@ export function ImageUploadPicker({
             : 'border-slate-200 bg-slate-900'
         } group`}
       >
-        {value ? (
+        {displaySrc ? (
           <>
             <img
-              src={value}
+              key={displaySrc}
+              src={displaySrc}
               alt={defaultTitle || label}
               className={`w-full h-full object-cover ${objectPositionClass} transition-transform duration-300 group-hover:scale-[1.02]`}
               onError={(e) => {
@@ -197,7 +255,7 @@ export function ImageUploadPicker({
 
         {/* Uploading Overlay */}
         {isUploading && (
-          <div className="absolute inset-0 bg-[#0B0E29]/80 backdrop-blur-xs flex flex-col items-center justify-center gap-2 z-20">
+          <div className="absolute inset-0 bg-[#0B0E29]/65 backdrop-blur-xs flex flex-col items-center justify-center gap-2 z-20">
             <Loader2 className="w-7 h-7 text-[#F7941D] animate-spin" />
             <span className="text-xs font-bold text-white">
               Uploading photo from your computer...
@@ -310,7 +368,8 @@ export function ImageUploadPicker({
                 <button
                   key={item.id}
                   type="button"
-                  onClick={() => {
+                  onClick={async () => {
+                    await preloadSingleImage(item.url);
                     onChange(item.url);
                     setShowLibraryPicker(false);
                     setUploadStatus(`Selected "${item.title}"`);
@@ -324,6 +383,7 @@ export function ImageUploadPicker({
                 >
                   <div className="h-20 w-full bg-slate-900 overflow-hidden">
                     <img
+                      key={item.url}
                       src={item.url}
                       alt={item.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform"
@@ -351,4 +411,3 @@ export function ImageUploadPicker({
     </div>
   );
 }
-

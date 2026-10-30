@@ -54,7 +54,7 @@ import {
   SupportTicketRecord,
 } from '@/types/admin';
 import { ImageUploadPicker } from '@/components/admin/ImageUploadPicker';
-import { INITIAL_SITE_IMAGES } from '@/lib/usePublicCms';
+import { INITIAL_SITE_IMAGES, notifyCmsUpdated } from '@/lib/usePublicCms';
 import {
   ExecutiveMember,
   ProductItem,
@@ -339,6 +339,7 @@ export default function AdminDashboardPage() {
       if (Array.isArray(data.supportTickets))
         setSupportTickets(data.supportTickets);
       if (Array.isArray(data.auditLogs)) setAuditLogs(data.auditLogs);
+      notifyCmsUpdated();
       return { ok: true };
     } catch {
       return { ok: false, error: 'Network error while saving changes.' };
@@ -738,6 +739,7 @@ export default function AdminDashboardPage() {
       if (data.siteImages)
         setSiteImages({ ...INITIAL_SITE_IMAGES, ...data.siteImages });
       if (Array.isArray(data.auditLogs)) setAuditLogs(data.auditLogs);
+      notifyCmsUpdated();
       setUploadModalOpen(false);
       setSelectedUploadFile(null);
       setUploadTitle('');
@@ -781,6 +783,7 @@ export default function AdminDashboardPage() {
         if (data.siteImages)
           setSiteImages({ ...INITIAL_SITE_IMAGES, ...data.siteImages });
         if (Array.isArray(data.auditLogs)) setAuditLogs(data.auditLogs);
+        notifyCmsUpdated();
         setEditingMediaAsset(null);
         setReplacingMediaFile(null);
         showToast('Media file replaced and synced across website.');
@@ -889,7 +892,7 @@ export default function AdminDashboardPage() {
       pageName: '',
       metaTitle: '',
       metaDescription: '',
-      canonicalUrl: 'https://lijemrakel-trading.vercel.app/',
+      canonicalUrl: 'https://lijemrakel.com/',
       keywords: '',
       ogTitle: '',
       ogDescription: '',
@@ -1884,6 +1887,7 @@ export default function AdminDashboardPage() {
                       <div>
                         <div className="relative h-44 bg-[#0B0E29] group">
                           <Image
+                            key={article.image}
                             src={article.image}
                             alt={article.title}
                             fill
@@ -2363,6 +2367,7 @@ export default function AdminDashboardPage() {
                                 <div className="flex items-center gap-3">
                                   <div className="relative w-11 h-11 rounded-xl overflow-hidden bg-[#0B0E29] shrink-0 border border-slate-200">
                                     <Image
+                                      key={prod.image}
                                       src={prod.image}
                                       alt={prod.name}
                                       fill
@@ -2884,6 +2889,7 @@ export default function AdminDashboardPage() {
                         <div className="relative w-18 h-18 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-[#0B0E29] shrink-0 group">
                           {member.portraitUrl ? (
                             <Image
+                              key={member.portraitUrl}
                               src={member.portraitUrl}
                               alt={member.displayName}
                               fill
@@ -3329,6 +3335,7 @@ export default function AdminDashboardPage() {
                           <div>
                             <div className="relative h-44 bg-[#0B0E29]/95 flex items-center justify-center overflow-hidden">
                               <Image
+                                key={asset.url}
                                 src={asset.url}
                                 alt={asset.altText || asset.title}
                                 fill

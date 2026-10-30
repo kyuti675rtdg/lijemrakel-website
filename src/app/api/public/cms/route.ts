@@ -22,6 +22,8 @@ export async function GET() {
         ...DEFAULT_SITE_IMAGES,
         ...(db.siteImages || {}),
       },
+      orbitConfig: db.orbitConfig,
+      orbitFaqs: db.orbitFaqs,
     },
     {
       headers: {

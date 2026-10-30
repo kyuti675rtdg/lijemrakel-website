@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import { Image as ImageIcon, Type } from 'lucide-react';
-import { MANAGEMENT_TEAM } from '@/data/leadershipData';
+import { usePublicCms } from '@/lib/usePublicCms';
 import { LeadershipProfileCard } from './LeadershipProfileCard';
 
 export function LeadershipTeamSection() {
+  const { team } = usePublicCms();
   const [displayMode, setDisplayMode] = useState<'portrait' | 'monogram'>('portrait');
 
   return (
@@ -54,7 +55,7 @@ export function LeadershipTeamSection() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {MANAGEMENT_TEAM.map((member) => (
+        {team.map((member) => (
           <LeadershipProfileCard
             key={member.id}
             member={member}

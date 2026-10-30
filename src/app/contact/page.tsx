@@ -10,12 +10,17 @@ import {
 } from 'lucide-react';
 import { PageHeroBanner } from '@/components/layout/PageHeroBanner';
 import { BusinessInquiryForm } from '@/components/contact/BusinessInquiryForm';
+import { getRouteSeoMetadata } from '@/lib/server/db';
 
-export const metadata: Metadata = {
-  title: 'Contact Us — Lijemrakel Trading PLC',
-  description:
-    'Contact Lijemrakel Trading PLC for veterinary and poultry product inquiries, supplier partnerships, and business discussions.',
-};
+export const dynamic = 'force-dynamic';
+
+export function generateMetadata(): Metadata {
+  return getRouteSeoMetadata('/contact', {
+    title: 'Contact Us — Lijemrakel Trading PLC',
+    description:
+      'Contact Lijemrakel Trading PLC for veterinary and poultry product inquiries, supplier partnerships, and business discussions.',
+  });
+}
 
 export default function ContactPage() {
   return (

@@ -25,6 +25,7 @@ export function LeadershipProfileCard({
           {showPhoto ? (
             <div className="relative w-20 h-24 sm:w-24 sm:h-28 rounded-lg overflow-hidden bg-brand-navy border border-brand-gold/50 shrink-0 shadow-sm">
               <Image
+                key={member.portraitUrl!}
                 src={member.portraitUrl!}
                 alt={`${member.displayName} — ${member.roleTitle}`}
                 fill

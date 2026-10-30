@@ -17,11 +17,12 @@ export function ProductCard({ product }: ProductCardProps) {
       {/* Top Rounded Image Container */}
       <div className="relative h-48 w-full rounded-[18px] bg-[#0B0E29] overflow-hidden">
         <Image
+          key={product.image}
           src={product.image}
           alt={product.name}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
           unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B0E29]/85 via-transparent to-transparent" />

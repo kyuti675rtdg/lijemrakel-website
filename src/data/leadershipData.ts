@@ -5,7 +5,7 @@ export const FOUNDING_MEMBERS = [
     name: 'Lijalem Abayneh',
     formalName: 'Mr Lijalem Abayneh',
     initials: 'LA',
-    executiveRole: 'Founding Member & Deputy General Manager',
+    executiveRole: 'Founding Member & Chief Executive Officer (CEO)',
     focusArea: 'Strategy Execution, Operations Continuity & Key Relationships',
     portraitUrl: '/images/leadership/leader-lijalem.jpg',
   },
@@ -16,7 +16,7 @@ export const FOUNDING_MEMBERS = [
     executiveRole: 'Founding Member & General and Technical Manager',
     focusArea:
       'Veterinary Technical Direction, Regulatory Compliance & Quality Assurance',
-    portraitUrl: '/images/leadership/leader-etsubdink.jpg',
+    portraitUrl: '/uploads/1793191077656-20261019_121543-1-.jpg',
   },
   {
     name: 'Abel Girma',
@@ -24,7 +24,7 @@ export const FOUNDING_MEMBERS = [
     initials: 'AG',
     executiveRole: 'Founding Member & Financial Manager',
     focusArea: 'Financial Governance, Import Costing & Investment Planning',
-    portraitUrl: '/images/leadership/leader-abel.jpg',
+    portraitUrl: '/uploads/1793318664802-Gemini_Generated_Image_kf9dkikf9dkikf9d.jpg',
   },
 ];
 
@@ -33,7 +33,7 @@ export const PROPOSED_BOARD_MEMBERS = [
     name: 'Lijalem Abayneh',
     initials: 'LA',
     roleNote: 'Founding Member',
-    executiveRole: 'Deputy General Manager',
+    executiveRole: 'Chief Executive Officer (CEO)',
   },
   {
     name: 'Dr Etsubdink Negash',
@@ -68,7 +68,7 @@ export const MANAGEMENT_TEAM: ExecutiveMember[] = [
     formalTitlePrefix: 'Mr',
     displayName: 'Mr Lijalem Abayneh',
     initials: 'LA',
-    roleTitle: 'Deputy General Manager',
+    roleTitle: 'Chief Executive Officer (CEO)',
     department: 'Founding Member · Board of Directors',
     isFoundingMember: true,
     isProposedBoardMember: true,
@@ -104,7 +104,7 @@ export const MANAGEMENT_TEAM: ExecutiveMember[] = [
       'Guides quality, safe handling, product information, and technical customer support.',
       'Prepares operating plans and reports to the board.',
     ],
-    portraitUrl: '/images/leadership/leader-etsubdink.jpg',
+    portraitUrl: '/uploads/1793191077656-20261019_121543-1-.jpg',
     portraitNote: '',
   },
   {
@@ -125,7 +125,7 @@ export const MANAGEMENT_TEAM: ExecutiveMember[] = [
       'Supports import-cost calculations, pricing, and investment analysis.',
       'Monitors receivables, payables, working capital, and internal financial controls.',
     ],
-    portraitUrl: '/images/leadership/leader-abel.jpg',
+    portraitUrl: '/uploads/1793318664802-Gemini_Generated_Image_kf9dkikf9dkikf9d.jpg',
     portraitNote: '',
   },
   {
@@ -147,7 +147,7 @@ export const MANAGEMENT_TEAM: ExecutiveMember[] = [
       'Coordinates quotations, negotiations, purchase orders, shipping, and supplier documentation.',
       'Works with the technical and operations teams to ensure import plans meet quality, compliance, timing, and cost requirements.',
     ],
-    portraitUrl: '/images/leadership/leader-yelekal.jpg',
+    portraitUrl: '/uploads/1793191158425-IMG-20261024-WA0000.jpg',
     portraitNote: '',
   },
   {
@@ -170,7 +170,7 @@ export const MANAGEMENT_TEAM: ExecutiveMember[] = [
       'Monitors operational costs, workplace safety, and service quality.',
       'Escalates supply or logistics risks.',
     ],
-    portraitUrl: '/images/leadership/leader-desalegn.jpg',
+    portraitUrl: '/uploads/1793318724908-Gemini_Generated_Image_bukd5rbukd5rbukd.jpg',
     portraitNote: '',
   },
 ];

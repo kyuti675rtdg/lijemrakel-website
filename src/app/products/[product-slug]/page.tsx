@@ -88,11 +88,13 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               <div className="rounded-[24px] bg-white p-3 shadow-2xs">
                 <div className="relative h-72 sm:h-80 w-full rounded-[18px] overflow-hidden bg-[#0B0E29]">
                   <Image
+                    key={product.image}
                     src={product.image}
                     alt={product.name}
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
+                    unoptimized
                   />
                   {product.coldChainRequired && (
                     <div className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange text-brand-navy text-xs font-bold">

@@ -25,9 +25,15 @@ export function CategoryPageTemplate({
   products: initialProducts,
 }: CategoryPageTemplateProps) {
   const { products: allProducts } = usePublicCms();
-  const liveCategoryProducts = allProducts.filter(
-    (p) => p.categorySlug === category.slug
-  );
+  const liveCategoryProducts = allProducts.filter((p) => {
+    if (category.slug === 'vaccines') {
+      return (
+        p.categorySlug === 'vaccines' ||
+        (p.categorySlug as string) === 'veterinary-vaccines'
+      );
+    }
+    return p.categorySlug === category.slug;
+  });
   const products =
     liveCategoryProducts.length > 0 ? liveCategoryProducts : initialProducts;
 
@@ -89,6 +95,7 @@ export function CategoryPageTemplate({
               <div className="rounded-[24px] overflow-hidden bg-[#0B0E29] p-3">
                 <div className="relative h-64 sm:h-72 w-full rounded-[18px] overflow-hidden">
                   <Image
+                    key={category.heroImage}
                     src={category.heroImage}
                     alt={category.name}
                     fill

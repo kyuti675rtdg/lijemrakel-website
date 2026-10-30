@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation';
 import { CategoryPageTemplate } from '@/components/products/CategoryPageTemplate';
 import { getCategoryBySlug } from '@/data/productCategories';
 import { getProductsByCategory } from '@/data/catalogueProducts';
+import { readDb } from '@/lib/server/db';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Veterinary Vaccines — Livestock & Poultry Immunization',
@@ -13,7 +16,14 @@ export const metadata: Metadata = {
 export default function VaccinesPage() {
   const category = getCategoryBySlug('vaccines');
   if (!category) notFound();
-  const products = getProductsByCategory('vaccines');
+  const db = readDb();
+  const liveProducts = db.products.filter(
+    (p) =>
+      p.categorySlug === 'vaccines' ||
+      (p.categorySlug as string) === 'veterinary-vaccines'
+  );
+  const products =
+    liveProducts.length > 0 ? liveProducts : getProductsByCategory('vaccines');
 
   return <CategoryPageTemplate category={category} products={products} />;
 }

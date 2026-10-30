@@ -1,0 +1,8 @@
+node_modules
+.next
+.git
+*.zip
+data/*.bak
+data/*.tmp*
+data/supervisor.log
+

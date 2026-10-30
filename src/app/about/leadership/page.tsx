@@ -1,14 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, CheckCircle2, Award, Building2, Users } from 'lucide-react';
 import { PageHeroBanner } from '@/components/layout/PageHeroBanner';
-import {
-  FOUNDING_MEMBERS,
-  PROPOSED_BOARD_MEMBERS,
-} from '@/data/leadershipData';
 import { usePublicCms } from '@/lib/usePublicCms';
 
 type FilterTab = 'all' | 'founders' | 'board';
@@ -17,11 +12,23 @@ export default function LeadershipPage() {
   const { team: managementTeam } = usePublicCms();
   const [activeTab, setActiveTab] = useState<FilterTab>('all');
 
-  const filteredLeaders = managementTeam.filter((leader) => {
-    if (activeTab === 'founders') return leader.isFoundingMember;
-    if (activeTab === 'board') return leader.isProposedBoardMember;
-    return true;
-  });
+  const foundingMembers = useMemo(
+    () => managementTeam.filter((m) => m.isFoundingMember),
+    [managementTeam]
+  );
+
+  const boardMembers = useMemo(
+    () => managementTeam.filter((m) => m.isProposedBoardMember),
+    [managementTeam]
+  );
+
+  const filteredLeaders = useMemo(() => {
+    return managementTeam.filter((leader) => {
+      if (activeTab === 'founders') return leader.isFoundingMember;
+      if (activeTab === 'board') return leader.isProposedBoardMember;
+      return true;
+    });
+  }, [managementTeam, activeTab]);
 
   return (
     <div className="bg-[#FAF9F5] min-h-screen">
@@ -51,7 +58,9 @@ export default function LeadershipPage() {
             </h2>
 
             <p className="text-sm sm:text-base text-brand-muted leading-relaxed">
-              Our philosophy is simple: combine founding vision with veterinary technical expertise, international trade experience, and disciplined operational governance.
+              Our philosophy is simple: combine founding vision with veterinary
+              technical expertise, international trade experience, and
+              disciplined operational governance.
             </p>
 
             {/* Interactive Filter Tabs */}
@@ -79,7 +88,7 @@ export default function LeadershipPage() {
                 }`}
               >
                 <Award className="w-3.5 h-3.5 text-brand-orange" />
-                <span>Founding Members ({FOUNDING_MEMBERS.length})</span>
+                <span>Founding Members ({foundingMembers.length})</span>
               </button>
 
               <button
@@ -92,41 +101,44 @@ export default function LeadershipPage() {
                 }`}
               >
                 <Building2 className="w-3.5 h-3.5 text-brand-orange" />
-                <span>Board of Directors ({PROPOSED_BOARD_MEMBERS.length})</span>
+                <span>Board of Directors ({boardMembers.length})</span>
               </button>
             </div>
           </div>
 
           {/* =================================================================
-              2. COMPACT 5-COLUMN PORTRAIT CARDS (Reduced Profile Size + High Polish)
+              2. COMPACT 5-COLUMN PORTRAIT CARDS (Zero-Flicker Instant Render)
           ================================================================= */}
-          <motion.div
-            layout
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredLeaders.map((leader, idx) => (
-                <motion.div
-                  layout
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+            {filteredLeaders.map((leader, idx) => {
+              const badgeLabel = leader.isFoundingMember
+                ? 'Founder'
+                : leader.isProposedBoardMember
+                ? 'Board Member'
+                : 'Executive';
+
+              return (
+                <div
                   key={leader.id}
-                  initial={{ opacity: 0, y: 14, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.3, delay: idx * 0.05 }}
-                  whileHover={{ y: -5 }}
-                  className="group bg-white rounded-[20px] border border-brand-border/80 p-3.5 shadow-2xs hover:shadow-lg hover:border-brand-orange/40 transition-all duration-300 flex flex-col justify-between"
+                  className="group bg-white rounded-[20px] border border-brand-border/80 p-3.5 shadow-2xs hover:-translate-y-1 hover:shadow-lg hover:border-brand-orange/40 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
-                    {/* Compact Portrait Container (h-44 instead of oversized full-width square) */}
-                    <div className="relative h-44 w-full rounded-[14px] bg-[#F2F3F5] overflow-hidden mb-3.5">
-                      {leader.portraitUrl && (
+                    {/* Compact Portrait Container */}
+                    <div className="relative h-44 w-full rounded-[14px] bg-[#0B0E29] overflow-hidden mb-3.5">
+                      {leader.portraitUrl ? (
                         <Image
+                          key={leader.portraitUrl}
                           src={leader.portraitUrl}
                           alt={leader.displayName}
                           fill
+                          priority={idx < 5}
                           sizes="(max-width: 640px) 90vw, (max-width: 1024px) 33vw, 20vw"
                           className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                         />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-brand-orange font-heading text-xl font-extrabold">
+                          {leader.initials}
+                        </div>
                       )}
                       {/* Subtle Top-Left Governance Pill */}
                       <div className="absolute top-2.5 left-2.5">
@@ -137,7 +149,7 @@ export default function LeadershipPage() {
                               : 'bg-white/90 text-brand-navy'
                           }`}
                         >
-                          {leader.isFoundingMember ? 'Founder' : 'Board Member'}
+                          {badgeLabel}
                         </span>
                       </div>
                     </div>
@@ -168,10 +180,10 @@ export default function LeadershipPage() {
                       </div>
                     ))}
                   </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+                </div>
+              );
+            })}
+          </div>
 
           {/* =================================================================
               3. COMPACT GOVERNANCE SUMMARY STRIP (Founders & Board Structure)
@@ -188,26 +200,38 @@ export default function LeadershipPage() {
                   Founding Members
                 </h3>
                 <p className="text-xs text-white/70 mt-1">
-                  Original founders guiding Lijemrakel Trading PLC&apos;s strategic direction.
+                  Original founders guiding Lijemrakel Trading PLC&apos;s
+                  strategic direction.
                 </p>
               </div>
 
               <div className="mt-4 space-y-2">
-                {FOUNDING_MEMBERS.map((founder) => (
+                {foundingMembers.map((founder) => (
                   <div
-                    key={founder.name}
-                    className="flex items-center justify-between rounded-xl bg-white/5 border border-white/10 px-3.5 py-2.5"
+                    key={founder.id}
+                    className="flex items-center justify-between gap-2 rounded-xl bg-white/5 border border-white/10 px-3.5 py-2.5"
                   >
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-7 h-7 rounded-lg bg-brand-orange text-brand-navy font-heading text-[11px] font-extrabold flex items-center justify-center">
-                        {founder.initials}
-                      </span>
-                      <span className="text-xs font-bold text-white">
-                        {founder.formalName}
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="relative w-7 h-7 rounded-lg bg-brand-orange text-brand-navy font-heading text-[11px] font-extrabold flex items-center justify-center overflow-hidden shrink-0">
+                        {founder.portraitUrl ? (
+                          <Image
+                            key={founder.portraitUrl}
+                            src={founder.portraitUrl}
+                            alt={founder.displayName}
+                            fill
+                            sizes="28px"
+                            className="object-cover object-top"
+                          />
+                        ) : (
+                          <span>{founder.initials}</span>
+                        )}
+                      </div>
+                      <span className="text-xs font-bold text-white truncate">
+                        {founder.displayName}
                       </span>
                     </div>
-                    <span className="text-[11px] text-white/75">
-                      {founder.executiveRole.replace('Founding Member & ', '')}
+                    <span className="text-[11px] text-white/75 text-right shrink-0">
+                      {founder.roleTitle}
                     </span>
                   </div>
                 ))}
@@ -225,31 +249,43 @@ export default function LeadershipPage() {
                   Board of Directors (Proposed)
                 </h3>
                 <p className="text-xs text-brand-muted mt-1">
-                  Five-member governance board uniting founding members and operational executives.
+                  Five-member governance board uniting founding members and
+                  operational executives.
                 </p>
               </div>
 
               <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {PROPOSED_BOARD_MEMBERS.map((member) => (
+                {boardMembers.map((member) => (
                   <div
-                    key={member.name}
-                    className="flex items-center justify-between rounded-xl bg-[#FAF9F5] border border-brand-border/60 px-3.5 py-2.5"
+                    key={member.id}
+                    className="flex items-center justify-between gap-2 rounded-xl bg-[#FAF9F5] border border-brand-border/60 px-3.5 py-2.5"
                   >
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-7 h-7 rounded-lg bg-[#0B0E29] text-brand-orange font-heading text-[11px] font-extrabold flex items-center justify-center shrink-0">
-                        {member.initials}
-                      </span>
-                      <div>
-                        <div className="text-xs font-bold text-brand-navy leading-tight">
-                          {member.name}
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="relative w-7 h-7 rounded-lg bg-[#0B0E29] text-brand-orange font-heading text-[11px] font-extrabold flex items-center justify-center overflow-hidden shrink-0">
+                        {member.portraitUrl ? (
+                          <Image
+                            key={member.portraitUrl}
+                            src={member.portraitUrl}
+                            alt={member.displayName}
+                            fill
+                            sizes="28px"
+                            className="object-cover object-top"
+                          />
+                        ) : (
+                          <span>{member.initials}</span>
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-brand-navy leading-tight truncate">
+                          {member.displayName}
                         </div>
-                        <div className="text-[11px] text-brand-muted">
-                          {member.executiveRole}
+                        <div className="text-[11px] text-brand-muted truncate">
+                          {member.roleTitle}
                         </div>
                       </div>
                     </div>
                     <span className="px-2 py-0.5 rounded-full bg-white border border-brand-border text-[10px] font-bold text-brand-navy shrink-0">
-                      {member.roleNote === 'Founding Member' ? 'Founder' : 'Board'}
+                      {member.isFoundingMember ? 'Founder' : 'Board'}
                     </span>
                   </div>
                 ))}

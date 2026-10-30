@@ -83,11 +83,13 @@ function NewsContent() {
               <div>
                 <div className="relative h-52 w-full rounded-[18px] overflow-hidden bg-[#0B0E29]">
                   <Image
+                    key={article.image}
                     src={article.image}
                     alt={article.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    unoptimized
                   />
                   <div className="absolute top-3 left-3">
                     <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-brand-orange text-brand-navy">

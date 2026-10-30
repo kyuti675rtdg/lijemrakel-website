@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation';
 import { CategoryPageTemplate } from '@/components/products/CategoryPageTemplate';
 import { getCategoryBySlug } from '@/data/productCategories';
 import { getProductsByCategory } from '@/data/catalogueProducts';
+import { readDb } from '@/lib/server/db';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Hormones and Related Products — Authorized Veterinary Applications',
@@ -13,7 +16,10 @@ export const metadata: Metadata = {
 export default function HormonesPage() {
   const category = getCategoryBySlug('hormones');
   if (!category) notFound();
-  const products = getProductsByCategory('hormones');
+  const db = readDb();
+  const liveProducts = db.products.filter((p) => p.categorySlug === 'hormones');
+  const products =
+    liveProducts.length > 0 ? liveProducts : getProductsByCategory('hormones');
 
   return <CategoryPageTemplate category={category} products={products} />;
 }

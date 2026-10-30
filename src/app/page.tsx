@@ -32,9 +32,22 @@ import { MANAGEMENT_TEAM } from '@/data/leadershipData';
 import { ProductCard } from '@/components/products/ProductCard';
 import { SplitPillButton } from '@/components/ui/SplitPillButton';
 import { FadeIn } from '@/components/ui/MotionWrapper';
-import { readDb, DEFAULT_SITE_IMAGES } from '@/lib/server/db';
+import {
+  readDb,
+  DEFAULT_SITE_IMAGES,
+  getRouteSeoMetadata,
+} from '@/lib/server/db';
 
 export const dynamic = 'force-dynamic';
+
+export function generateMetadata() {
+  return getRouteSeoMetadata('/', {
+    title:
+      'Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions',
+    description:
+      'Supporting Ethiopia’s Agriculture Through Reliable Veterinary and Poultry Solutions. Importing veterinary medicines, vaccines, feed premixes, authorized hormones, and fertilized eggs.',
+  });
+}
 
 const BUSINESS_ICON_MAP: Record<
   string,
@@ -82,6 +95,7 @@ export default function HomePage() {
         {/* Right-Side Fitted Lijemrakel Handshake Photo (Desktop Bleed + Smooth Left Blend) */}
         <div className="relative w-full h-[320px] sm:h-[420px] lg:h-auto lg:absolute lg:inset-y-0 lg:right-0 lg:w-[60%] z-0 order-2 lg:order-none">
           <Image
+            key={siteImages.homeHeroImage}
             src={siteImages.homeHeroImage}
             alt="Lijemrakel Trading PLC leadership partnership handshake in front of official company emblem"
             fill
@@ -198,7 +212,7 @@ export default function HomePage() {
               </div>
 
               {/* Bottom-Left Inverted Cutout Tab */}
-              <div className="absolute bottom-0 left-0 bg-[#F7F7F3] pt-3 pr-4 rounded-tr-[22px]">
+              <div className="cutout-notch absolute bottom-0 left-0 bg-[#F7F7F3] pt-3 pr-4 rounded-tr-[22px]">
                 <Link
                   href="/about"
                   className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-white border border-brand-border text-xs font-heading font-bold text-brand-navy hover:bg-brand-navy hover:text-white transition-colors"
@@ -234,9 +248,7 @@ export default function HomePage() {
               </div>
 
               {/* Bottom-Left Inverted Cutout Tab */}
-              <div className="
-                absolute bottom-0 left-0 bg-[#F7F7F3] pt-3 pr-4 rounded-tr-[22px] z-10
-              ">
+              <div className="cutout-notch absolute bottom-0 left-0 bg-[#F7F7F3] pt-3 pr-4 rounded-tr-[22px] z-10">
                 <Link
                   href="/products"
                   className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-brand-orange text-xs font-heading font-bold text-brand-navy hover:bg-brand-navy hover:text-white transition-colors"
@@ -262,7 +274,7 @@ export default function HomePage() {
               </div>
 
               {/* Bottom-Left Inverted Cutout Tab */}
-              <div className="absolute bottom-0 left-0 bg-[#F7F7F3] pt-3 pr-4 rounded-tr-[22px]">
+              <div className="cutout-notch absolute bottom-0 left-0 bg-[#F7F7F3] pt-3 pr-4 rounded-tr-[22px]">
                 <Link
                   href="/poultry-hatchery"
                   className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#0B0E29] text-xs font-heading font-bold text-white hover:bg-brand-orange hover:text-brand-navy transition-colors"
@@ -288,6 +300,7 @@ export default function HomePage() {
               {/* Top Wide Corporate Collaboration Image */}
               <div className="relative h-64 sm:h-72 w-full rounded-[24px] overflow-hidden shadow-sm">
                 <Image
+                  key={siteImages.homeAboutMainImage}
                   src={siteImages.homeAboutMainImage}
                   alt="Lijemrakel Trading PLC executive office in Addis Ababa"
                   fill
@@ -315,6 +328,7 @@ export default function HomePage() {
                 {/* Bottom-Right Strategic Consultation Photo */}
                 <div className="col-span-7 relative h-48 sm:h-52 rounded-[24px] overflow-hidden shadow-sm">
                   <Image
+                    key={siteImages.homeAboutAccentImage}
                     src={siteImages.homeAboutAccentImage}
                     alt="Lijemrakel Trading PLC leadership partnership"
                     fill
@@ -356,9 +370,13 @@ export default function HomePage() {
                 <div className="flex items-center gap-3">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-brand-orange shrink-0">
                     <Image
+                      key={
+                        deputyManager?.portraitUrl ||
+                        '/uploads/1793297131637-photo_2026-04-06_04-12-56.jpg'
+                      }
                       src={
                         deputyManager?.portraitUrl ||
-                        '/images/leadership/leader-lijalem.jpg'
+                        '/uploads/1793297131637-photo_2026-04-06_04-12-56.jpg'
                       }
                       alt={deputyManager?.displayName || 'Mr Lijalem Abayneh'}
                       fill
@@ -678,9 +696,10 @@ export default function HomePage() {
                 href="/about/leadership"
                 className="group bg-[#FAF9F5] rounded-[20px] border border-brand-border/70 p-3.5 hover:bg-white hover:shadow-md transition-all flex flex-col"
               >
-                <div className="relative h-44 w-full rounded-[14px] bg-[#F2F3F5] overflow-hidden mb-3.5">
+                <div className="relative h-44 w-full rounded-[14px] bg-[#0B0E29] overflow-hidden mb-3.5">
                   {leader.portraitUrl && (
                     <Image
+                      key={leader.portraitUrl}
                       src={leader.portraitUrl}
                       alt={leader.displayName}
                       fill

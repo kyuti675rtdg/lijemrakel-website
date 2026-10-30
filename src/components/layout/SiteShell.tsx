@@ -7,8 +7,15 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { OrbitAssistant } from '@/components/chat/OrbitAssistant';
 import { ThemeProvider } from '@/components/ui/ThemeToggle';
+import { PublicCmsProvider, PublicCmsSnapshot } from '@/lib/usePublicCms';
 
-export function SiteShell({ children }: { children: React.ReactNode }) {
+export function SiteShell({
+  children,
+  initialCms,
+}: {
+  children: React.ReactNode;
+  initialCms?: PublicCmsSnapshot;
+}) {
   const pathname = usePathname();
   const isAdminRoute =
     pathname?.startsWith('/admin') || pathname?.startsWith('/adminlogin');
@@ -40,23 +47,27 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
   if (isAdminRoute) {
     return (
-      <main id="main-content" className="min-h-screen flex-1 bg-[#F4F5F8]">
-        {children}
-      </main>
+      <PublicCmsProvider initialData={initialCms}>
+        <main id="main-content" className="min-h-screen flex-1 bg-[#F4F5F8]">
+          {children}
+        </main>
+      </PublicCmsProvider>
     );
   }
 
   return (
     <ThemeProvider>
-      <div className="public-site-shell flex-1 flex flex-col min-h-screen bg-white dark:bg-[#070B1E] transition-colors duration-300">
-        <TopUtilityBar />
-        <Header />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <OrbitAssistant />
-      </div>
+      <PublicCmsProvider initialData={initialCms}>
+        <div className="public-site-shell flex-1 flex flex-col min-h-screen bg-white dark:bg-[#070B1E] transition-colors duration-300">
+          <TopUtilityBar />
+          <Header />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <OrbitAssistant />
+        </div>
+      </PublicCmsProvider>
     </ThemeProvider>
   );
 }

@@ -1,8 +1,12 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { SiteShell } from '@/components/layout/SiteShell';
+import { getPublicCmsSnapshot } from '@/lib/server/db';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://lijemrakel.com'),
   title: {
     default:
       'Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions',
@@ -35,6 +39,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const initialCms = getPublicCmsSnapshot();
+
   return (
     <html lang="en">
       <head>
@@ -57,7 +63,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <SiteShell>{children}</SiteShell>
+        <SiteShell initialCms={initialCms}>{children}</SiteShell>
       </body>
     </html>
   );

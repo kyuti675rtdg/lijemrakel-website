@@ -4,15 +4,21 @@ import { Clock, CheckCircle2 } from 'lucide-react';
 import { PageHeroBanner } from '@/components/layout/PageHeroBanner';
 import { STRATEGY_PHASES } from '@/data/strategyPhases';
 import { FadeIn } from '@/components/ui/MotionWrapper';
-import { readDb, DEFAULT_SITE_IMAGES } from '@/lib/server/db';
+import {
+  readDb,
+  DEFAULT_SITE_IMAGES,
+  getRouteSeoMetadata,
+} from '@/lib/server/db';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  title: 'Our Strategy — Lijemrakel Trading PLC',
-  description:
-    'Explore the four-phase strategic roadmap of Lijemrakel Trading PLC.',
-};
+export function generateMetadata(): Metadata {
+  return getRouteSeoMetadata('/about/strategy', {
+    title: 'Our Strategy — Lijemrakel Trading PLC',
+    description:
+      'Explore the four-phase strategic roadmap of Lijemrakel Trading PLC.',
+  });
+}
 
 export default function StrategyPage() {
   const db = readDb();
@@ -55,6 +61,7 @@ export default function StrategyPage() {
                     }`}
                   >
                     <Image
+                      key={PHASE_IMAGES[idx]}
                       src={PHASE_IMAGES[idx]}
                       alt={`Phase ${phase.phaseNumber}: ${phase.title}`}
                       fill

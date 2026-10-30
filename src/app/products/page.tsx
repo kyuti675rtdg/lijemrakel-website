@@ -4,12 +4,17 @@ import { ChevronsRight } from 'lucide-react';
 import { PageHeroBanner } from '@/components/layout/PageHeroBanner';
 import { CatalogueBrowser } from '@/components/products/CatalogueBrowser';
 import { PRODUCT_CATEGORIES } from '@/data/productCategories';
+import { getRouteSeoMetadata } from '@/lib/server/db';
 
-export const metadata: Metadata = {
-  title: 'Products — Veterinary Medicines, Vaccines, Premixes, Hormones & Eggs',
-  description:
-    'Search and filter Lijemrakel Trading PLC’s veterinary medicines, vaccines, feed premixes, hormones, and fertilized hatching eggs.',
-};
+export const dynamic = 'force-dynamic';
+
+export function generateMetadata(): Metadata {
+  return getRouteSeoMetadata('/products', {
+    title: 'Products — Veterinary Medicines, Vaccines, Premixes, Hormones & Eggs',
+    description:
+      'Search and filter Lijemrakel Trading PLC’s veterinary medicines, vaccines, feed premixes, hormones, and fertilized hatching eggs.',
+  });
+}
 
 export default function ProductsPage() {
   return (

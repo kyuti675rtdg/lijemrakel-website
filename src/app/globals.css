@@ -69,6 +69,12 @@ html.dark .public-site-shell .bg-white .bg-\[\#FAF9F5\] {
   background-color: #151F44 !important;
 }
 
+/* Ensure bottom-left inverted cutout notches match their parent section background in Dark Mode */
+html.dark .public-site-shell .cutout-notch,
+html.dark .public-site-shell .bg-white .cutout-notch {
+  background-color: #0A1026 !important;
+}
+
 /* Typography Contrast in Dark Mode */
 html.dark .public-site-shell .text-brand-navy,
 html.dark .public-site-shell .text-\[\#0B0E29\] {

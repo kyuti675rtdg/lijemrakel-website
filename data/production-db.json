@@ -9,7 +9,7 @@
       "roleName": "Super Administrator",
       "status": "active",
       "department": "Executive & Technical Administration",
-      "lastLoginAt": "2026-10-28T14:33:25.024Z",
+      "lastLoginAt": "2026-10-29T23:54:48.748Z",
       "createdAt": "2026-10-28T06:08:04.777Z",
       "updatedAt": "2026-10-28T06:08:04.777Z"
     },
@@ -735,6 +735,106 @@
       "countryCode": "KE",
       "deviceType": "Desktop",
       "referrerSource": "Direct"
+    },
+    {
+      "id": "EVT-1793317554633-mpjf",
+      "timestamp": "2026-10-29T23:45:54.633Z",
+      "visitorHash": "5efe87ab3cd373fe",
+      "path": "/",
+      "pageTitle": "Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions",
+      "countryCode": "US",
+      "deviceType": "Desktop",
+      "referrerSource": "Direct"
+    },
+    {
+      "id": "EVT-1793318029303-yrul",
+      "timestamp": "2026-10-29T23:53:49.303Z",
+      "visitorHash": "f4548ecda7051b7c",
+      "path": "/",
+      "pageTitle": "Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions",
+      "countryCode": "ET",
+      "deviceType": "Desktop",
+      "referrerSource": "Direct"
+    },
+    {
+      "id": "EVT-1793318517148-cyh1",
+      "timestamp": "2026-10-30T00:01:57.148Z",
+      "visitorHash": "b5db4fda4fc0e82c",
+      "path": "/",
+      "pageTitle": "Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions",
+      "countryCode": "ET",
+      "deviceType": "Desktop",
+      "referrerSource": "Direct"
+    },
+    {
+      "id": "EVT-1793318687096-09dz",
+      "timestamp": "2026-10-30T00:04:47.096Z",
+      "visitorHash": "b5db4fda4fc0e82c",
+      "path": "/",
+      "pageTitle": "Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions",
+      "countryCode": "ET",
+      "deviceType": "Desktop",
+      "referrerSource": "Direct"
+    },
+    {
+      "id": "EVT-1793318755319-2xpu",
+      "timestamp": "2026-10-30T00:05:55.319Z",
+      "visitorHash": "b5db4fda4fc0e82c",
+      "path": "/",
+      "pageTitle": "Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions",
+      "countryCode": "ET",
+      "deviceType": "Desktop",
+      "referrerSource": "Direct"
+    },
+    {
+      "id": "EVT-1793318798337-pkb3",
+      "timestamp": "2026-10-30T00:06:38.337Z",
+      "visitorHash": "b5db4fda4fc0e82c",
+      "path": "/",
+      "pageTitle": "Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions",
+      "countryCode": "ET",
+      "deviceType": "Desktop",
+      "referrerSource": "Direct"
+    },
+    {
+      "id": "EVT-1793318800988-2ut2",
+      "timestamp": "2026-10-30T00:06:40.988Z",
+      "visitorHash": "b5db4fda4fc0e82c",
+      "path": "/about",
+      "pageTitle": "Company Overview — About Lijemrakel Trading PLC | Lijemrakel Trading PLC",
+      "countryCode": "ET",
+      "deviceType": "Desktop",
+      "referrerSource": "Direct"
+    },
+    {
+      "id": "EVT-1793318806636-jtha",
+      "timestamp": "2026-10-30T00:06:46.636Z",
+      "visitorHash": "b5db4fda4fc0e82c",
+      "path": "/",
+      "pageTitle": "Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions",
+      "countryCode": "ET",
+      "deviceType": "Desktop",
+      "referrerSource": "Direct"
+    },
+    {
+      "id": "EVT-1793318816716-6h2t",
+      "timestamp": "2026-10-30T00:06:56.716Z",
+      "visitorHash": "b5db4fda4fc0e82c",
+      "path": "/about/leadership",
+      "pageTitle": "Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions",
+      "countryCode": "ET",
+      "deviceType": "Desktop",
+      "referrerSource": "Direct"
+    },
+    {
+      "id": "EVT-1793319051999-uv57",
+      "timestamp": "2026-10-30T00:10:51.999Z",
+      "visitorHash": "b5db4fda4fc0e82c",
+      "path": "/",
+      "pageTitle": "Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions",
+      "countryCode": "ET",
+      "deviceType": "Desktop",
+      "referrerSource": "Direct"
     }
   ],
   "inquiries": [
@@ -1322,7 +1422,7 @@
     },
     {
       "id": "CAT-02",
-      "slug": "veterinary-vaccines",
+      "slug": "vaccines",
       "name": "Veterinary Vaccines",
       "description": "Preventive poultry and livestock vaccines handled under strict +2°C to +8°C cold-chain protection.",
       "subcategories": [
@@ -1508,7 +1608,7 @@
         "Supports import-cost calculations, pricing, and investment analysis.",
         "Monitors receivables, payables, working capital, and internal financial controls."
       ],
-      "portraitUrl": "/images/leadership/leader-abel.jpg",
+      "portraitUrl": "/uploads/1793318664802-Gemini_Generated_Image_kf9dkikf9dkikf9d.jpg",
       "portraitNote": ""
     },
     {
@@ -1551,11 +1651,37 @@
         "Monitors operational costs, workplace safety, and service quality.",
         "Escalates supply or logistics risks."
       ],
-      "portraitUrl": "/images/leadership/leader-desalegn.jpg",
+      "portraitUrl": "/uploads/1793318724908-Gemini_Generated_Image_bukd5rbukd5rbukd.jpg",
       "portraitNote": ""
     }
   ],
   "media": [
+    {
+      "id": "MEDIA-726463",
+      "title": "Ato Desalegn Tamene",
+      "fileName": "Gemini_Generated_Image_bukd5rbukd5rbukd.jpg",
+      "url": "/uploads/1793318724908-Gemini_Generated_Image_bukd5rbukd5rbukd.jpg",
+      "category": "Leadership",
+      "fileType": "JPG (2335 KB)",
+      "sizeBytes": 2391223,
+      "dimensions": "2335 KB",
+      "uploadedAt": "2026-10-30",
+      "uploadedBy": "Technical & System Administrator",
+      "altText": "Ato Desalegn Tamene"
+    },
+    {
+      "id": "MEDIA-666406",
+      "title": "Ato Abel Girma",
+      "fileName": "Gemini_Generated_Image_kf9dkikf9dkikf9d.jpg",
+      "url": "/uploads/1793318664802-Gemini_Generated_Image_kf9dkikf9dkikf9d.jpg",
+      "category": "Leadership",
+      "fileType": "JPG (2397 KB)",
+      "sizeBytes": 2454238,
+      "dimensions": "2397 KB",
+      "uploadedAt": "2026-10-30",
+      "uploadedBy": "Technical & System Administrator",
+      "altText": "Ato Abel Girma"
+    },
     {
       "id": "MEDIA-158505",
       "title": "Ato Yelekal Kebede",
@@ -2310,7 +2436,7 @@
       "pageName": "Homepage",
       "metaTitle": "Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions",
       "metaDescription": "Supporting Ethiopia’s Agriculture Through Reliable Veterinary and Poultry Solutions. Importing veterinary medicines, vaccines, feed premixes, hormones, and fertilized eggs.",
-      "canonicalUrl": "https://lijemrakel-trading.vercel.app/",
+      "canonicalUrl": "https://lijemrakel.com/",
       "keywords": "Lijemrakel Trading PLC, Veterinary Medicines Ethiopia, Veterinary Vaccines Ethiopia, Feed Premixes, Fertilized Hatching Eggs",
       "ogTitle": "Lijemrakel Trading PLC | Veterinary & Poultry Solutions",
       "ogDescription": "Supporting Ethiopia’s Agriculture Through Reliable Veterinary and Poultry Solutions.",
@@ -2324,7 +2450,7 @@
       "pageName": "About Us — Company Overview",
       "metaTitle": "About Lijemrakel Trading PLC | Ethiopian Veterinary & Agricultural Trade",
       "metaDescription": "Learn about Lijemrakel Trading PLC, connecting reputable international manufacturers with veterinary professionals, livestock producers, and poultry farms across Ethiopia.",
-      "canonicalUrl": "https://lijemrakel-trading.vercel.app/about",
+      "canonicalUrl": "https://lijemrakel.com/about",
       "keywords": "About Lijemrakel Trading, Ethiopian Veterinary Importer, Gebeta Le Hager Agriculture",
       "ogTitle": "About Lijemrakel Trading PLC",
       "ogDescription": "Connecting reputable international manufacturers with veterinary professionals and farms across Ethiopia.",
@@ -2338,7 +2464,7 @@
       "pageName": "Our Strategy — 5-Year Roadmap",
       "metaTitle": "Our Strategy — 5-Year Strategic Direction | Lijemrakel Trading PLC",
       "metaDescription": "Explore Lijemrakel Trading PLC’s 4-phase, 5-year strategic roadmap from veterinary market entry to domestic poultry production and hatchery development.",
-      "canonicalUrl": "https://lijemrakel-trading.vercel.app/about/strategy",
+      "canonicalUrl": "https://lijemrakel.com/about/strategy",
       "keywords": "Lijemrakel Strategy, Poultry Hatchery Roadmap Ethiopia, Veterinary Distribution Plan",
       "ogTitle": "Our Strategy — 5-Year Roadmap | Lijemrakel Trading PLC",
       "ogDescription": "4-phase strategic roadmap from veterinary market entry to domestic poultry production and hatchery development.",
@@ -2352,7 +2478,7 @@
       "pageName": "Leadership & Governance",
       "metaTitle": "Leadership — Founders, Board & Executive Management | Lijemrakel Trading PLC",
       "metaDescription": "Meet the Founding Members, Board of Directors, and Executive Management Team guiding Lijemrakel Trading PLC.",
-      "canonicalUrl": "https://lijemrakel-trading.vercel.app/about/leadership",
+      "canonicalUrl": "https://lijemrakel.com/about/leadership",
       "keywords": "Lijalem Abayneh, Dr Etsubdink Negash, Abel Girma, Yelekal Kebede, Desalegn Tamene",
       "ogTitle": "Leadership & Governance | Lijemrakel Trading PLC",
       "ogDescription": "Meet the Founding Members, Board of Directors, and Executive Management Team guiding Lijemrakel Trading PLC.",
@@ -2366,7 +2492,7 @@
       "pageName": "Products & Divisions Catalogue",
       "metaTitle": "Product Catalogue — Veterinary Medicines, Vaccines, Premixes & Hatching Eggs",
       "metaDescription": "Browse Lijemrakel Trading PLC’s veterinary medicines, vaccines, feed premixes, reproductive hormones, and certified fertilized hatching eggs.",
-      "canonicalUrl": "https://lijemrakel-trading.vercel.app/products",
+      "canonicalUrl": "https://lijemrakel.com/products",
       "keywords": "Albendazole Ethiopia, Ivermectin, Oxytetracycline, Poultry Vaccines, Broiler Premix",
       "ogTitle": "Veterinary & Poultry Product Catalogue | Lijemrakel Trading PLC",
       "ogDescription": "Browse Lijemrakel Trading PLC’s veterinary medicines, vaccines, feed premixes, reproductive hormones, and certified fertilized hatching eggs.",
@@ -2380,7 +2506,7 @@
       "pageName": "Contact Us",
       "metaTitle": "Contact Lijemrakel Trading PLC | Debrewerk Tower, Mexico, Addis Ababa",
       "metaDescription": "Contact Lijemrakel Trading PLC at Debrewerk Tower | Mexico, Addis Ababa or call 0913514767 for veterinary product inquiries and supplier partnerships.",
-      "canonicalUrl": "https://lijemrakel-trading.vercel.app/contact",
+      "canonicalUrl": "https://lijemrakel.com/contact",
       "keywords": "Contact Lijemrakel Trading, Debrewerk Tower Mexico Addis Ababa, 0913514767",
       "ogTitle": "Contact Lijemrakel Trading PLC",
       "ogDescription": "Contact Lijemrakel Trading PLC at Debrewerk Tower | Mexico, Addis Ababa or call 0913514767.",
@@ -2452,6 +2578,61 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "LOG-1793318743732-w198",
+      "timestamp": "2026-10-30T00:05:43.732Z",
+      "actorName": "Technical & System Administrator",
+      "actorEmail": "technical_support@orbit.et",
+      "module": "teams",
+      "action": "Updated team member profile",
+      "target": "Ato Desalegn Tamene"
+    },
+    {
+      "id": "LOG-1793318736245-5jen",
+      "timestamp": "2026-10-30T00:05:36.245Z",
+      "actorName": "Technical & System Administrator",
+      "actorEmail": "technical_support@orbit.et",
+      "module": "teams",
+      "action": "Updated team member profile",
+      "target": "Ato Desalegn Tamene"
+    },
+    {
+      "id": "LOG-1793318726463-2sm0",
+      "timestamp": "2026-10-30T00:05:26.463Z",
+      "actorName": "Technical & System Administrator",
+      "actorEmail": "technical_support@orbit.et",
+      "module": "media",
+      "action": "Uploaded media file",
+      "target": "Ato Desalegn Tamene (Gemini_Generated_Image_bukd5rbukd5rbukd.jpg)"
+    },
+    {
+      "id": "LOG-1793318678127-mqz3",
+      "timestamp": "2026-10-30T00:04:38.127Z",
+      "actorName": "Technical & System Administrator",
+      "actorEmail": "technical_support@orbit.et",
+      "module": "teams",
+      "action": "Updated team member profile",
+      "target": "Ato Abel Girma"
+    },
+    {
+      "id": "LOG-1793318666406-5ftx",
+      "timestamp": "2026-10-30T00:04:26.406Z",
+      "actorName": "Technical & System Administrator",
+      "actorEmail": "technical_support@orbit.et",
+      "module": "media",
+      "action": "Uploaded media file",
+      "target": "Ato Abel Girma (Gemini_Generated_Image_kf9dkikf9dkikf9d.jpg)"
+    },
+    {
+      "id": "LOG-1793318088748-seja",
+      "timestamp": "2026-10-29T23:54:48.748Z",
+      "actorName": "Technical & System Administrator",
+      "actorEmail": "technical_support@orbit.et",
+      "module": "auth",
+      "action": "Signed in to Admin Panel",
+      "target": "technical_support@orbit.et",
+      "ipAddress": "196.189.144.159"
+    },
     {
       "id": "LOG-1793199612187-u2da",
       "timestamp": "2026-10-28T15:00:12.187Z",

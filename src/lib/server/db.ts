@@ -536,7 +536,11 @@ export function readDb(): ProductionDatabaseSchema {
         ? parsed.products
         : defaults.products,
       categories: Array.isArray(parsed.categories)
-        ? parsed.categories
+        ? parsed.categories.map((cat) =>
+            cat.slug === 'veterinary-vaccines'
+              ? { ...cat, slug: 'vaccines' }
+              : cat
+          )
         : defaults.categories,
       news: Array.isArray(parsed.news) ? parsed.news : defaults.news,
       team: Array.isArray(parsed.team) ? parsed.team : defaults.team,
@@ -549,7 +553,15 @@ export function readDb(): ProductionDatabaseSchema {
         ? parsed.orbitFaqs
         : defaults.orbitFaqs,
       orbitConfig: parsed.orbitConfig || defaults.orbitConfig,
-      seo: Array.isArray(parsed.seo) ? parsed.seo : defaults.seo,
+      seo: Array.isArray(parsed.seo)
+        ? parsed.seo.map((s) => ({
+            ...s,
+            canonicalUrl: (s.canonicalUrl || '').replace(
+              'https://lijemrakel-trading.vercel.app',
+              'https://lijemrakel.com'
+            ),
+          }))
+        : defaults.seo,
       supportTickets: Array.isArray(parsed.supportTickets)
         ? parsed.supportTickets
         : [],
@@ -944,5 +956,71 @@ export function computeRealAnalyticsSummary(
     popularPages,
     deviceBreakdown,
     trafficSources,
+  };
+}
+
+export function getPublicCmsSnapshot() {
+  const db = readDb();
+  const publicNews = mapAdminNewsToPublicArticles(db.news, db.team);
+  return {
+    team: db.team,
+    news: publicNews,
+    products: db.products,
+    categories: db.categories,
+    siteImages: {
+      ...DEFAULT_SITE_IMAGES,
+      ...(db.siteImages || {}),
+    },
+    orbitConfig: db.orbitConfig,
+    orbitFaqs: db.orbitFaqs,
+  };
+}
+
+export function getRouteSeoMetadata(
+  route: string,
+  fallback: {
+    title: string;
+    description: string;
+    keywords?: string[];
+  }
+) {
+  const db = readDb();
+  const match = db.seo.find((s) => s.route === route);
+  const title = match?.metaTitle?.trim() || fallback.title;
+  const description = match?.metaDescription?.trim() || fallback.description;
+  const canonicalUrl =
+    match?.canonicalUrl?.trim() ||
+    `https://lijemrakel.com${route === '/' ? '' : route}`;
+  const keywords = match?.keywords
+    ? match.keywords
+        .split(',')
+        .map((k) => k.trim())
+        .filter(Boolean)
+    : fallback.keywords;
+  const ogTitle = match?.ogTitle?.trim() || title;
+  const ogDescription = match?.ogDescription?.trim() || description;
+  const ogImage =
+    match?.ogImage?.trim() || '/images/hero/lijemrakel-hero-handshake-hq.jpg';
+  const isNoIndex = (match?.indexStatus || '').includes('noindex');
+
+  return {
+    title,
+    description,
+    keywords,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    robots: {
+      index: !isNoIndex,
+      follow: true,
+    },
+    openGraph: {
+      title: ogTitle,
+      description: ogDescription,
+      url: canonicalUrl,
+      siteName: 'Lijemrakel Trading PLC',
+      images: ogImage ? [{ url: ogImage }] : undefined,
+      type: 'website' as const,
+    },
   };
 }

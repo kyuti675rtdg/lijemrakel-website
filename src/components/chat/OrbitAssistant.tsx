@@ -24,6 +24,7 @@ import {
   OrbitChatMessage,
   OrbitChatProvider,
 } from '@/lib/orbitAssistantEngine';
+import { usePublicCms } from '@/lib/usePublicCms';
 
 const STORAGE_KEY = 'lijemrakel_orbit_assistant_history_v1';
 
@@ -173,38 +174,54 @@ function renderMessageContent(content: string, isUser: boolean): React.ReactNode
 export function OrbitAssistant({
   provider = defaultOrbitProvider,
 }: OrbitAssistantProps) {
+  const { orbitConfig, orbitFaqs } = usePublicCms();
+
+  const liveAssistantName = orbitConfig?.assistantName || 'Orbit Assistant';
+  const liveWelcomeMessage =
+    orbitConfig?.welcomeMessage || ORBIT_WELCOME_MESSAGE;
+  const liveWhatsappNumber = orbitConfig?.whatsappNumber || '0913514767';
+  const liveDefaultSuggestions =
+    Array.isArray(orbitConfig?.defaultSuggestions) &&
+    orbitConfig.defaultSuggestions.length > 0
+      ? orbitConfig.defaultSuggestions
+      : ORBIT_DEFAULT_SUGGESTIONS;
+
+  const formattedIntlPhone = liveWhatsappNumber
+    .replace(/\s+/g, '')
+    .replace(/^0/, '251')
+    .replace(/^\+/, '');
+  const liveWhatsappUrl = orbitConfig?.whatsappNumber
+    ? `https://wa.me/${formattedIntlPhone}?text=${encodeURIComponent(
+        orbitConfig.whatsappPrefilledMessage ||
+          "Hello, I'm contacting Lijemrakel Trading PLC. I'd like to know more about your products and services."
+      )}`
+    : ORBIT_WHATSAPP_URL;
+
   const [isOpen, setIsOpen] = useState(false);
   const [showTeaser, setShowTeaser] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState<OrbitChatMessage[]>([]);
   const [activeSuggestions, setActiveSuggestions] = useState<string[]>(
-    ORBIT_DEFAULT_SUGGESTIONS
+    liveDefaultSuggestions
   );
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Sync live knowledge base from backend database on mount
+  // Sync live knowledge base from CMS into localStorage for the matching engine
   useEffect(() => {
-    fetch('/api/public/orbit')
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (data?.orbitFaqs && Array.isArray(data.orbitFaqs)) {
-          try {
-            localStorage.setItem(
-              ORBIT_ADMIN_KB_STORAGE_KEY,
-              JSON.stringify(data.orbitFaqs)
-            );
-          } catch {
-            // Ignore storage errors
-          }
-        }
-      })
-      .catch(() => {
-        // Offline fallback uses bundled KB
-      });
-  }, []);
+    if (Array.isArray(orbitFaqs) && orbitFaqs.length > 0) {
+      try {
+        localStorage.setItem(
+          ORBIT_ADMIN_KB_STORAGE_KEY,
+          JSON.stringify(orbitFaqs)
+        );
+      } catch {
+        // Ignore storage errors
+      }
+    }
+  }, [orbitFaqs]);
 
   // Load persisted conversation history on mount
   useEffect(() => {
@@ -230,17 +247,18 @@ export function OrbitAssistant({
     const initialMessage: OrbitChatMessage = {
       id: 'welcome-msg',
       role: 'assistant',
-      content: ORBIT_WELCOME_MESSAGE,
+      content: liveWelcomeMessage,
       timestamp: new Date().toISOString(),
       links: [
-        { label: 'Contact Us on WhatsApp', href: ORBIT_WHATSAPP_URL },
+        { label: 'Contact Us on WhatsApp', href: liveWhatsappUrl },
         { label: 'Explore Products', href: '/products' },
         { label: 'Contact Us', href: '/contact' },
       ],
-      suggestions: ORBIT_DEFAULT_SUGGESTIONS,
+      suggestions: liveDefaultSuggestions,
       isFallback: false,
     };
     setMessages([initialMessage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Save conversation history when messages change
@@ -317,18 +335,18 @@ export function OrbitAssistant({
     const resetMsg: OrbitChatMessage = {
       id: `welcome-${Date.now()}`,
       role: 'assistant',
-      content: ORBIT_WELCOME_MESSAGE,
+      content: liveWelcomeMessage,
       timestamp: new Date().toISOString(),
       links: [
-        { label: 'Contact Us on WhatsApp', href: ORBIT_WHATSAPP_URL },
+        { label: 'Contact Us on WhatsApp', href: liveWhatsappUrl },
         { label: 'Explore Products', href: '/products' },
         { label: 'Contact Us', href: '/contact' },
       ],
-      suggestions: ORBIT_DEFAULT_SUGGESTIONS,
+      suggestions: liveDefaultSuggestions,
       isFallback: false,
     };
     setMessages([resetMsg]);
-    setActiveSuggestions(ORBIT_DEFAULT_SUGGESTIONS);
+    setActiveSuggestions(liveDefaultSuggestions);
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch {
@@ -370,7 +388,7 @@ export function OrbitAssistant({
                 <div>
                   <div className="flex items-center gap-1.5">
                     <h2 className="font-heading text-sm font-extrabold tracking-tight text-white">
-                      Orbit Assistant
+                      {liveAssistantName}
                     </h2>
                     <span className="px-1.5 py-0.5 rounded-full bg-white/10 border border-[#D4AF37]/40 text-[9px] font-heading font-bold uppercase tracking-wider text-brand-orange">
                       Online
@@ -411,12 +429,12 @@ export function OrbitAssistant({
                   <WhatsAppIcon className="w-3.5 h-3.5" />
                 </span>
                 <span className="text-[11px] font-medium text-white/90 truncate">
-                  Direct WhatsApp Desk · <strong className="text-brand-orange">0913514767</strong>
+                  Direct WhatsApp Desk · <strong className="text-brand-orange">{liveWhatsappNumber}</strong>
                 </span>
               </div>
 
               <a
-                href={ORBIT_WHATSAPP_URL}
+                href={liveWhatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange hover:bg-white text-[#0B0E29] font-heading text-[11px] font-extrabold transition-colors shrink-0 shadow-xs"
@@ -544,7 +562,7 @@ export function OrbitAssistant({
                           </div>
                           <div className="pt-1">
                             <a
-                              href={ORBIT_WHATSAPP_URL}
+                              href={liveWhatsappUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-orange text-[#0B0E29] font-heading font-extrabold text-[11px] hover:bg-white transition-colors"
@@ -676,14 +694,14 @@ export function OrbitAssistant({
         {/* Quick Floating WhatsApp Button */}
         {!isOpen && (
           <motion.a
-            href={ORBIT_WHATSAPP_URL}
+            href={liveWhatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             whileHover={{ scale: 1.06, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            title="Contact Us on WhatsApp (0913514767)"
+            title={`Contact Us on WhatsApp (${liveWhatsappNumber})`}
             aria-label="Contact Us on WhatsApp"
             className="flex items-center gap-2 rounded-full bg-[#0B0E29] text-white px-3.5 py-3 shadow-xl border-2 border-[#D4AF37] hover:bg-brand-orange hover:text-[#0B0E29] hover:border-brand-orange transition-colors"
           >
@@ -729,7 +747,7 @@ export function OrbitAssistant({
           </motion.span>
 
           <span className="font-heading text-xs font-extrabold tracking-tight">
-            {isOpen ? 'Close Chat' : 'Orbit Assistant'}
+            {isOpen ? 'Close Chat' : liveAssistantName}
           </span>
 
           {!isOpen && (

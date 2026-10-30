@@ -10,23 +10,32 @@ import {
   Users,
 } from 'lucide-react';
 import { PageHeroBanner } from '@/components/layout/PageHeroBanner';
-import { FOUNDING_MEMBERS } from '@/data/leadershipData';
+import { FOUNDING_MEMBERS, MANAGEMENT_TEAM } from '@/data/leadershipData';
 import { SplitPillButton } from '@/components/ui/SplitPillButton';
 import { FadeIn } from '@/components/ui/MotionWrapper';
-import { readDb, DEFAULT_SITE_IMAGES } from '@/lib/server/db';
+import {
+  readDb,
+  DEFAULT_SITE_IMAGES,
+  getRouteSeoMetadata,
+} from '@/lib/server/db';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  title: 'Company Overview — About Lijemrakel Trading PLC',
-  description:
-    'Learn about Lijemrakel Trading PLC, an Ethiopian veterinary and poultry import-export company.',
-};
+export function generateMetadata(): Metadata {
+  return getRouteSeoMetadata('/about', {
+    title: 'Company Overview — About Lijemrakel Trading PLC',
+    description:
+      'Learn about Lijemrakel Trading PLC, an Ethiopian veterinary and poultry import-export company.',
+  });
+}
 
 export default function AboutPage() {
   const db = readDb();
   const aboutPhoto =
     db.siteImages?.aboutOfficeImage || DEFAULT_SITE_IMAGES.aboutOfficeImage;
+  const team =
+    Array.isArray(db.team) && db.team.length > 0 ? db.team : MANAGEMENT_TEAM;
+  const founders = team.filter((m) => m.isFoundingMember);
 
   return (
     <div className="bg-white dark:bg-[#070B1E] transition-colors">
@@ -47,6 +56,7 @@ export default function AboutPage() {
             <FadeIn direction="right" className="lg:col-span-6">
               <div className="relative h-80 sm:h-96 lg:h-[390px] w-full rounded-[24px] overflow-hidden shadow-sm">
                 <Image
+                  key={aboutPhoto}
                   src={aboutPhoto}
                   alt="Lijemrakel Trading PLC Executive Office"
                   fill
@@ -86,13 +96,22 @@ export default function AboutPage() {
                   Founding Members
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {FOUNDING_MEMBERS.map((f) => (
+                  {(founders.length > 0
+                    ? founders.map((f) => ({
+                        id: f.id,
+                        name: f.displayName,
+                      }))
+                    : FOUNDING_MEMBERS.map((f) => ({
+                        id: f.name,
+                        name: f.formalName,
+                      }))
+                  ).map((f) => (
                     <span
-                      key={f.name}
+                      key={f.id}
                       className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#F7F7F3] text-xs font-heading font-bold text-brand-navy"
                     >
                       <CheckCircle2 className="w-3.5 h-3.5 text-brand-orange" />
-                      <span>{f.formalName}</span>
+                      <span>{f.name}</span>
                     </span>
                   ))}
                 </div>
@@ -133,7 +152,7 @@ export default function AboutPage() {
                     Our core purpose, long-term vision, and the seven values guiding our operations.
                   </p>
                 </div>
-                <div className="absolute bottom-0 left-0 bg-[#F7F7F3] pt-2.5 pr-3.5 rounded-tr-[20px]">
+                <div className="cutout-notch absolute bottom-0 left-0 bg-[#F7F7F3] pt-2.5 pr-3.5 rounded-tr-[20px]">
                   <Link
                     href="/about/mission-vision-values"
                     className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-brand-border text-xs font-heading font-bold text-brand-navy hover:bg-brand-navy hover:text-white transition-colors"
@@ -157,7 +176,7 @@ export default function AboutPage() {
                     Our four-phase roadmap from import foundations to poultry and hatchery operations.
                   </p>
                 </div>
-                <div className="absolute bottom-0 left-0 bg-[#F7F7F3] pt-2.5 pr-3.5 rounded-tr-[20px]">
+                <div className="cutout-notch absolute bottom-0 left-0 bg-[#F7F7F3] pt-2.5 pr-3.5 rounded-tr-[20px]">
                   <Link
                     href="/about/strategy"
                     className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-brand-orange text-xs font-heading font-bold text-brand-navy hover:bg-brand-navy hover:text-white transition-colors"
@@ -181,7 +200,7 @@ export default function AboutPage() {
                     Meet our Founding Members, Board of Directors, and Executive Management Team.
                   </p>
                 </div>
-                <div className="absolute bottom-0 left-0 bg-[#F7F7F3] pt-2.5 pr-3.5 rounded-tr-[20px]">
+                <div className="cutout-notch absolute bottom-0 left-0 bg-[#F7F7F3] pt-2.5 pr-3.5 rounded-tr-[20px]">
                   <Link
                     href="/about/leadership"
                     className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0B0E29] text-xs font-heading font-bold text-white hover:bg-brand-orange hover:text-brand-navy transition-colors"

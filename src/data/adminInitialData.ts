@@ -212,7 +212,7 @@ export const INITIAL_PRODUCT_CATEGORIES: ProductCategoryRecord[] = [
   },
   {
     id: 'CAT-02',
-    slug: 'veterinary-vaccines',
+    slug: 'vaccines',
     name: 'Veterinary Vaccines',
     description:
       'Preventive poultry and livestock vaccines handled under strict +2°C to +8°C cold-chain protection.',
@@ -332,20 +332,20 @@ export const INITIAL_MEDIA_LIBRARY: MediaAssetItem[] = [
   },
   {
     id: 'MEDIA-08',
-    title: 'Mr Lijalem Abayneh — Deputy General Manager Portrait',
-    fileName: 'leader-lijalem.jpg',
-    url: '/images/leadership/leader-lijalem.jpg',
+    title: 'Mr Lijalem Abayneh — Chief Executive Officer (CEO) Portrait',
+    fileName: '1793297131637-photo_2026-04-06_04-12-56.jpg',
+    url: '/uploads/1793297131637-photo_2026-04-06_04-12-56.jpg',
     category: 'Leadership',
     fileType: 'JPEG',
     dimensions: '800 × 800 px',
     uploadedAt: '2026-10-28',
-    altText: 'Mr Lijalem Abayneh — Founding Member & Deputy General Manager',
+    altText: 'Mr Lijalem Abayneh — Founding Member & Chief Executive Officer (CEO)',
   },
   {
     id: 'MEDIA-09',
     title: 'Dr Etsubdink Negash — General & Technical Manager Portrait',
-    fileName: 'leader-etsubdink.jpg',
-    url: '/images/leadership/leader-etsubdink.jpg',
+    fileName: '1793297343211-photo_2026-04-06_04-14-35.jpg',
+    url: '/uploads/1793297343211-photo_2026-04-06_04-14-35.jpg',
     category: 'Leadership',
     fileType: 'JPEG',
     dimensions: '800 × 800 px',
@@ -362,7 +362,7 @@ export const INITIAL_SEO_CONFIGS: SeoPageConfig[] = [
     metaTitle: 'Lijemrakel Trading PLC | Veterinary, Poultry & Agricultural Import-Export Solutions',
     metaDescription:
       'Supporting Ethiopia’s Agriculture Through Reliable Veterinary and Poultry Solutions. Importing veterinary medicines, vaccines, feed premixes, hormones, and fertilized eggs.',
-    canonicalUrl: 'https://lijemrakel-trading.vercel.app/',
+    canonicalUrl: 'https://lijemrakel.com/',
     keywords:
       'Lijemrakel Trading PLC, Veterinary Medicines Ethiopia, Veterinary Vaccines Ethiopia, Feed Premixes, Fertilized Hatching Eggs',
     ogTitle: 'Lijemrakel Trading PLC | Veterinary & Poultry Solutions',
@@ -379,7 +379,7 @@ export const INITIAL_SEO_CONFIGS: SeoPageConfig[] = [
     metaTitle: 'About Lijemrakel Trading PLC | Ethiopian Veterinary & Agricultural Trade',
     metaDescription:
       'Learn about Lijemrakel Trading PLC, connecting reputable international manufacturers with veterinary professionals, livestock producers, and poultry farms across Ethiopia.',
-    canonicalUrl: 'https://lijemrakel-trading.vercel.app/about',
+    canonicalUrl: 'https://lijemrakel.com/about',
     keywords: 'About Lijemrakel Trading, Ethiopian Veterinary Importer, Gebeta Le Hager Agriculture',
     ogTitle: 'About Lijemrakel Trading PLC',
     ogDescription:
@@ -395,7 +395,7 @@ export const INITIAL_SEO_CONFIGS: SeoPageConfig[] = [
     metaTitle: 'Our Strategy — 5-Year Strategic Direction | Lijemrakel Trading PLC',
     metaDescription:
       'Explore Lijemrakel Trading PLC’s 4-phase, 5-year strategic roadmap from veterinary market entry to domestic poultry production and hatchery development.',
-    canonicalUrl: 'https://lijemrakel-trading.vercel.app/about/strategy',
+    canonicalUrl: 'https://lijemrakel.com/about/strategy',
     keywords: 'Lijemrakel Strategy, Poultry Hatchery Roadmap Ethiopia, Veterinary Distribution Plan',
     ogTitle: 'Our Strategy — 5-Year Roadmap | Lijemrakel Trading PLC',
     ogDescription:
@@ -411,12 +411,12 @@ export const INITIAL_SEO_CONFIGS: SeoPageConfig[] = [
     metaTitle: 'Leadership — Founders, Board & Executive Management | Lijemrakel Trading PLC',
     metaDescription:
       'Meet the Founding Members, Board of Directors, and Executive Management Team guiding Lijemrakel Trading PLC.',
-    canonicalUrl: 'https://lijemrakel-trading.vercel.app/about/leadership',
+    canonicalUrl: 'https://lijemrakel.com/about/leadership',
     keywords: 'Lijalem Abayneh, Dr Etsubdink Negash, Abel Girma, Yelekal Kebede, Desalegn Tamene',
     ogTitle: 'Leadership & Governance | Lijemrakel Trading PLC',
     ogDescription:
       'Meet the Founding Members, Board of Directors, and Executive Management Team guiding Lijemrakel Trading PLC.',
-    ogImage: '/images/leadership/leader-lijalem.jpg',
+    ogImage: '/uploads/1793297131637-photo_2026-04-06_04-12-56.jpg',
     indexStatus: 'index, follow',
     lastUpdated: '2026-10-28',
   },
@@ -427,7 +427,7 @@ export const INITIAL_SEO_CONFIGS: SeoPageConfig[] = [
     metaTitle: 'Product Catalogue — Veterinary Medicines, Vaccines, Premixes & Hatching Eggs',
     metaDescription:
       'Browse Lijemrakel Trading PLC’s veterinary medicines, vaccines, feed premixes, reproductive hormones, and certified fertilized hatching eggs.',
-    canonicalUrl: 'https://lijemrakel-trading.vercel.app/products',
+    canonicalUrl: 'https://lijemrakel.com/products',
     keywords: 'Albendazole Ethiopia, Ivermectin, Oxytetracycline, Poultry Vaccines, Broiler Premix',
     ogTitle: 'Veterinary & Poultry Product Catalogue | Lijemrakel Trading PLC',
     ogDescription:
@@ -443,7 +443,7 @@ export const INITIAL_SEO_CONFIGS: SeoPageConfig[] = [
     metaTitle: 'Contact Lijemrakel Trading PLC | Debrewerk Tower, Mexico, Addis Ababa',
     metaDescription:
       'Contact Lijemrakel Trading PLC at Debrewerk Tower | Mexico, Addis Ababa or call 0913514767 for veterinary product inquiries and supplier partnerships.',
-    canonicalUrl: 'https://lijemrakel-trading.vercel.app/contact',
+    canonicalUrl: 'https://lijemrakel.com/contact',
     keywords: 'Contact Lijemrakel Trading, Debrewerk Tower Mexico Addis Ababa, 0913514767',
     ogTitle: 'Contact Lijemrakel Trading PLC',
     ogDescription:
