@@ -48,6 +48,70 @@ function preloadSingleImage(url: string): Promise<void> {
   });
 }
 
+async function optimizeImageFileIfNeeded(
+  file: File,
+  maxDimension = 1600
+): Promise<File> {
+  if (
+    typeof window === 'undefined' ||
+    !file.type.startsWith('image/') ||
+    file.type === 'image/svg+xml' ||
+    file.type === 'image/gif' ||
+    file.size <= 450 * 1024
+  ) {
+    return file;
+  }
+
+  return new Promise((resolve) => {
+    const objectUrl = URL.createObjectURL(file);
+    const img = new window.Image();
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      const { width, height } = img;
+      const ratio = Math.min(1, maxDimension / Math.max(width, height));
+      const targetW = Math.round(width * ratio);
+      const targetH = Math.round(height * ratio);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = targetW;
+      canvas.height = targetH;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) {
+        resolve(file);
+        return;
+      }
+      ctx.drawImage(img, 0, 0, targetW, targetH);
+      const outputType =
+        file.type === 'image/png' ? 'image/jpeg' : file.type;
+      canvas.toBlob(
+        (blob) => {
+          if (!blob || blob.size >= file.size) {
+            resolve(file);
+            return;
+          }
+          const ext = outputType === 'image/jpeg' ? '.jpg' : '';
+          const cleanName = ext
+            ? file.name.replace(/\.[^/.]+$/, ext)
+            : file.name;
+          resolve(
+            new File([blob], cleanName, {
+              type: outputType,
+              lastModified: Date.now(),
+            })
+          );
+        },
+        outputType,
+        0.88
+      );
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      resolve(file);
+    };
+    img.src = objectUrl;
+  });
+}
+
 export function ImageUploadPicker({
   label,
   value,
@@ -92,8 +156,12 @@ export function ImageUploadPicker({
     });
 
     try {
+      const optimizedFile = await optimizeImageFileIfNeeded(
+        file,
+        category === 'Leadership' ? 1000 : 1600
+      );
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('file', optimizedFile);
       formData.append(
         'title',
         defaultTitle || file.name.replace(/\.[^/.]+$/, '')
